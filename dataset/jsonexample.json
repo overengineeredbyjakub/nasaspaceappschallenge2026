@@ -1,0 +1,595 @@
+{
+  "_format": {
+    "format_version": "nasa-mission-scraper/1.0",
+    "description": "Ujednolicony format eksportu danych ze stron NASA (science.nasa.gov i pokrewnych). Ten sam schemat stosuj do każdej kolejnej strony misji/pojazdu, aby wszystkie wpisy były spójne i mogły być łączone w jedną bazę.",
+    "conventions": [
+      "Klucze zawsze obecne; brak danych = null (nigdy nie usuwaj klucza), brak pozycji = pusta lista [].",
+      "Daty: 'date' zawsze w ISO 8601 (YYYY-MM-DD), 'date_raw' zachowuje oryginalny zapis ze strony.",
+      "Wszystkie URL-e bezwzględne (https://...), bez parametrów śledzących gdzie to możliwe.",
+      "Każdy zasób medialny jest obiektem z minimalnym zestawem pól: url + typ + context (skąd pochodzi na stronie).",
+      "Treść artykułu w polach 'markdown': nagłówki '##'/'###', listy '-', listy numerowane '1.', pogrubienia '**'. Układ = kolejność sekcji ze strony źródłowej.",
+      "Treść zachowywana w języku źródła (pole source.language); nie tłumaczyć przy ekstrakcji.",
+      "Pola 'id' zewnętrznych systemów (np. PIA##### z Photojournal, identyfikatory YouTube, numery modeli 3D) zapisuj w dedykowanych polach *_id, jeśli są znane.",
+      "Weryfikuj dostępność URL-i (HTTP 200) przed zapisem; martwy link oznaczaj w polu 'status'."
+    ],
+    "top_level_keys": [
+      "_format",
+      "source",
+      "vehicle",
+      "specifications",
+      "key_facts",
+      "timeline",
+      "article",
+      "media",
+      "related",
+      "notes"
+    ]
+  },
+  "source": {
+    "url": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "canonical_url": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "page_title": "Ingenuity Mars Helicopter - NASA Science",
+    "page_type": "mission_vehicle_page",
+    "site": "science.nasa.gov",
+    "language": "en",
+    "scraped_at": "2026-11-14",
+    "page_last_updated": "2026-09-22",
+    "page_editor": "Stephen Carney",
+    "responsible_nasa_official": "Dana Bolles",
+    "meta_description": "NASA's Ingenuity Mars Helicopter completed 72 historic flights since first taking to the skies above the Red Planet."
+  },
+  "vehicle": {
+    "name": "Ingenuity",
+    "full_name": "Ingenuity Mars Helicopter",
+    "agency": "NASA / JPL-Caltech",
+    "mission": {
+      "name": "Mars 2020 (Perseverance)",
+      "url": "https://science.nasa.gov/mission/mars-2020-perseverance/",
+      "relationship": "hitchhiker / technology demonstration aboard the Perseverance rover"
+    },
+    "type": {
+      "category": "rotorcraft",
+      "name": "helicopter",
+      "page_label": "Helicopter"
+    },
+    "objective": "Demonstrate the first powered flight on Mars",
+    "destination": "Jezero Crater, Mars",
+    "status": "mission_completed",
+    "dates": {
+      "launch": {
+        "date": "2020-07-30",
+        "date_raw": "July 30, 2020",
+        "location": "Cape Canaveral Air Force Station, Florida",
+        "note": "launched attached to the belly of the Perseverance rover"
+      },
+      "landing": {
+        "date": "2021-02-18",
+        "date_raw": "Feb. 18, 2021",
+        "location": "Jezero Crater, Mars"
+      },
+      "start_of_operations": {
+        "date": "2021-04-19",
+        "date_raw": "April 19, 2021",
+        "event": "First flight — first powered, controlled flight on another planet ('Wright Brothers moment')"
+      },
+      "end_of_operations": {
+        "date": "2024-01-18",
+        "date_raw": "Jan. 18, 2024",
+        "event": "72nd and final flight (rotor blade damage)"
+      },
+      "mission_end": {
+        "date": "2024-01-25",
+        "date_raw": "Jan. 25, 2024",
+        "event": "NASA officially declared the Ingenuity mission completed",
+        "url": "https://www.nasa.gov/news-release/after-three-years-on-mars-nasas-ingenuity-helicopter-mission-ends/"
+      }
+    }
+  },
+  "specifications": [
+    {
+      "parameter": "Mass",
+      "value": "3.97 pounds (1.8 kilograms)"
+    },
+    {
+      "parameter": "Weight",
+      "value": "4 pounds on Earth (1.81 kilograms); 1.5 pounds (0.68 kilograms) on Mars"
+    },
+    {
+      "parameter": "Width (rotors, tip to tip)",
+      "value": "Approximately 4 feet (approximately 1.2 meters)"
+    },
+    {
+      "parameter": "Blade span",
+      "value": "Just under 4 feet (1.2 meters)"
+    },
+    {
+      "parameter": "Power",
+      "value": "Solar panel charges lithium-ion batteries, providing enough energy for one 90-second flight per Martian day (approximately 350 Watts of average power during flight)"
+    },
+    {
+      "parameter": "Flight range",
+      "value": "Up to 980 feet (300 meters)"
+    },
+    {
+      "parameter": "Flight altitude",
+      "value": "Up to 15 feet (5 meters) [design]; record achieved: 78.7 feet (24.0 meters)"
+    },
+    {
+      "parameter": "Flight environment",
+      "value": "Thin atmosphere, less than 1 percent as dense as Earth's"
+    }
+  ],
+  "key_facts": {
+    "summary_numbers": {
+      "total_flights": 72,
+      "total_flight_time": "128.8 flying minutes",
+      "total_distance": "10.5 miles (17.0 kilometers)",
+      "max_altitude": "78.7 feet (24.0 meters)",
+      "planned_vs_actual": "designed for max 5 test flights in 30 days; flew 72 flights across nearly 3 years"
+    },
+    "five_things_to_know": [
+      "The first aircraft to achieve powered, controlled flight on another planet, a feat that's been called a \"Wright Brothers moment.\"",
+      "Completed 128.8 flying minutes, covering 10.5 miles (17.0 kilometers), and reaching altitudes as high as 78.7 feet (24.0 meters).",
+      "Successfully flying in the extremely thin Martian atmosphere.",
+      "Previewing areas of Mars of possible interest for the Perseverance rover to explore.",
+      "Paved the way for future aerial explorers at Mars and, potentially, other space destinations."
+    ],
+    "mission_phases": [
+      "Technology demonstration (up to 5 flights in 30 days) — completed May 7, 2021",
+      "Operations demonstration — aerial scout for scientists and rover planners",
+      "Engineering demonstration — experimental flight tests expanding knowledge of aerodynamic limits (final phase)"
+    ]
+  },
+  "timeline": [
+    {
+      "date": "2021-04-03",
+      "date_raw": "April 3, 2021",
+      "title": "Four Feet on Mars",
+      "url": "https://science.nasa.gov/resource/ingenuitys-complete-deployment/"
+    },
+    {
+      "date": "2021-04-04",
+      "date_raw": "April 4, 2021",
+      "title": "Surviving the First Night",
+      "url": "https://www.nasa.gov/solar-system/nasas-mars-helicopter-survives-first-cold-martian-night-on-its-own/"
+    },
+    {
+      "date": "2021-04-08",
+      "date_raw": "April 8, 2021",
+      "title": "First Rotor Spin Tests",
+      "url": "https://science.nasa.gov/resource/ingenuity-begins-to-spin-its-blades/"
+    },
+    {
+      "date": "2021-04-19",
+      "date_raw": "April 19, 2021",
+      "title": "First Flight",
+      "url": "https://science.nasa.gov/resource/first-video-of-nasas-ingenuity-mars-helicopter-in-flight"
+    },
+    {
+      "date": "2021-04-25",
+      "date_raw": "April 25, 2021",
+      "title": "First Photo of Rover",
+      "url": "https://science.nasa.gov/resource/ingenuity-spots-perseverance-from-the-air/"
+    },
+    {
+      "date": "2021-05-07",
+      "date_raw": "May 7, 2021",
+      "title": "Tech Demo Complete",
+      "url": "https://www.nasa.gov/solar-system/nasas-ingenuity-mars-helicopter-completes-first-one-way-trip/"
+    },
+    {
+      "date": "2021-07-05",
+      "date_raw": "July 5, 2021",
+      "title": "Venturing to New Territory",
+      "url": "https://www.nasa.gov/solar-system/nasas-mars-helicopter-reveals-intriguing-terrain-for-rover-team/"
+    },
+    {
+      "date": "2021-07-24",
+      "date_raw": "July 24, 2021",
+      "title": "First Scouting Flight",
+      "url": "https://www.nasa.gov/solar-system/my-favorite-martian-image-helicopter-scouts-ridge-area-for-perseverance/"
+    },
+    {
+      "date": "2021-08-04",
+      "date_raw": "August 4, 2021",
+      "title": "Another Rover Sighting",
+      "url": "https://science.nasa.gov/resource/seitah-from-39-feet-up/"
+    },
+    {
+      "date": "2022-04-08",
+      "date_raw": "April 8, 2022",
+      "title": "Setting the Distance Record",
+      "url": "https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasas-ingenuity-mars-helicopter-captures-video-of-record-flight/"
+    },
+    {
+      "date": "2022-04-19",
+      "date_raw": "April 19, 2022",
+      "title": "Sighting Rover's Landing Hardware",
+      "url": "https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasas-mars-helicopter-spots-gear-that-helped-perseverance-rover-land/"
+    },
+    {
+      "date": "2023-04-13",
+      "date_raw": "April 13, 2023",
+      "title": "50 Flights and Beyond",
+      "url": "https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasas-ingenuity-mars-helicopter-completes-50th-flight/"
+    },
+    {
+      "date": "2023-10-05",
+      "date_raw": "October 5, 2023",
+      "title": "Setting the Altitude Record",
+      "url": "https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasa-uses-two-worlds-to-test-future-mars-helicopter-designs/"
+    },
+    {
+      "date": "2023-10-12",
+      "date_raw": "October 12, 2023",
+      "title": "Setting the Groundspeed Record",
+      "url": "https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasa-uses-two-worlds-to-test-future-mars-helicopter-designs/",
+      "note": "strona NASA podpina oba rekordy (5.10 i 12.10.2023) pod ten sam artykuł"
+    },
+    {
+      "date": "2024-01-25",
+      "date_raw": "January 25, 2024",
+      "title": "NASA's Ingenuity Helicopter Mission Ends",
+      "url": "https://www.nasa.gov/news-release/after-three-years-on-mars-nasas-ingenuity-helicopter-mission-ends/"
+    }
+  ],
+  "article": {
+    "title": "Ingenuity Mars Helicopter",
+    "lead": "NASA's Ingenuity Mars Helicopter completed 72 historic flights since first taking to the skies above the Red Planet.",
+    "content_language": "en",
+    "sections": [
+      {
+        "heading": "5 Years Since Ingenuity's 'Wright Brothers Moment'",
+        "markdown": "After riding to Mars strapped beneath the Perseverance rover, the Ingenuity helicopter took to the Martian air for its initial flight on April 19, 2021 — the first powered flight on another planet.\n\n[Learn the Story Behind Ingenuity](https://youtu.be/qwdfdE6ruMw)"
+      },
+      {
+        "heading": "The Legacy of Ingenuity (Featured Video)",
+        "markdown": "On April 19, 2021, NASA's Ingenuity Mars Helicopter made history when it completed the first powered, controlled flight on the Red Planet. It flew for the last time on Jan. 18, 2024.\n\nDesigned to be a technology demonstration that would make no more than five test flights in 30 days, the helicopter eventually completed 72 flights across nearly three years, soaring higher and faster than previously imagined. Ingenuity embarked on a new mission as an operations demonstration, serving as an aerial scout for scientists and rover planners, and for engineers ready to learn more about Perseverance's landing-gear debris.\n\nIn its final phase, the helicopter entered a new engineering demonstration phase where it executed experimental flight tests that further expanded the team's knowledge of the vehicle's aerodynamic limits.\n\n**Film:** [Legacy of NASA's Ingenuity Mars Helicopter (YouTube)](https://youtu.be/qMbHE_VXI-8)"
+      },
+      {
+        "heading": "Key Facts",
+        "markdown": "- **Launch:** July 30, 2020, Cape Canaveral Air Force Station, Florida\n- **Landed:** Feb. 18, 2021, Jezero Crater, Mars\n- **Length of mission:** Technology demonstration completed; transitioned to new [operations demo](https://science.nasa.gov/missions/mars-2020-perseverance/nasas-ingenuity-helicopter-to-begin-new-demonstration-phase/) phase. [Mission completed](https://www.nasa.gov/news-release/after-three-years-on-mars-nasas-ingenuity-helicopter-mission-ends/) on Jan. 25, 2024."
+      },
+      {
+        "heading": "Ingenuity Timeline",
+        "markdown": "- **April 3, 2021 — Four Feet on Mars** ([Read More](https://science.nasa.gov/resource/ingenuitys-complete-deployment/))\n- **April 4, 2021 — Surviving the First Night** ([Read More](https://www.nasa.gov/solar-system/nasas-mars-helicopter-survives-first-cold-martian-night-on-its-own/))\n- **April 8, 2021 — First Rotor Spin Tests** ([Read More](https://science.nasa.gov/resource/ingenuity-begins-to-spin-its-blades/))\n- **April 19, 2021 — First Flight** ([Read More](https://science.nasa.gov/resource/first-video-of-nasas-ingenuity-mars-helicopter-in-flight))\n- **April 25, 2021 — First Photo of Rover** ([Read More](https://science.nasa.gov/resource/ingenuity-spots-perseverance-from-the-air/))\n- **May 7, 2021 — Tech Demo Complete** ([Read More](https://www.nasa.gov/solar-system/nasas-ingenuity-mars-helicopter-completes-first-one-way-trip/))\n- **July 5, 2021 — Venturing to New Territory** ([Read More](https://www.nasa.gov/solar-system/nasas-mars-helicopter-reveals-intriguing-terrain-for-rover-team/))\n- **July 24, 2021 — First Scouting Flight** ([Read More](https://www.nasa.gov/solar-system/my-favorite-martian-image-helicopter-scouts-ridge-area-for-perseverance/))\n- **August 4, 2021 — Another Rover Sighting** ([Read More](https://science.nasa.gov/resource/seitah-from-39-feet-up/))\n- **April 8, 2022 — Setting the Distance Record** ([Read More](https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasas-ingenuity-mars-helicopter-captures-video-of-record-flight/))\n- **April 19, 2022 — Sighting Rover's Landing Hardware** ([Read More](https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasas-mars-helicopter-spots-gear-that-helped-perseverance-rover-land/))\n- **April 13, 2023 — 50 Flights and Beyond** ([Read More](https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasas-ingenuity-mars-helicopter-completes-50th-flight/))\n- **October 5, 2023 — Setting the Altitude Record** ([Read More](https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasa-uses-two-worlds-to-test-future-mars-helicopter-designs/))\n- **October 12, 2023 — Setting the Groundspeed Record** ([Read More](https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasa-uses-two-worlds-to-test-future-mars-helicopter-designs/))\n- **January 25, 2024 — NASA's Ingenuity Helicopter Mission Ends** ([Read More](https://www.nasa.gov/news-release/after-three-years-on-mars-nasas-ingenuity-helicopter-mission-ends/))"
+      },
+      {
+        "heading": "5 Things to Know",
+        "markdown": "1. The first aircraft to achieve powered, controlled flight on another planet, a feat that's been called a \"Wright Brothers moment.\"\n2. Completed 128.8 flying minutes, covering 10.5 miles (17.0 kilometers), and reaching altitudes as high as 78.7 feet (24.0 meters).\n3. Successfully flying in the extremely thin Martian atmosphere.\n4. Previewing areas of Mars of possible interest for the Perseverance rover to explore.\n5. Paved the way for future aerial explorers at Mars and, potentially, other space destinations."
+      },
+      {
+        "heading": "Tech Specs",
+        "markdown": "- **Mass:** 3.97 pounds (1.8 kilograms)\n- **Weight:** 4 pounds on Earth (1.81 kilograms on Mars); 1.5 pounds on Mars (0.68 kilograms)\n- **Width:** Total length of rotors: Approximately 4 feet (approximately 1.2 meters) tip to tip\n- **Power:** Solar panel charges Lithium-ion batteries, providing enough energy for one 90-second flight per Martian day (approximately 350 Watts of average power during flight)\n- **Blade span:** Just under 4 feet (1.2 meters)\n- **Flight range:** Up to 980 feet (300 meters)\n- **Flight altitude:** Up to 15 feet (5 meters)\n- **Flight environment:** Thin atmosphere, less than 1 percent as dense as Earth's\n\n**Infografika:** [Anatomy of Ingenuity Mars Helicopter](https://science.nasa.gov/wp-content/uploads/2024/03/anatomy-of-ingenuity-mars-helicopter.jpg)"
+      },
+      {
+        "heading": "Ingenuity's Travel Diary",
+        "markdown": "Take a flight down memory lane to read the archived chronology of mission updates provided by the Mars Helicopter team.\n\n[Read the 'Mars Helicopter Updates' about Ingenuity's Travel Diary](https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/mars-helicopter-updates/)"
+      },
+      {
+        "heading": "Ingenuity's Flight Log Details",
+        "markdown": "Recap of Ingenuity's 72 flights, including duration, distance, speed, and altitude.\n\n**Pliki:**\n- [Flight Log (PDF, 535.42 KB, aktualizacja Jun 21, 2024)](https://science.nasa.gov/wp-content/uploads/2024/06/ingenuity-helicopter-flight-log.pdf)\n- [Flight Log by the Numbers (infografika JPG)](https://science.nasa.gov/wp-content/uploads/2024/03/ingenuity-flight-log-by-the-numbers.jpg)\n\n**Film:** [See Ingenuity's Flight Map: 72 Helicopter Flights on Mars (YouTube)](https://youtu.be/U7DFnNimSfw)"
+      },
+      {
+        "heading": "The Next Generation: NASA's SkyFall Mars Helicopters",
+        "markdown": "NASA's SkyFall mission will build on the success of the Ingenuity Mars helicopter, which achieved the first powered, controlled flight on another planet. Using a daring mid-air deployment, SkyFall will deliver a team of next-gen Mars helicopters to scout human landing sites and map subsurface water ice. The mission was announced as part of the agency's \"Ignition\" event on Tuesday, March 24.\n\n[Learn More About SkyFall](https://science.nasa.gov/mission/skyfall/) — [film na YouTube](https://youtu.be/TYasUWRkv4E)"
+      },
+      {
+        "heading": "Featured Story: NASA Pushes Next-Gen Mars Helicopter Rotor Blades Past Mach 1",
+        "markdown": "The rotor blades that will carry NASA's next-generation helicopters to new Martian heights broke the sound barrier during March tests…\n\n[Read the Story](https://www.nasa.gov/solar-system/planets/mars/nasa-pushes-next-gen-mars-helicopter-rotor-blades-past-mach-1/)"
+      },
+      {
+        "heading": "Ingenuity Posters",
+        "markdown": "Download high-resolution posters to celebrate Ingenuity's accomplishments.\n\n- **Ingenuity: 72 Pathbreaking Flights** — Ingenuity flew for the last time on January 18, 2024, and completed its mission on January 25, 2024, after nearly three years of aerial exploration and 72 historic flights. [Download Poster](https://science.nasa.gov/resource/ingenuity-72-pathbreaking-flights-poster/)\n- **Ingenuity Mars Helicopter Poster** — Celebrate the accomplishments of NASA's Ingenuity Mars Helicopter with a vertical or horizontal poster illustration depicting the first helicopter on the Red Planet. [Download Poster](https://science.nasa.gov/resource/ingenuity-mars-helicopter-poster/)\n- **Ingenuity Mars Helicopter By the Numbers** — In the more than two years since landing, the helicopter has greatly exceeded its planned lifespan and evolved from a test of the first powered, controlled flight on another world to working to support other goals. [Download Infographic](https://science.nasa.gov/resource/ingenuity-mars-helicopter-by-the-numbers/)"
+      },
+      {
+        "heading": "Ingenuity Resources",
+        "markdown": "From its first days on the Martian surface through its 72 historic flights, view images and videos of the helicopter's journey on Mars.\n\n[Browse Ingenuity-Related Resources](https://science.nasa.gov/mars/resources/?search=Ingenuity)"
+      }
+    ]
+  },
+  "media": {
+    "hero_image": {
+      "url": "https://science.nasa.gov/wp-content/uploads/2024/06/ingenuity-topiccard-3x2-1.jpg",
+      "context": "og:image / topic card strony",
+      "credit": "NASA"
+    },
+    "images": [
+      {
+        "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/downloadable_items/4/5/45954_PIA24581.jpg",
+        "photojournal_id": "PIA24581",
+        "caption": "Mars Helicopter Ingenuity on Mars.",
+        "context": "zdjęcie główne na szczycie strony (featured)",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://science.nasa.gov/wp-content/uploads/2024/03/25762-pia24443-1200-0657a5.jpg",
+        "photojournal_id": "PIA24443",
+        "caption": "NASA's Ingenuity Mars Helicopter extends vertically into place after being rotated outward from its horizontal position on the belly of the Perseverance rover on March 29, 2021. This image was taken by the WATSON (Wide Angle Topographic Sensor for Operations and eNgineering) camera on the SHERLOC (Scanning Habitable Environments with Raman and Luminescence for Organics and Chemicals) instrument, located at the end of the rover's long robotic arm.",
+        "context": "sekcja '5 Things to Know'",
+        "credit": "NASA/JPL-Caltech/MSSS",
+        "full_resolution_variant": "https://science.nasa.gov/wp-content/uploads/2024/03/pia24443-crop.jpg",
+        "raw_image_source": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/mars2020-raw-images/pub/ods/surface/sol/00254/ids/edr/browse/heli/HNM_0254_0689487658_322ECM_N0150001HELI04335_0000A0J01_1200.jpg"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/4784/PIA24584_Ingenuity_First_Flight-640x480-1.jpg",
+        "photojournal_id": "PIA24584",
+        "caption": "Ingenuity's first flight (April 19, 2021).",
+        "context": "zasób timeline 'First Flight'",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/5029/pia24730-ingenuity-spots-rover-tracks-during-ninth-flight-640x480-1.jpg",
+        "photojournal_id": "PIA24730",
+        "caption": "Ingenuity spots rover tracks during its ninth flight.",
+        "context": "zasób timeline 'Another Rover Sighting' (August 4, 2021)",
+        "credit": "NASA/JPL-Caltech"
+      }
+    ],
+    "gifs": [
+      {
+        "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/downloadable_items/4/6/46152_PIA24598-IngenuityFlightSix.gif",
+        "photojournal_id": "PIA24598",
+        "caption": "NASA's Ingenuity Mars Helicopter navigation camera depicts the last 29 seconds of the rotorcraft's sixth flight.",
+        "context": "sekcja 'Ingenuity's Travel Diary'",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/internal_resources/details/original/1341_PIA25321_Animated_GIF.gif",
+        "photojournal_id": "PIA25321",
+        "caption": null,
+        "context": "zasób GIF osadzony na stronie (mars resources)",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/resources/detail_files/2/5/25792_PIA24548-1200.gif",
+        "photojournal_id": "PIA24548",
+        "caption": null,
+        "context": "zasób GIF osadzony na stronie (mars resources)",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/resources/detail_files/2/5/25796_heli-movement-far.gif",
+        "photojournal_id": null,
+        "caption": "Movement of the helicopter captured from afar.",
+        "context": "zasób GIF osadzony na stronie (mars resources)",
+        "credit": "NASA/JPL-Caltech"
+      }
+    ],
+    "videos": [
+      {
+        "platform": "youtube",
+        "video_id": "qMbHE_VXI-8",
+        "url": "https://youtu.be/qMbHE_VXI-8",
+        "embed_url": "https://www.youtube.com/embed/qMbHE_VXI-8",
+        "title": "Legacy of NASA's Ingenuity Mars Helicopter",
+        "channel": "NASA Jet Propulsion Laboratory",
+        "context": "Featured Video na stronie"
+      },
+      {
+        "platform": "youtube",
+        "video_id": "qwdfdE6ruMw",
+        "url": "https://youtu.be/qwdfdE6ruMw",
+        "embed_url": "https://www.youtube.com/embed/qwdfdE6ruMw",
+        "title": "NASA's Ingenuity Mars Helicopter: Attempting the First Powered Flight on Mars",
+        "channel": "NASA Jet Propulsion Laboratory",
+        "context": "sekcja '5 Years Since Ingenuity's Wright Brothers Moment' (Learn the Story Behind Ingenuity)"
+      },
+      {
+        "platform": "youtube",
+        "video_id": "wMnOo2zcjXA",
+        "url": "https://youtu.be/wMnOo2zcjXA",
+        "embed_url": "https://www.youtube.com/embed/wMnOo2zcjXA",
+        "title": "First Video of NASA's Ingenuity Mars Helicopter in Flight, Includes Takeoff and Landing (High-Res)",
+        "channel": "NASA Jet Propulsion Laboratory",
+        "context": "timeline 'First Flight' (April 19, 2021)"
+      },
+      {
+        "platform": "youtube",
+        "video_id": "U7DFnNimSfw",
+        "url": "https://youtu.be/U7DFnNimSfw",
+        "embed_url": "https://www.youtube.com/embed/U7DFnNimSfw",
+        "title": "See Ingenuity's Flight Map: 72 Helicopter Flights on Mars",
+        "channel": "NASA Jet Propulsion Laboratory",
+        "context": "sekcja 'Ingenuity's Flight Log Details'"
+      },
+      {
+        "platform": "youtube",
+        "video_id": "TYasUWRkv4E",
+        "url": "https://youtu.be/TYasUWRkv4E",
+        "embed_url": "https://www.youtube.com/embed/TYasUWRkv4E",
+        "title": "NASA's SkyFall Mars Helicopters",
+        "channel": "NASA Jet Propulsion Laboratory",
+        "context": "sekcja 'The Next Generation' (Learn More About SkyFall)"
+      }
+    ],
+    "models_3d": [
+      {
+        "name": "Ingenuity Mars Helicopter",
+        "model_id": "25043",
+        "format": "glb",
+        "url": "https://mars.nasa.gov/system/resources/gltf_files/25043_Ingenuity_v3.glb",
+        "context": "interaktywny model 3D osadzony na stronie (model-viewer)"
+      },
+      {
+        "name": "Ingenuity Mars Helicopter",
+        "model_id": "25043",
+        "format": "usdz",
+        "url": "https://mars.nasa.gov/system/resources/usdz_files/25043_Ingenuity_v3.usdz",
+        "context": "wariant AR dla iOS (Quick Look)"
+      },
+      {
+        "name": "Ingenuity Mars Helicopter — interaktywny podgląd",
+        "model_id": "25043",
+        "format": "web_viewer",
+        "url": "https://mars.nasa.gov/gltf_embed/25043",
+        "poster": "https://mars.nasa.gov/system/resources/gltf_poster_files/25043_helicopter-new-dimensions.jpg",
+        "note": "Interactive 3D model of the Mars Ingenuity Helicopter. This model can also be viewed in augmented reality on mobile devices using NASA's Spacecraft AR app."
+      }
+    ],
+    "downloads": [
+      {
+        "title": "Ingenuity 72 Pathbreaking Flights (poster)",
+        "url": "https://science.nasa.gov/resource/ingenuity-72-pathbreaking-flights-poster/",
+        "direct_image": "https://science.nasa.gov/wp-content/uploads/2024/08/mars-ingenuity-72-pathbreaking-flights-poster-front-web-meta-updated.jpg",
+        "file_type": "poster"
+      },
+      {
+        "title": "Ingenuity Mars Helicopter Poster (horizontal)",
+        "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/downloadable_items/4/8/48791_ingenuity_poster-horizontal.png",
+        "file_type": "png"
+      },
+      {
+        "title": "Ingenuity Mars Helicopter Poster (vertical)",
+        "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/downloadable_items/4/8/48792_ingenuity_poster-vertical.png",
+        "file_type": "png"
+      },
+      {
+        "title": "Ingenuity Mars Helicopter By the Numbers (infographic)",
+        "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/downloadable_items/4/8/48790_ingenuity_numbers.jpg",
+        "file_type": "jpg"
+      },
+      {
+        "title": "Anatomy of Ingenuity Mars Helicopter (tech specs infographic)",
+        "url": "https://science.nasa.gov/wp-content/uploads/2024/03/anatomy-of-ingenuity-mars-helicopter.jpg",
+        "file_type": "jpg"
+      },
+      {
+        "title": "Ingenuity Flight Log by the Numbers (infographic)",
+        "url": "https://science.nasa.gov/wp-content/uploads/2024/03/ingenuity-flight-log-by-the-numbers.jpg",
+        "file_type": "jpg"
+      },
+      {
+        "title": "Ingenuity Helicopter Flight Log (PDF, 535.42 KB, Jun 21, 2024)",
+        "url": "https://science.nasa.gov/wp-content/uploads/2024/06/ingenuity-helicopter-flight-log.pdf",
+        "file_type": "pdf"
+      }
+    ]
+  },
+  "related": {
+    "mission_pages": [
+      {
+        "title": "Mars 2020: Perseverance — Mission Overview",
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/"
+      },
+      {
+        "title": "Rover Components",
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/rover-components/"
+      },
+      {
+        "title": "Mars Rock Samples",
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/mars-rock-samples/"
+      },
+      {
+        "title": "Where is Perseverance?",
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/location-map/"
+      },
+      {
+        "title": "Mission Updates",
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/science-updates/"
+      }
+    ],
+    "ingenuity_specific": [
+      {
+        "title": "Mars Helicopter Updates (Travel Diary)",
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/mars-helicopter-updates/"
+      },
+      {
+        "title": "Nowa faza demonstracji operacyjnej",
+        "url": "https://science.nasa.gov/missions/mars-2020-perseverance/nasas-ingenuity-helicopter-to-begin-new-demonstration-phase/"
+      },
+      {
+        "title": "Koniec misji (news release, Jan 25, 2024)",
+        "url": "https://www.nasa.gov/news-release/after-three-years-on-mars-nasas-ingenuity-helicopter-mission-ends/"
+      }
+    ],
+    "next_generation": {
+      "mission_name": "SkyFall",
+      "url": "https://science.nasa.gov/mission/skyfall/",
+      "summary": "SkyFall will deliver a trio of next-gen Mars helicopters using mid-air deployment, to scout human landing sites and map subsurface water ice; builds on Ingenuity's success.",
+      "related_story": {
+        "title": "NASA Pushes Next-Gen Mars Helicopter Rotor Blades Past Mach 1",
+        "url": "https://www.nasa.gov/solar-system/planets/mars/nasa-pushes-next-gen-mars-helicopter-rotor-blades-past-mach-1/"
+      }
+    },
+    "multimedia_galleries": [
+      {
+        "title": "Perseverance Raw Images",
+        "url": "https://mars.nasa.gov/mars2020/multimedia/raw-images/"
+      },
+      {
+        "title": "Mars Images (galeria zasobów)",
+        "url": "https://science.nasa.gov/mars/resources/?categories=1961"
+      },
+      {
+        "title": "Mars Videos (galeria zasobów)",
+        "url": "https://science.nasa.gov/mars/resources/?categories=1961"
+      },
+      {
+        "title": "Wyszukiwarka zasobów: Ingenuity",
+        "url": "https://science.nasa.gov/mars/resources/?search=Ingenuity"
+      },
+      {
+        "title": "NASA 3D Resources",
+        "url": "https://science.nasa.gov/3d-resources/"
+      },
+      {
+        "title": "Mars Resources (pakiet)",
+        "url": "https://science.nasa.gov/solar-system/resources/resource-packages/mars-resources/"
+      }
+    ],
+    "related_missions": [
+      {
+        "title": "Mars Perseverance Rover",
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/"
+      },
+      {
+        "title": "Mars Curiosity Rover",
+        "url": "https://science.nasa.gov/mission/msl-curiosity/"
+      },
+      {
+        "title": "Mars Reconnaissance Orbiter",
+        "url": "https://science.nasa.gov/mission/mars-reconnaissance-orbiter/"
+      },
+      {
+        "title": "Mars Odyssey",
+        "url": "https://science.nasa.gov/mission/odyssey/"
+      }
+    ],
+    "feature_stories": [
+      {
+        "title": "NASA's Perseverance Views Dust at Neretva Vallis",
+        "url": "https://science.nasa.gov/photojournal/nasas-perseverance-views-dust-at-neretva-vallis/"
+      },
+      {
+        "title": "NASA's Perseverance Offers Clues to Protect Crews From Mars Dust",
+        "url": "https://www.nasa.gov/missions/mars-2020-perseverance/nasas-perseverance-offers-clues-to-protect-crews-from-mars-dust/"
+      },
+      {
+        "title": "NASA Experimental Mars Helicopter Blade Designs Target Longer Flights",
+        "url": "https://www.nasa.gov/science-research/aeronautics-research/nasa-experimental-mars-helicopter-blade-designs-target-longer-flights/"
+      },
+      {
+        "title": "NASA's Record-Setting Perseverance Rover Team",
+        "url": "https://science.nasa.gov/photojournal/nasas-record-setting-perseverance-rover-team/"
+      },
+      {
+        "title": "Perseverance Navcam Image Marks Record Drive",
+        "url": "https://science.nasa.gov/photojournal/perseverance-navcam-image-marks-record-drive/"
+      },
+      {
+        "title": "Wszystkie historie Perseverance",
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/stories/"
+      }
+    ]
+  },
+  "notes": [
+    "Strona nie udostępnia pól: załoga (bezzałogowy), koszt misji, masa całego zestawu startowego — w formacie zostają null/brak wpisów.",
+    "Brak bezpośrednich plików wideo (mp4) na stronie — filmy wyłącznie jako embedy YouTube (5 sztuk, wszystkie z kanału NASA JPL).",
+    "Model 3D dostępny w 2 formatach (glb, usdz) + podgląd web; identyfikator modelu w systemie mars.nasa.gov: 25043. AR przez aplikację NASA Spacecraft AR.",
+    "NASA podpina oba rekordy z października 2023 (wysokość 5.10, prędkość ziemi 12.10) pod ten sam artykuł 'nasa-uses-two-worlds-to-test-future-mars-helicopter-designs' — odwzorowano wiernie.",
+    "Wszystkie URL-e w polach media.downloads, media.models_3d i media.hero_image zweryfikowane HTTP 200 (2026-11-14).",
+    "Data startu 'operacji' = pierwszy lot (2021-04-19); data zakończenia = ostatni lot (2024-01-18); oficjalny koniec misji: 2024-01-25 — rozdzielone na 3 pola, bo strona podaje wszystkie.",
+    "Treść article.sections zachowana w języku angielskim (źródłowym) zgodnie z konwencją formatu; układ i kolejność sekcji = kolejność na stronie."
+  ]
+}
