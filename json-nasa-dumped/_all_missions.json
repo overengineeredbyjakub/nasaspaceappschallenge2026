@@ -1,0 +1,2124 @@
+{
+  "dawn": {
+    "_format": {
+      "format_version": "nasa-mission-scraper/1.0",
+      "description": "Ujednolicony format eksportu danych ze stron NASA (science.nasa.gov i pokrewnych). Ten sam schemat stosuj do każdej kolejnej strony misji/pojazdu, aby wszystkie wpisy były spójne i mogły być łączone w jedną bazę.",
+      "conventions": [
+        "Klucze zawsze obecne; brak danych = null (nigdy nie usuwaj klucza), brak pozycji = pusta lista [].",
+        "Daty: 'date' zawsze w ISO 8601 (YYYY-MM-DD), 'date_raw' zachowuje oryginalny zapis ze strony.",
+        "Wszystkie URL-e bezwzględne (https://...), bez parametrów śledzących gdzie to możliwe.",
+        "Każdy zasób medialny jest obiektem z minimalnym zestawem pól: url + typ + context (skąd pochodzi na stronie).",
+        "Treść artykułu w polach 'markdown': nagłówki '##'/'###', listy '-', listy numerowane '1.', pogrubienia '**'. Układ = kolejność sekcji ze strony źródłowej.",
+        "Treść zachowywana w języku źródła (pole source.language); nie tłumaczyć przy ekstrakcji.",
+        "Pola 'id' zewnętrznych systemów (np. PIA##### z Photojournal, identyfikatory YouTube, numery modeli 3D) zapisuj w dedykowanych polach *_id, jeśli są znane.",
+        "Weryfikuj dostępność URL-i (HTTP 200) przed zapisem; martwy link oznaczaj w polu 'status'."
+      ],
+      "top_level_keys": [
+        "_format",
+        "source",
+        "vehicle",
+        "specifications",
+        "key_facts",
+        "timeline",
+        "article",
+        "media",
+        "related",
+        "notes"
+      ]
+    },
+    "source": {
+      "url": "https://science.nasa.gov/mission/dawn/",
+      "canonical_url": "https://science.nasa.gov/mission/dawn/",
+      "page_title": "Dawn - NASA Science",
+      "page_type": "mission_page",
+      "site": "science.nasa.gov",
+      "language": "en",
+      "scraped_at": "2026-11-14",
+      "page_last_updated": "2024-11-03",
+      "page_editor": null,
+      "responsible_nasa_official": null,
+      "meta_description": "Dwarf Planet & Asteroid Orbiter",
+      "og_image": "https://assets.science.nasa.gov/content/dam/science/psd/solar/internal_resources/2932/Dawn_Artists_Concept.jpeg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
+    },
+    "vehicle": {
+      "name": "Dawn",
+      "full_name": "Dawn",
+      "agency": "NASA / JPL-Caltech (mission management); UCLA (science team lead institution)",
+      "mission": {
+        "name": "Dawn",
+        "url": "https://science.nasa.gov/mission/dawn/",
+        "relationship": "single-spacecraft mission; NASA's first truly interplanetary spaceship"
+      },
+      "type": {
+        "category": "orbiter",
+        "name": "Orbiter",
+        "page_label": "Orbiter"
+      },
+      "objective": "Orbit and study two different extraterrestrial bodies — giant asteroid Vesta and dwarf planet Ceres",
+      "destination": "Vesta and Ceres (main asteroid belt)",
+      "status": "mission_completed",
+      "nation": "United States of America (USA)",
+      "dates": {
+        "launch": {
+          "date": "2007-09-27",
+          "date_raw": "Sept. 27, 2007 | 11:34 UTC",
+          "location": "Cape Canaveral Air Force Station, Florida"
+        },
+        "mars_flyby": {
+          "date": "2009-02-17",
+          "date_raw": "Feb. 17, 2009",
+          "event": "Mars Gravity Assist"
+        },
+        "vesta_arrival": {
+          "date": "2011-07-16",
+          "date_raw": "July 16, 2011",
+          "event": "Vesta Arrival (orbit insertion)"
+        },
+        "vesta_departure": {
+          "date": "2012-09-05",
+          "date_raw": "Sept. 5, 2017 (sic! — na stronie NASA literówka; faktyczne opuszczenie orbity Vesty: wrzesień 2012)",
+          "event": "Vesta Departure",
+          "note": "strona źródłowa podaje 'Sept. 5, 2017' — błąd na stronie NASA (misja dotarła do Ceres w marcu 2015, więc opuszczenie Vesty musiało nastąpić w 2012)"
+        },
+        "ceres_arrival": {
+          "date": "2015-03-06",
+          "date_raw": "March 5, 2015",
+          "event": "Ceres Arrival (orbit insertion)"
+        },
+        "end_of_prime_mission": {
+          "date": "2016-06-30",
+          "date_raw": "June 2016",
+          "event": "End of prime mission"
+        },
+        "first_extended_mission": {
+          "date": "2016-07-01",
+          "date_raw": "July 2016",
+          "event": "Start of first extended mission"
+        },
+        "second_extended_mission": {
+          "date": "2017-10-01",
+          "date_raw": "October 2017",
+          "event": "Start of second extended mission"
+        },
+        "end_of_operations": {
+          "date": "2018-10-31",
+          "date_raw": "Oct. 31, 2018",
+          "event": "Dawn depleted its hydrazine propellant; without hydrazine the ship cannot point solar arrays at the Sun nor its antenna to Earth"
+        },
+        "mission_end": {
+          "date": "2018-11-01",
+          "date_raw": "Nov. 1, 2018",
+          "event": "NASA announced Dawn's long and successful mission concludes (loss of radio signal at the Deep Space Network)",
+          "url": "https://science.nasa.gov/mission/dawn/mission-status/"
+        }
+      }
+    },
+    "specifications": [
+      {
+        "parameter": "Type",
+        "value": "Orbiter"
+      },
+      {
+        "parameter": "Status",
+        "value": "Mission Completed (Nov. 1, 2018)"
+      },
+      {
+        "parameter": "Launch Date",
+        "value": "Sept. 27, 2007 | 11:34 UTC"
+      },
+      {
+        "parameter": "Launch Location",
+        "value": "Cape Canaveral Air Force Station, Florida"
+      },
+      {
+        "parameter": "Target",
+        "value": "Vesta and Ceres"
+      },
+      {
+        "parameter": "Destination",
+        "value": "Vesta and Ceres"
+      },
+      {
+        "parameter": "Propulsion",
+        "value": "Ion propulsion (see Ion Propulsion page)"
+      },
+      {
+        "parameter": "Scientific Instruments — science_payload",
+        "value": "FC — Framing Camera; VIR — Visible and Infrared Spectrometer; GRaND — Gamma Ray and Neutron Detector"
+      },
+      {
+        "parameter": "Scientific Instruments — note",
+        "value": "Szczegóły instrumentów na podstronach: /technology/science-payload/, /technology/grand-instrument/, /technology/vir-instrument/, /technology/fc-instrument/."
+      }
+    ],
+    "key_facts": {
+      "lead": "Dawn was NASA’s first truly interplanetary spaceship. The mission featured extended stays at two very different extraterrestrial bodies: giant asteroid Vesta and dwarf planet Ceres. Both small worlds reside in the debris-strewn main asteroid belt between Mars and Jupiter.",
+      "objectives_intro": "The top level question the mission addressed is the role of size and water in determining the evolution of the planets. Ceres and Vesta were the right two bodies with which to address this question, as they are the most massive of the protoplanets—baby planets whose growth was interrupted by the formation of Jupiter. Ceres is very primitive and wet while Vesta is evolved and dry.",
+      "principal_scientific_drivers": [
+        "Capture the earliest moments in the origin of the solar system enabling us to understand the conditions under which these objects formed.",
+        "Determine the nature of the building blocks from which the terrestrial planets formed, improving our understanding of this formation.",
+        "Contrast the formation and evolution of two small planets that followed very different evolutionary paths so that we understand what controls that evolution."
+      ],
+      "mission_status_final": "November 1, 2018 — Dawn's Long and Successful Mission Concludes: Dawn depleted its hydrazine propellant on Oct. 31, exploring dwarf planet Ceres to the very end. Without the hydrazine, the ship cannot control its orientation in space, so it can no longer point its solar arrays at the Sun to generate electrical power nor its antenna to Earth. The indication that the mission had concluded was the loss of the spacecraft's radio signal at the Deep Space Network (DSN)."
+    },
+    "timeline": [
+      {
+        "date": "2007-09-27",
+        "date_raw": "Sept. 27, 2007",
+        "title": "Launch"
+      },
+      {
+        "date": "2009-02-17",
+        "date_raw": "Feb. 17, 2009",
+        "title": "Mars Gravity Assist"
+      },
+      {
+        "date": "2011-07-16",
+        "date_raw": "July 16, 2011",
+        "title": "Vesta Arrival"
+      },
+      {
+        "date": "2012-09-05",
+        "date_raw": "Sept. 5, 2012 (strona NASA błędnie podaje '2017')",
+        "title": "Vesta Departure"
+      },
+      {
+        "date": "2015-03-05",
+        "date_raw": "March 5, 2015",
+        "title": "Ceres Arrival"
+      },
+      {
+        "date": "2016-06-30",
+        "date_raw": "June 2016",
+        "title": "End of prime mission"
+      },
+      {
+        "date": "2016-07-01",
+        "date_raw": "July 2016",
+        "title": "Start of first extended mission"
+      },
+      {
+        "date": "2017-10-01",
+        "date_raw": "October 2017",
+        "title": "Start of second extended mission"
+      },
+      {
+        "date": "2018-11-01",
+        "date_raw": "Nov. 1, 2018",
+        "title": "End of Mission"
+      }
+    ],
+    "article": {
+      "title": "Dawn",
+      "lead": "Dawn was NASA’s first truly interplanetary spaceship. The mission featured extended stays at two very different extraterrestrial bodies: giant asteroid Vesta and dwarf planet Ceres.",
+      "content_language": "en",
+      "sections": [
+        {
+          "heading": "Mission Overview",
+          "markdown": "Dawn was NASA’s first truly interplanetary spaceship. The mission featured extended stays at two very different extraterrestrial bodies: giant asteroid Vesta and dwarf planet Ceres. Both small worlds reside in the debris-strewn main asteroid belt between Mars and Jupiter.\n\n**Quick facts:**\n\n- **Type:** Orbiter\n- **Launch Date:** Sept. 27, 2007 | 11:34 UTC\n- **Launch Location:** Cape Canaveral Air Force Station, Florida\n- **Target:** Vesta and Ceres\n- **Status:** Mission Completed (Nov. 1, 2018)\n\n**Interactive:** [Eyes on the Solar System — Dawn simulation](https://eyes.nasa.gov/apps/solar-system/#/sc_dawn)"
+        },
+        {
+          "heading": "Objectives",
+          "markdown": "The top level question the mission addressed is the role of size and water in determining the evolution of the planets.\n\nCeres and Vesta were the right two bodies with which to address this question, as they are the most massive of the protoplanets—baby planets whose growth was interrupted by the formation of Jupiter. Ceres is very primitive and wet while Vesta is evolved and dry.\n\nThe three principal scientific drivers for the mission:\n\n1. Capture the earliest moments in the origin of the solar system enabling us to understand the conditions under which these objects formed.\n2. Determine the nature of the building blocks from which the terrestrial planets formed, improving our understanding of this formation.\n3. Contrast the formation and evolution of two small planets that followed very different evolutionary paths so that we understand what controls that evolution.\n\nDawn formed a bridge between the exploration of the rocky inner solar system and the icy outer solar system. It completed the first order exploration of the inner solar system, addressed NASA's goal of understanding the origin and evolution of the solar system."
+        },
+        {
+          "heading": "Mission Events",
+          "markdown": "- **Sept. 27, 2007:** Launch\n- **Feb. 17, 2009:** Mars Gravity Assist\n- **July 16, 2011:** Vesta Arrival\n- **Sept. 5, 2012:** Vesta Departure *(strona NASA podaje tu błędnie '2017')*\n- **March 5, 2015:** Ceres Arrival\n- **June 2016:** End of prime mission\n- **July 2016:** Start of first extended mission\n- **October 2017:** Start of second extended mission\n- **Nov. 1, 2018:** End of Mission"
+        },
+        {
+          "heading": "Final Mission Status (Nov. 1, 2018)",
+          "markdown": "**Dawn's Long and Successful Mission Concludes** — from Chief Engineer / Mission Director, Marc Rayman (JPL):\n\nDawn depleted its hydrazine propellant on Oct. 31, exploring dwarf planet Ceres to the very end. Without the hydrazine, the ship cannot control its orientation in space, so it can no longer point its solar arrays at the Sun to generate electrical power nor its antenna to Earth. The indication that the mission had concluded was the loss of the spacecraft's radio signal at the Deep Space Network (DSN).\n\nDawn performed superbly to the end of its mission and lasted longer than anticipated. For at least the next couple of decades, and probably much longer, Dawn's status is that this former interplanetary ambassador from Earth is an inert celestial monument to the power of human ingenuity, creativity, and curiosity in orbit around one of the alien worlds it unveiled."
+        },
+        {
+          "heading": "Dawn Stories",
+          "markdown": "- [Fluid Flow in Ceres Due to Core Heating — 2 min read](https://science.nasa.gov/photojournal/fluid-flow-in-ceres-due-to-core-heating/)\n- [NASA: Ceres May Have Had Long-Standing Energy to Fuel Habitability — 4 min read](https://www.nasa.gov/missions/dawn/nasa-ceres-may-have-had-long-standing-energy-to-fuel-habitability/)\n- [NASA Studies Reveal Hidden Secrets About Interiors of Moon, Vesta — 6 min read](https://www.nasa.gov/solar-system/asteroids/vesta/nasa-studies-reveal-hidden-secrets-about-interiors-of-moon-vesta/)\n- [NASA’s Dawn Sees Crescent Ceres — image article](https://www.nasa.gov/image-article/nasas-dawn-sees-crescent-ceres/)\n- [Lab Work Digs Into Gullies Seen on Giant Asteroid Vesta by NASA’s Dawn — 4 min read](https://www.nasa.gov/missions/dawn/lab-work-digs-into-gullies-seen-on-giant-asteroid-vesta-by-nasas-dawn/)\n\n[Explore All Dawn Stories](https://science.nasa.gov/mission/dawn/stories/)"
+        }
+      ]
+    },
+    "media": {
+      "hero_image": {
+        "url": "https://assets.science.nasa.gov/content/dam/science/psd/solar/internal_resources/2932/Dawn_Artists_Concept.jpeg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+        "context": "og:image strony (artist's concept)",
+        "credit": "NASA"
+      },
+      "images": [
+        {
+          "url": "https://science.nasa.gov/wp-content/uploads/2023/06/dawn-logo.png",
+          "caption": "Dawn Mission patch shows the spacecraft and asteroid Vesta and dwarf planet Ceres.",
+          "context": "logo/patch misji na stronie głównej",
+          "credit": "NASA"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/Dawn_Vesta_10th_Ann_Poster_800.jpg",
+          "caption": "Dawn Mission to Vesta — 10th Anniversary poster.",
+          "context": "multimedia: resource 'dawn-mission-to-vesta-10th-anniversary'",
+          "credit": "NASA/JPL-Caltech"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/dawn-launch-vehicle_1600.jpg",
+          "caption": "Dawn launch vehicle diagram.",
+          "context": "multimedia: resource 'dawn-launch-vehicle-diagram'",
+          "credit": "NASA/JPL-Caltech"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/Dawn_Diagram02_1600.jpg",
+          "caption": "Dawn spacecraft diagram no. 2.",
+          "context": "multimedia: resource 'dawn-spacecraft-diagram-no-2'",
+          "credit": "NASA/JPL-Caltech"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/dawn-diagram_1600.jpg",
+          "caption": "Dawn spacecraft diagram no. 1.",
+          "context": "multimedia: resource 'dawn-spacecraft-diagram-no-1'",
+          "credit": "NASA/JPL-Caltech"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/dawn-launch-1600.jpg",
+          "caption": "Dawn launch press kit cover image.",
+          "context": "multimedia: resource 'dawn-launch-press-kit'",
+          "credit": "NASA/JPL-Caltech"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/dawn-vesta-1600.jpg",
+          "caption": "Dawn at Vesta press kit cover image.",
+          "context": "multimedia: resource 'dawn-at-vesta-press-kit'",
+          "credit": "NASA/JPL-Caltech"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/dawn-ceres-1600.jpg",
+          "caption": "Dawn at Ceres press kit cover image.",
+          "context": "multimedia: resource 'dawn-at-ceres-press-kit'",
+          "credit": "NASA/JPL-Caltech"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/1/190739main_dawnlaunch-lg.jpg",
+          "caption": "Dawn spacecraft launch.",
+          "context": "multimedia: resource 'dawn-spacecraft-launch'",
+          "credit": "NASA/JPL-Caltech"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/dawn_bynumbers_3a_v5_1600.jpg",
+          "caption": "Dawn by the numbers (infographic).",
+          "context": "multimedia: resource 'dawn-by-the-numbers'",
+          "credit": "NASA/JPL-Caltech"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/detail_DawnIonPropulsionInfographic.jpg",
+          "caption": "Anatomy of an Ion Engine (infographic).",
+          "context": "multimedia: resource 'anatomy-of-an-ion-engine'",
+          "credit": "NASA/JPL-Caltech"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/p/i/a/2/PIA22765_hires.jpg",
+          "photojournal_id": "PIA22765",
+          "caption": "Occator Crater on Ceres Limb (short exposure).",
+          "context": "multimedia: resource 'occator-crater-on-ceres-limb-short-exposure'",
+          "credit": "NASA/JPL-Caltech/UCLA/MPS/DLR/IDA"
+        }
+      ],
+      "gifs": [],
+      "videos": [],
+      "models_3d": [],
+      "interactive": [
+        {
+          "name": "Eyes on the Solar System — Dawn",
+          "url": "https://eyes.nasa.gov/apps/solar-system/#/sc_dawn",
+          "context": "symulacja trasy lotu zbudowana na prawdziwych danych misji (iframe na stronie głównej)"
+        }
+      ],
+      "downloads": [
+        {
+          "title": "Dawn Launch Press Kit",
+          "url": "https://science.nasa.gov/resource/dawn-launch-press-kit/",
+          "file_type": "press_kit"
+        },
+        {
+          "title": "Dawn at Vesta Press Kit",
+          "url": "https://science.nasa.gov/resource/dawn-at-vesta-press-kit/",
+          "file_type": "press_kit"
+        },
+        {
+          "title": "Dawn at Ceres Press Kit",
+          "url": "https://science.nasa.gov/resource/dawn-at-ceres-press-kit/",
+          "file_type": "press_kit"
+        },
+        {
+          "title": "Dawn Launch Vehicle Diagram",
+          "url": "https://science.nasa.gov/resource/dawn-launch-vehicle-diagram/",
+          "file_type": "diagram"
+        },
+        {
+          "title": "Dawn Spacecraft Diagram No. 1",
+          "url": "https://science.nasa.gov/resource/dawn-spacecraft-diagram-no-1/",
+          "file_type": "diagram"
+        },
+        {
+          "title": "Dawn Spacecraft Diagram No. 2",
+          "url": "https://science.nasa.gov/resource/dawn-spacecraft-diagram-no-2/",
+          "file_type": "diagram"
+        },
+        {
+          "title": "Dawn by the Numbers (infographic)",
+          "url": "https://science.nasa.gov/resource/dawn-by-the-numbers/",
+          "file_type": "infographic"
+        },
+        {
+          "title": "Anatomy of an Ion Engine (infographic)",
+          "url": "https://science.nasa.gov/resource/anatomy-of-an-ion-engine/",
+          "file_type": "infographic"
+        },
+        {
+          "title": "Dawn Mission to Vesta — 10th Anniversary (poster)",
+          "url": "https://science.nasa.gov/resource/dawn-mission-to-vesta-10th-anniversary/",
+          "file_type": "poster"
+        },
+        {
+          "title": "Dawn Spacecraft Launch (image)",
+          "url": "https://science.nasa.gov/resource/dawn-spacecraft-launch/",
+          "file_type": "image"
+        },
+        {
+          "title": "NASA's Dawn Highlighting Bright Areas of Ceres (image)",
+          "url": "https://science.nasa.gov/resource/nasas-dawn-highlighting-bright-areas-of-ceres/",
+          "file_type": "image"
+        },
+        {
+          "title": "Occator Crater on Ceres Limb, Short Exposure (image)",
+          "url": "https://science.nasa.gov/resource/occator-crater-on-ceres-limb-short-exposure/",
+          "file_type": "image"
+        }
+      ]
+    },
+    "related": {
+      "mission_pages": [
+        {
+          "title": "Dawn Toolkit (Highlights)",
+          "url": "https://science.nasa.gov/mission/dawn/toolkit/highlights/"
+        },
+        {
+          "title": "Dawn Objectives",
+          "url": "https://science.nasa.gov/mission/dawn/objectives/"
+        },
+        {
+          "title": "Dawn Mission Status",
+          "url": "https://science.nasa.gov/mission/dawn/mission-status/"
+        },
+        {
+          "title": "Dawn Journal",
+          "url": "https://science.nasa.gov/mission/dawn/dawn-journal/"
+        },
+        {
+          "title": "Dawn — The Team",
+          "url": "https://science.nasa.gov/mission/dawn/the-team/mission-teams/"
+        },
+        {
+          "title": "Dawn FAQ",
+          "url": "https://science.nasa.gov/mission/dawn/faq/"
+        }
+      ],
+      "science_pages": [
+        {
+          "title": "Science Overview",
+          "url": "https://science.nasa.gov/mission/dawn/science/overview/"
+        },
+        {
+          "title": "Vesta",
+          "url": "https://science.nasa.gov/mission/dawn/science/vesta/"
+        },
+        {
+          "title": "Ceres",
+          "url": "https://science.nasa.gov/mission/dawn/science/ceres/"
+        }
+      ],
+      "technology_pages": [
+        {
+          "title": "Spacecraft",
+          "url": "https://science.nasa.gov/mission/dawn/technology/spacecraft/"
+        },
+        {
+          "title": "Navigation",
+          "url": "https://science.nasa.gov/mission/dawn/technology/navigating/"
+        },
+        {
+          "title": "Science Payload",
+          "url": "https://science.nasa.gov/mission/dawn/technology/science-payload/"
+        },
+        {
+          "title": "GRaND Instrument",
+          "url": "https://science.nasa.gov/mission/dawn/technology/grand-instrument/"
+        },
+        {
+          "title": "VIR Instrument",
+          "url": "https://science.nasa.gov/mission/dawn/technology/vir-instrument/"
+        },
+        {
+          "title": "FC Instrument",
+          "url": "https://science.nasa.gov/mission/dawn/technology/fc-instrument/"
+        },
+        {
+          "title": "Ion Propulsion",
+          "url": "https://science.nasa.gov/mission/dawn/technology/ion-propulsion/"
+        }
+      ],
+      "multimedia_galleries": [
+        {
+          "title": "All Dawn Multimedia",
+          "url": "https://science.nasa.gov/mission/dawn/multimedia/"
+        },
+        {
+          "title": "Dawn Images",
+          "url": "https://science.nasa.gov/mission/dawn/multimedia/?types=images"
+        },
+        {
+          "title": "Dawn Infographics",
+          "url": "https://science.nasa.gov/mission/dawn/multimedia/infographics/"
+        },
+        {
+          "title": "Dawn Videos",
+          "url": "https://science.nasa.gov/mission/dawn/multimedia/?types=videos"
+        }
+      ],
+      "feature_stories": [
+        {
+          "title": "All Dawn Stories",
+          "url": "https://science.nasa.gov/mission/dawn/stories/"
+        }
+      ]
+    },
+    "notes": [
+      "Strona główna Dawn jest uboga w treść inline (misja zakończona w 2018), ale ma rozbudowaną strukturę podstron (Toolkit, Objectives, Mission Status, Dawn Journal, Science, Technology, Multimedia) — wszystkie odnośniki zebrane w related.",
+      "UWAGA: podstrona /objectives/ zawiera literówkę 'Sept. 5, 2017: Vesta Departure' — to błąd na stronie NASA (faktycznie opuściła Vestę we wrześniu 2012, bo do Ceres dotarła w marcu 2015). Zachowano zapis ze strony z adnotacją w polach date_raw/note i skorygowaną datą ISO (2012-09-05).",
+      "Brak osadzonych filmów YouTube, GIF-ów i modeli 3D na stronie głównej; jest za to interaktywna symulacja Eyes on the Solar System.",
+      "Kafelki multimediów (press kity, diagramy, infografiki) mają pliki źródłowe bez parametrów fit/crop — URL-e wyczyszczone do wersji bazowych.",
+      "Treść article.sections zachowana w języku angielskim (źródłowym); układ i kolejność sekcji = kolejność na stronie.",
+      "Wszystkie URL-e w polach media.* zweryfikowane HTTP 200 (2026-11-14, skrypt scripts/verify_urls.py)."
+    ]
+  },
+  "insight": {
+    "_format": {
+      "format_version": "nasa-mission-scraper/1.0",
+      "description": "Ujednolicony format eksportu danych ze stron NASA (science.nasa.gov i pokrewnych). Ten sam schemat stosuj do każdej kolejnej strony misji/pojazdu, aby wszystkie wpisy były spójne i mogły być łączone w jedną bazę.",
+      "conventions": [
+        "Klucze zawsze obecne; brak danych = null (nigdy nie usuwaj klucza), brak pozycji = pusta lista [].",
+        "Daty: 'date' zawsze w ISO 8601 (YYYY-MM-DD), 'date_raw' zachowuje oryginalny zapis ze strony.",
+        "Wszystkie URL-e bezwzględne (https://...), bez parametrów śledzących gdzie to możliwe.",
+        "Każdy zasób medialny jest obiektem z minimalnym zestawem pól: url + typ + context (skąd pochodzi na stronie).",
+        "Treść artykułu w polach 'markdown': nagłówki '##'/'###', listy '-', listy numerowane '1.', pogrubienia '**'. Układ = kolejność sekcji ze strony źródłowej.",
+        "Treść zachowywana w języku źródła (pole source.language); nie tłumaczyć przy ekstrakcji.",
+        "Pola 'id' zewnętrznych systemów (np. PIA##### z Photojournal, identyfikatory YouTube, numery modeli 3D) zapisuj w dedykowanych polach *_id, jeśli są znane.",
+        "Weryfikuj dostępność URL-i (HTTP 200) przed zapisem; martwy link oznaczaj w polu 'status'."
+      ],
+      "top_level_keys": [
+        "_format",
+        "source",
+        "vehicle",
+        "specifications",
+        "key_facts",
+        "timeline",
+        "article",
+        "media",
+        "related",
+        "notes"
+      ]
+    },
+    "source": {
+      "url": "https://science.nasa.gov/mission/insight/",
+      "canonical_url": "https://science.nasa.gov/mission/insight/",
+      "page_title": "InSight Lander - NASA Science",
+      "page_type": "mission_page",
+      "site": "science.nasa.gov",
+      "language": "en",
+      "scraped_at": "2026-11-14",
+      "page_last_updated": "2026-06-23",
+      "page_editor": null,
+      "responsible_nasa_official": null,
+      "meta_description": "InSight Lander was the first outer space robotic explorer to study in-depth the inner space of Mars: its crust, mantle, and core.",
+      "og_image": "https://science.nasa.gov/wp-content/uploads/2008/02/insight.jpg"
+    },
+    "vehicle": {
+      "name": "InSight",
+      "full_name": "Interior Exploration using Seismic Investigations, Geodesy and Heat Transport (InSight)",
+      "agency": "NASA / JPL-Caltech",
+      "mission": {
+        "name": "InSight (Discovery-class Mars lander mission)",
+        "url": "https://science.nasa.gov/mission/insight/",
+        "relationship": "single-spacecraft mission; landed platform based on Mars Phoenix design"
+      },
+      "type": {
+        "category": "lander",
+        "name": "Lander",
+        "page_label": "Lander"
+      },
+      "objective": "Study Mars' interior structure",
+      "destination": "Mars (Elysium Planitia)",
+      "status": "mission_completed",
+      "dates": {
+        "launch": {
+          "date": "2018-05-05",
+          "date_raw": "May 5, 2018 (4:05 a.m. PT / 7:05 a.m. ET)",
+          "location": "Vandenberg Air Force Base, California",
+          "vehicle": "Atlas V-401",
+          "note": "first interplanetary launch from Vandenberg"
+        },
+        "landing": {
+          "date": "2018-11-26",
+          "date_raw": "Nov. 26, 2018, at 11:52:59 a.m. PT (2:52:59 p.m. ET)",
+          "location": "Elysium Planitia, Mars (about 4.5°N, 135.9°E)"
+        },
+        "end_of_operations": {
+          "date": "2022-12-15",
+          "date_raw": "Dec. 15, 2022",
+          "event": "End of Mission — NASA declared the mission over after the lander fell silent (dust on solar panels + declining power)"
+        }
+      }
+    },
+    "specifications": [
+      {
+        "parameter": "Length",
+        "value": "19 feet 8 inches (6 meters) with solar panels deployed (\"wingspan\")"
+      },
+      {
+        "parameter": "Width",
+        "value": "5 feet 1 inch (1.56 meters) (lander deck diameter)"
+      },
+      {
+        "parameter": "Deck Height",
+        "value": "33 to 43 inches (83 to 108 centimeters)"
+      },
+      {
+        "parameter": "Length of Robotic Arm",
+        "value": "5 feet 9 inches (1.8 meters)"
+      },
+      {
+        "parameter": "Weight",
+        "value": "794 pounds (360 kilograms)"
+      },
+      {
+        "parameter": "Electrical Power",
+        "value": "Two solar panels, about 7 feet (2.2 meters) each in diameter"
+      },
+      {
+        "parameter": "Cameras",
+        "value": "2 color cameras (1 is a \"fisheye\"); image size 1,024 pixels by 1,024 pixels"
+      },
+      {
+        "parameter": "Science Instruments",
+        "value": "3 (a seismometer, heat probe, and a radio science experiment)"
+      },
+      {
+        "parameter": "Robotic Arm — Main Function",
+        "value": "To place SEIS, the seismometer, and HP3, the Heat Flow and Physical Properties Package, on the surface of Mars"
+      },
+      {
+        "parameter": "Robotic Arm — Degrees of Freedom",
+        "value": "Four (side-to-side and up-and-down at the shoulder, plus bending at the elbow and wrist joints) with four motors"
+      },
+      {
+        "parameter": "Scientific Instruments — science_instruments",
+        "value": "SEIS — Seismic Experiment for Interior Structure (seismometer); HP3 — Heat Flow and Physical Properties Package (heat probe / \"mole\"); RISE — Rotation and Interior Structure Experiment (radio science)"
+      },
+      {
+        "parameter": "Scientific Instruments — cameras",
+        "value": "IDC — Instrument Deployment Camera (on the arm; 45-degree field of view, full color); ICC — Instrument Context Camera (below the deck edge; 120-degree \"fisheye\" field of view)"
+      }
+    ],
+    "key_facts": {
+      "key_dates_raw": [
+        "Launched: May 5, 2018 (4:05 a.m. PT/7:05 a.m. ET)",
+        "Launch Vehicle: Atlas V-401",
+        "Launch Location: Vandenberg Air Force Base, California",
+        "Landed: Nov. 26, 2018, at 11:52:59 a.m. PT (2:52:59 p.m. ET)",
+        "Landing Site: Elysium Planitia, Mars",
+        "End of Mission: Dec. 15, 2022"
+      ],
+      "featured_story": {
+        "title": "NASA Marsquake Data Reveals Lumpy Nature of Red Planet’s Interior",
+        "url": "https://www.nasa.gov/missions/insight/nasa-marsquake-data-reveals-lumpy-nature-of-red-planets-interior/",
+        "summary": "Rocky material that impacted Mars lies scattered in giant lumps throughout the planet’s mantle, offering clues about Mars’ interior…"
+      },
+      "objectives_note": "The InSight mission had two major goals, each with several science investigations, designed to help uncover the process that shaped all of the rocky planets in the inner solar system. InSight studied the deep interior of Mars and was designed to take the planet's vital signs: its pulse, temperature, and reflexes.",
+      "marco_cubesats": "The rocket that launched InSight also launched a separate NASA technology experiment: two mini-spacecraft called Mars Cube One, or MarCO — the first interplanetary CubeSats."
+    },
+    "timeline": [
+      {
+        "date": "2018-05-05",
+        "date_raw": "May 5, 2018",
+        "title": "Launch (Atlas V-401, Vandenberg AFB)"
+      },
+      {
+        "date": "2018-11-26",
+        "date_raw": "Nov. 26, 2018",
+        "title": "Landing at Elysium Planitia, Mars"
+      },
+      {
+        "date": "2018-12-01",
+        "date_raw": "Dec. 1, 2018",
+        "title": "Sensors captured Martian wind sounds (10–15 mph)"
+      },
+      {
+        "date": "2022-12-15",
+        "date_raw": "Dec. 15, 2022",
+        "title": "End of Mission"
+      }
+    ],
+    "article": {
+      "title": "InSight Lander",
+      "lead": "InSight Lander was the first outer space robotic explorer to study in-depth the inner space of Mars: its crust, mantle, and core.",
+      "content_language": "en",
+      "sections": [
+        {
+          "heading": "Featured Story: NASA Marsquake Data Reveals Lumpy Nature of Red Planet’s Interior",
+          "markdown": "Rocky material that impacted Mars lies scattered in giant lumps throughout the planet’s mantle, offering clues about Mars’ interior…\n\n[Read the Story](https://www.nasa.gov/missions/insight/nasa-marsquake-data-reveals-lumpy-nature-of-red-planets-interior/)"
+        },
+        {
+          "heading": "Meet InSight",
+          "markdown": "The lander was built on the proven design of NASA's [Mars Phoenix lander](https://science.nasa.gov/mission/phoenix/). InSight's robotic arm was over 5 feet 9 inches (1.8 meters) long. It lifted a seismometer and heat flow probe from the deck and placed them on the surface.\n\n[Learn More About the Spacecraft](https://science.nasa.gov/mission/insight/spacecraft/)"
+        },
+        {
+          "heading": "Wind Sounds on Mars",
+          "markdown": "InSight sensors captured a haunting low rumble caused by vibrations from the Martian wind, estimated to be blowing at 10 to 15 mph (5 to 7 meters a second) on Dec. 1, 2018. The winds were consistent with the direction of dust devil streaks in the landing area, which were observed from orbit.\n\n**Audio/Video:** [Sounds of Mars: NASA’s InSight Senses Martian Wind (YouTube)](https://youtu.be/yT50Q_Zbf3s)"
+        },
+        {
+          "heading": "Key Dates",
+          "markdown": "- **Launched:** May 5, 2018 (4:05 a.m. PT / 7:05 a.m. ET)\n- **Launch Vehicle:** Atlas V-401\n- **Launch Location:** Vandenberg Air Force Base, California\n- **Landed:** Nov. 26, 2018, at 11:52:59 a.m. PT (2:52:59 p.m. ET)\n- **Landing Site:** Elysium Planitia, Mars\n- **End of Mission:** Dec. 15, 2022"
+        },
+        {
+          "heading": "Read More",
+          "markdown": "- **Objective** — The InSight mission had two major goals, each with several science investigations, designed to help uncover the process that shaped all of the rocky planets in the inner solar system. [Explore](https://science.nasa.gov/mission/insight/science/)\n- **Science** — InSight studied the deep interior of Mars and was designed to take the planet's vital signs: its pulse, temperature, and reflexes. [Explore](https://go.nasa.gov/3X2YxNh)\n- **Resources** — Visit the one-stop-shop for all InSight media. [Explore](https://science.nasa.gov/mars/resources/?search=InSight)\n- **Raw Images** — View raw images sent back by InSight from its explorations on Mars. [Explore](https://mars.nasa.gov/insight/multimedia/raw-images/)"
+        },
+        {
+          "heading": "Landing Site: Elysium Planitia",
+          "markdown": "InSight landed near Mars' equator on the western side of a flat, smooth plain called Elysium Planitia. Elysium Planitia was selected not for its surface features, but for safety considerations. InSight's purpose was to study the interior of Mars, not the surface. Thus, in the selection of a landing site, what's on the surface mattered less than for previous rover missions focused on the geology.\n\nPlanitia is Latin for a flat surface, geometric plane, or flatness or a plain. Elysium is from the ancient Greek name for an afterlife paradise, usually referred to in English as the Elysian Fields. The landing site lies in the western portion of Elysium Planitia, centered at about 4.5 degrees north latitude and 135.9 degrees east longitude. This is just 373 miles (600 kilometers) from Curiosity’s landing site, Gale Crater.\n\n*Image: The red dot marks the final landing location of NASA's InSight lander in this annotated image of the surface of Mars, taken by the THEMIS camera on NASA's 2001 Mars Odyssey orbiter in 2015. Credit: NASA/JPL-Caltech/ASU*"
+        },
+        {
+          "heading": "Mars Cube One: The First Interplanetary CubeSats",
+          "markdown": "The rocket that launched InSight also launched a separate NASA technology experiment: two mini-spacecraft called Mars Cube One, or MarCO. These briefcase-sized CubeSats flew on their own path to Mars behind InSight.\n\n[Learn More](https://science.nasa.gov/mission/marco/)"
+        },
+        {
+          "heading": "News and Features",
+          "markdown": "- [Impactor Debris Scattered Within Mars’ Mantle (Artist’s Concept) — 3 min read](https://science.nasa.gov/photojournal/impactor-debris-scattered-within-mars-mantle-artists-concept/)\n- [Giant Impacts on Ancient Mars (Artist’s Concept) — 2 min read](https://science.nasa.gov/photojournal/giant-impacts-on-ancient-mars-artists-concept/)\n- [NASA Marsquake Data Reveals Lumpy Nature of Red Planet’s Interior — 6 min read](https://www.nasa.gov/missions/insight/nasa-marsquake-data-reveals-lumpy-nature-of-red-planets-interior/)\n- [NASA’s InSight Finds Marsquakes From Meteoroids Go Deeper Than Expected — 6 min read](https://www.nasa.gov/missions/nasas-insight-finds-marsquakes-from-meteoroids-go-deeper-than-expected/)\n- [NASA Mars Orbiter Spots Retired InSight Lander to Study Dust Movement — 5 min read](https://www.nasa.gov/missions/insight/nasa-mars-orbiter-spots-retired-insight-lander-to-study-dust-movement/)\n\n[All InSight News](https://science.nasa.gov/mission/insight/stories)"
+        }
+      ]
+    },
+    "media": {
+      "hero_image": {
+        "url": "https://science.nasa.gov/wp-content/uploads/2008/02/insight.jpg",
+        "context": "og:image strony",
+        "credit": "NASA"
+      },
+      "images": [
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/3/8/38686_Mars-InSight-Solar-Panels-Open-pia196641.jpg",
+          "photojournal_id": "PIA19664",
+          "caption": "The solar arrays on NASA's InSight lander are deployed in this test inside a clean room at Lockheed Martin Space Systems, Denver. This configuration is how the spacecraft will look on the surface of Mars. The image was taken on April 30, 2015.",
+          "context": "zdjęcie główne na szczycie strony",
+          "credit": "NASA/JPL-Caltech/Lockheed Martin Space"
+        },
+        {
+          "url": "https://www.nasa.gov/wp-content/uploads/2025/08/1-pia26635-illustration-giant-asteroid-impacting-ancient-mars.jpg",
+          "photojournal_id": "PIA26635",
+          "caption": "Illustration of a giant asteroid impacting ancient Mars (featured story image).",
+          "context": "sekcja 'Featured Story' (Marsquake Data Reveals Lumpy Nature of Red Planet's Interior)",
+          "credit": "NASA/JPL-Caltech"
+        },
+        {
+          "url": "https://science.nasa.gov/wp-content/uploads/2024/03/pia22230.jpg",
+          "photojournal_id": "PIA22230",
+          "caption": "Seismograph waves are superimposed over an illustration of Mars.",
+          "context": "sekcja 'Read More' (Objective)",
+          "credit": "NASA/JPL-Caltech"
+        },
+        {
+          "url": "https://science.nasa.gov/wp-content/uploads/2024/04/insight-robotic-arm.jpeg",
+          "caption": "The robotic arm of the InSight Lander, indicated on an artist's concept of the lander.",
+          "context": "podstrona Spacecraft — sekcja 'Robotic Arm'",
+          "credit": "NASA/JPL-Caltech"
+        },
+        {
+          "url": "https://science.nasa.gov/wp-content/uploads/2024/04/insight-cameras.png",
+          "caption": "InSight lander with the Instrument Deployment Camera and the Instrument Context Camera.",
+          "context": "podstrona Spacecraft — sekcja 'Cameras'",
+          "credit": "NASA/JPL-Caltech"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/2/6/26761_26761_PIA25287-clean-web.jpg",
+          "photojournal_id": "PIA25287",
+          "caption": "NASA’s InSight Mars lander took this final selfie on April 24, 2022, the 1,211th Martian day, or sol, of the mission.",
+          "context": "podstrona Spacecraft — zdjęcie główne",
+          "credit": "NASA/JPL-Caltech"
+        }
+      ],
+      "gifs": [
+        {
+          "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/news_items/main_images/8529_Sol333_imaging-of-pit_512x512.gif",
+          "caption": "InSight's Arm Camera Stares Into the Pit: The shadow of NASA InSight's robotic arm moves over its heat probe, or \"mole,\" on Nov. 3, 2019, the 333rd Martian day, or sol, of the mission.",
+          "context": "podstrona Spacecraft — sekcja 'Robotic Arm' (animacja GIF)",
+          "credit": "NASA/JPL-Caltech"
+        }
+      ],
+      "videos": [
+        {
+          "platform": "youtube",
+          "video_id": "yT50Q_Zbf3s",
+          "url": "https://youtu.be/yT50Q_Zbf3s",
+          "embed_url": "https://www.youtube.com/embed/yT50Q_Zbf3s",
+          "title": "Sounds of Mars: NASA’s InSight Senses Martian Wind",
+          "channel": "NASA Jet Propulsion Laboratory",
+          "context": "sekcja 'Wind Sounds on Mars' (osadzony oembed)"
+        },
+        {
+          "platform": "nasa_assets",
+          "video_id": "PIA24450",
+          "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/downloadable_items/4/5/45926_PIA24450.m4v",
+          "title": "InSight Robotic Arm",
+          "channel": "NASA/JPL-Caltech",
+          "context": "podstrona Spacecraft — sekcja 'Robotic Arm' (osadzony odtwarzacz video-js, plik m4v)"
+        }
+      ],
+      "models_3d": [
+        {
+          "name": "InSight Mars Lander — interaktywny podgląd",
+          "model_id": "2380",
+          "format": "web_viewer",
+          "url": "https://solarsystem.nasa.gov/gltf_embed/2380/",
+          "poster": "https://solarsystem.nasa.gov/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1b8ab3cd67ff0afa80bc056d074c3c6885bd283e/spacecraft_th_insight.jpg",
+          "context": "sekcja 'Meet InSight' — osadzony model-viewer (glTF embed)"
+        },
+        {
+          "name": "InSight Mars Lander (deployed)",
+          "model_id": "2380",
+          "format": "glb",
+          "url": "https://solarsystem.nasa.gov/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--82324e2db624a4854937205def0af0cb00e65e44/InSight_deployed.glb",
+          "context": "plik źródłowy modelu 3D używany przez viewer gltf_embed/2380"
+        },
+        {
+          "name": "InSight Mars Lander (deployed)",
+          "model_id": "2380",
+          "format": "usdz",
+          "url": "https://solarsystem.nasa.gov/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdllRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ebced1433ba92e9b3cfd4aaf5c1c457b7f81eadc/InSight_deployed.usdz",
+          "context": "wariant AR dla iOS (Quick Look) z viewera gltf_embed/2380"
+        }
+      ],
+      "interactive": [
+        {
+          "name": "Eyes on the Solar System — InSight",
+          "url": "https://eyes.nasa.gov/apps/solar-system/#/sc_insight",
+          "context": "interaktywna symulacja 3D misji (iframe na stronie)"
+        }
+      ],
+      "downloads": []
+    },
+    "related": {
+      "mission_pages": [
+        {
+          "title": "InSight Science Overview",
+          "url": "https://science.nasa.gov/mission/insight/science/"
+        },
+        {
+          "title": "InSight Science Instruments",
+          "url": "https://science.nasa.gov/mission/insight/science-instruments/"
+        },
+        {
+          "title": "InSight Science Highlights",
+          "url": "https://science.nasa.gov/mission/insight/science-highlights/"
+        },
+        {
+          "title": "InSight Spacecraft",
+          "url": "https://science.nasa.gov/mission/insight/spacecraft/"
+        },
+        {
+          "title": "InSight News & Features",
+          "url": "https://science.nasa.gov/mission/insight/stories"
+        }
+      ],
+      "related_missions": [
+        {
+          "title": "Mars Cube One (MarCO)",
+          "url": "https://science.nasa.gov/mission/marco/"
+        },
+        {
+          "title": "Mars Phoenix (lander design heritage)",
+          "url": "https://science.nasa.gov/mission/phoenix/"
+        },
+        {
+          "title": "Mars Perseverance Rover",
+          "url": "https://science.nasa.gov/mission/mars-2020-perseverance/"
+        },
+        {
+          "title": "Mars Curiosity Rover",
+          "url": "https://science.nasa.gov/mission/msl-curiosity/"
+        },
+        {
+          "title": "Mars Reconnaissance Orbiter",
+          "url": "https://science.nasa.gov/mission/mars-reconnaissance-orbiter/"
+        },
+        {
+          "title": "Mars Odyssey",
+          "url": "https://science.nasa.gov/mission/odyssey/"
+        }
+      ],
+      "multimedia_galleries": [
+        {
+          "title": "InSight Raw Images",
+          "url": "https://mars.nasa.gov/insight/multimedia/raw-images/"
+        },
+        {
+          "title": "Mars Images (galeria zasobów)",
+          "url": "https://science.nasa.gov/mars/resources/"
+        },
+        {
+          "title": "Mars Videos (galeria zasobów)",
+          "url": "https://science.nasa.gov/mars/resources/?types=videos"
+        },
+        {
+          "title": "Mars Audio (galeria zasobów)",
+          "url": "https://science.nasa.gov/mars/resources/?types=audio"
+        }
+      ]
+    },
+    "notes": [
+      "InSight ma najbogatszą stronę z całej szóstki: model 3D (viewer + glb + usdz), dźwięk wiatru z Marsa (YouTube), film m4v z ramieniem roboczym, interaktywną symulację Eyes on the Solar System.",
+      "Dane techniczne (specifications) pochodzą z podstrony /mission/insight/spacecraft/ (tabele Lander Tech Specs / Robotic Arm Tech Specs / Cameras Tech Specs).",
+      "Strona główna misji nie podaje daty 'rozpoczęcia operacji' oddzielnie od lądowania — przyjęto lądowanie 2018-11-26 jako start operacji naziemnych.",
+      "Link 'Explore' przy sekcji Science przekierowuje przez go.nasa.gov/3X2YxNh (skrót) — zachowano oryginalny URL ze strony.",
+      "Treść article.sections zachowana w języku angielskim (źródłowym); układ i kolejność sekcji = kolejność na stronie.",
+      "Wszystkie URL-e w polach media.* zweryfikowane HTTP 200 (2026-11-14, skrypt scripts/verify_urls.py)."
+    ]
+  },
+  "kepler": {
+    "_format": {
+      "format_version": "nasa-mission-scraper/1.0",
+      "description": "Ujednolicony format eksportu danych ze stron NASA (science.nasa.gov i pokrewnych). Ten sam schemat stosuj do każdej kolejnej strony misji/pojazdu, aby wszystkie wpisy były spójne i mogły być łączone w jedną bazę.",
+      "conventions": [
+        "Klucze zawsze obecne; brak danych = null (nigdy nie usuwaj klucza), brak pozycji = pusta lista [].",
+        "Daty: 'date' zawsze w ISO 8601 (YYYY-MM-DD), 'date_raw' zachowuje oryginalny zapis ze strony.",
+        "Wszystkie URL-e bezwzględne (https://...), bez parametrów śledzących gdzie to możliwe.",
+        "Każdy zasób medialny jest obiektem z minimalnym zestawem pól: url + typ + context (skąd pochodzi na stronie).",
+        "Treść artykułu w polach 'markdown': nagłówki '##'/'###', listy '-', listy numerowane '1.', pogrubienia '**'. Układ = kolejność sekcji ze strony źródłowej.",
+        "Treść zachowywana w języku źródła (pole source.language); nie tłumaczyć przy ekstrakcji.",
+        "Pola 'id' zewnętrznych systemów (np. PIA##### z Photojournal, identyfikatory YouTube, numery modeli 3D) zapisuj w dedykowanych polach *_id, jeśli są znane.",
+        "Weryfikuj dostępność URL-i (HTTP 200) przed zapisem; martwy link oznaczaj w polu 'status'."
+      ],
+      "top_level_keys": [
+        "_format",
+        "source",
+        "vehicle",
+        "specifications",
+        "key_facts",
+        "timeline",
+        "article",
+        "media",
+        "related",
+        "notes"
+      ]
+    },
+    "source": {
+      "url": "https://science.nasa.gov/mission/kepler/",
+      "canonical_url": "https://science.nasa.gov/mission/kepler/",
+      "page_title": "Kepler / K2 - NASA Science",
+      "page_type": "mission_page",
+      "site": "science.nasa.gov",
+      "language": "en",
+      "scraped_at": "2026-11-14",
+      "page_last_updated": "2026-01-05",
+      "page_editor": null,
+      "responsible_nasa_official": null,
+      "meta_description": "The Kepler space telescope was NASA’s first planet-hunting mission, assigned to search a portion of the Milky Way galaxy for Earth-sized planets orbiting stars outside our solar system. During nine years in deep space Kepler, and its second act, the extended mission dubbed K2, showed our galaxy contains billions of hidden \"exoplanets,\" many of which could be promising places for life. They proved that our night sky is filled with more planets even than stars – knowledge that revolutionizes understanding of our place in the cosmos.",
+      "og_image": "https://images-assets.nasa.gov/image/PIA18904/PIA18904~large.jpg"
+    },
+    "vehicle": {
+      "name": "Kepler",
+      "full_name": "Kepler (and its extended mission K2)",
+      "agency": "NASA / ARC / JPL",
+      "mission": {
+        "name": "Kepler / K2",
+        "url": "https://science.nasa.gov/mission/kepler/",
+        "relationship": "single-spacecraft space telescope; 10th in NASA's series of low-cost, low-development-time Discovery-class science missions"
+      },
+      "type": {
+        "category": "space_telescope",
+        "name": "Space Telescope",
+        "page_label": "Space Telescope"
+      },
+      "objective": "Search for exoplanets (Earth-size planets in the habitable zones of their stars)",
+      "destination": "Heliocentric orbit (Earth-trailing solar orbit)",
+      "status": "mission_completed",
+      "nation": "United States of America (USA)",
+      "spacecraft_designation": "Kepler",
+      "namesake": "The spacecraft was named after the famed German astronomer Johannes Kepler (1571-1630).",
+      "dates": {
+        "launch": {
+          "date": "2009-03-06",
+          "date_raw": "March 6, 2009 / 03:49:57 UTC March 7 (10:49 p.m. EST March 6)",
+          "location": "Cape Canaveral, Fla. / SLC-17B",
+          "vehicle": "Delta 7925-10L (no. D339)"
+        },
+        "start_of_operations": {
+          "date": "2009-05-13",
+          "date_raw": "May 13, 2009",
+          "event": "Kepler finished commissioning and began its operational mission"
+        },
+        "first_habitable_zone_planet": {
+          "date": "2011-12-01",
+          "date_raw": "December 2011",
+          "event": "NASA announces Kepler has found the first planet, Kepler-22b, in the habitable zone of a star outside our solar system"
+        },
+        "reaction_wheel_failure": {
+          "date": "2013-05-13",
+          "date_raw": "May 13, 2013",
+          "event": "Loss of the second of four reaction wheels — effectively ending new data collection for the original mission"
+        },
+        "k2_start": {
+          "date": "2014-05-30",
+          "date_raw": "May 30, 2014",
+          "event": "K2 (Second Light) extended mission approved May 2014; data collection began May 30"
+        },
+        "mission_end": {
+          "date": "2018-10-30",
+          "date_raw": "Oct. 30, 2018",
+          "event": "NASA announces Kepler is out of fuel and will be retired in its current, safe orbit away from Earth"
+        }
+      }
+    },
+    "specifications": [
+      {
+        "parameter": "Nation",
+        "value": "United States of America (USA)"
+      },
+      {
+        "parameter": "Objective(s)",
+        "value": "Solar Orbit; Planet Hunter"
+      },
+      {
+        "parameter": "Spacecraft",
+        "value": "Kepler"
+      },
+      {
+        "parameter": "Spacecraft Mass",
+        "value": "2,291 pounds (1,039 kilograms)"
+      },
+      {
+        "parameter": "Mission Design and Management",
+        "value": "NASA / ARC / JPL"
+      },
+      {
+        "parameter": "Launch Vehicle",
+        "value": "Delta 7925-10L (no. D339)"
+      },
+      {
+        "parameter": "Launch Date and Time",
+        "value": "March 6, 2009 / 03:49:57 UTC March 7"
+      },
+      {
+        "parameter": "Launch Site",
+        "value": "Cape Canaveral, Fla. / SLC-17B"
+      },
+      {
+        "parameter": "Telescope",
+        "value": "Single instrument — specially designed 3-foot (1-meter) diameter aperture telescope and image sensor array; primary mirror 4 feet 7 inches (1.4 meters) in diameter, one of the largest mirrors beyond Earth orbit"
+      },
+      {
+        "parameter": "Scientific Instruments",
+        "value": "Photometer (Schmidt Telescope)"
+      },
+      {
+        "parameter": "Design target",
+        "value": "Monitor about 100,000 (originally 150,000) main-sequence stars over three-and-a-half years; bumped surveyed-star count to more than 500,000 with K2"
+      },
+      {
+        "parameter": "Scientific Instruments — scientific_instruments",
+        "value": "Photometer (Schmidt Telescope)"
+      },
+      {
+        "parameter": "Scientific Instruments — detection_method",
+        "value": "Kepler detected planets by observing transits, or tiny dips in the brightness of a star that occur when a planet crosses in front of the star."
+      }
+    ],
+    "key_facts": {
+      "key_dates_raw": [
+        "March 6, 2009: Launch",
+        "May 13, 2009: Kepler begins its operational mission",
+        "December 2011: NASA announces Kepler has found the first planet, Kepler-22b, in the habitable zone of a star outside our solar system",
+        "Oct. 30, 2018: NASA announces Kepler is out of fuel and will be retired in its current orbit"
+      ],
+      "overview_highlights": [
+        "Launched on March 6, 2009, the Kepler space telescope combined cutting-edge techniques in measuring stellar brightness with the largest digital camera outfitted for outer space observations at that time.",
+        "Originally positioned to stare continuously at 150,000 stars in one star-studded patch of the sky in the constellation Cygnus, it took the first survey of planets in our galaxy and became the agency's first mission to detect Earth-size planets in the habitable zones of their stars.",
+        "During its first six weeks of operation, Kepler discovered five exoplanets — named Kepler 4b, 5b, 6b, 7b and 8b (announced January 2010).",
+        "The most common size of planet Kepler found doesn’t exist in our solar system – a world between the size of Earth and Neptune."
+      ],
+      "legacy": "Kepler leaves a legacy of more than 2,600 planet discoveries from outside our solar system, many of which could be promising places for life. Analysis of Kepler’s discoveries concludes that 20 to 50 percent of the stars visible in the night sky are likely to have small, possibly rocky, planets similar in size to Earth located within the habitable zone of their parent stars.",
+      "k2": "The redesigned mission 'K2' used the pressure of sunlight to maintain pointing, like a kayak steering into the current. Initially estimated for 10 campaigns; it reached 19. K2 lasted as long as the first mission and bumped Kepler's count of surveyed stars up to more than 500,000."
+    },
+    "timeline": [
+      {
+        "date": "2009-03-06",
+        "date_raw": "March 6, 2009",
+        "title": "Launch"
+      },
+      {
+        "date": "2009-05-13",
+        "date_raw": "May 13, 2009",
+        "title": "Kepler begins its operational mission"
+      },
+      {
+        "date": "2011-12-01",
+        "date_raw": "December 2011",
+        "title": "First planet in the habitable zone announced — Kepler-22b"
+      },
+      {
+        "date": "2013-05-13",
+        "date_raw": "May 13, 2013",
+        "title": "Second reaction wheel lost — end of original mission data collection"
+      },
+      {
+        "date": "2014-05-30",
+        "date_raw": "May 30, 2014",
+        "title": "K2 (Second Light) extended mission — data collection begins"
+      },
+      {
+        "date": "2018-10-30",
+        "date_raw": "Oct. 30, 2018",
+        "title": "Kepler out of fuel; retired in its current orbit"
+      }
+    ],
+    "article": {
+      "title": "Kepler / K2",
+      "lead": "The Kepler space telescope was NASA’s first planet-hunting mission, assigned to search a portion of the Milky Way galaxy for Earth-sized planets orbiting stars outside our solar system.",
+      "content_language": "en",
+      "sections": [
+        {
+          "heading": "Introduction",
+          "markdown": "The Kepler space telescope was NASA’s first planet-hunting mission, assigned to search a portion of the Milky Way galaxy for Earth-sized planets orbiting stars outside our solar system. During nine years in deep space Kepler, and its second act, the extended mission dubbed K2, showed our galaxy contains billions of hidden \"exoplanets,\" many of which could be promising places for life. They proved that our night sky is filled with more planets than even stars — knowledge that revolutionizes the understanding of our place in the cosmos.\n\n**Quick facts:**\n\n- **Mission Type:** Space Telescope\n- **Destination:** Heliocentric orbit\n- **Launch:** March 6, 2009\n- **Objective:** Search for exoplanets"
+        },
+        {
+          "heading": "Overview",
+          "markdown": "Launched on March 6, 2009, the Kepler space telescope combined cutting-edge techniques in measuring stellar brightness with the largest digital camera outfitted for outer space observations at that time. Originally positioned to stare continuously at 150,000 stars in one star-studded patch of the sky in the constellation Cygnus, it took the first survey of planets in our galaxy and became the agency's first mission to detect Earth-size planets in the habitable zones of their stars.\n\nKepler detected planets by observing transits, or tiny dips in the brightness of a star that occur when a planet crosses in front of the star.\n\nThe spacecraft was basically a single instrument – a specially designed 3-foot (1-meter) diameter aperture telescope and image sensor array – with a spacecraft built around it. The diameter of the telescope’s mirror was 4 feet, 7 inches (1.4 meters), one of the largest mirrors beyond Earth orbit.\n\nKepler was designed to monitor about 100,000 main-sequence stars over a period of three-and-a-half years. During its first six weeks of operation, Kepler discovered five exoplanets—named Kepler 4b, 5b, 6b, 7b and 8b (which NASA announced in January 2010).\n\nIn April 2010, mission scientists published results that showed that Kepler had discovered the first confirmed planetary system with more than one planet transiting the same star, Kepler-9. That discovery was the result of surveying more than 156,000 stars over a period of seven months.\n\nThe planetary system orbiting Kepler-11, a yellow dwarf star about 2,000 light years from Earth, included six planets. NASA announced in February 2011 that these planets were larger than Earth, with the largest ones comparable in size to Uranus and Neptune.\n\nThe most common size of planet Kepler found doesn’t exist in our solar system – a world between the size of Earth and Neptune – and we have much to learn about these planets. Kepler also found nature often produces jam-packed planetary systems, in some cases with so many planets orbiting close to their parent stars that our own inner solar system looks sparse by comparison."
+        },
+        {
+          "heading": "'Planets are Everywhere'",
+          "markdown": "\"When we started conceiving this mission 35 years ago, we didn't know of a single planet outside our solar system,\" said the Kepler mission's founding principal investigator, William Borucki, now retired from NASA's Ames Research Center in California's Silicon Valley. \"Now that we know planets are everywhere, Kepler has set us on a new course that's full of promise for future generations to explore our galaxy.\"\n\nIn May 2013, the Kepler spacecraft lost the second of four gyroscope-like reaction wheels, which are used to precisely point the spacecraft, effectively ending new data collection for the original mission. The spacecraft required three functioning wheels to position the telescope, so the malfunction robbed Kepler of its ability to stay pointed at a target without drifting off course.\n\nThat’s because the Sun, the very body that provides Kepler with its energy needs, also pushes the spacecraft around by the pressure exerted when the photons of sunlight strike the spacecraft. Without a third wheel to help counteract the solar pressure, the spacecraft's ultra-precise pointing capability could not be controlled in all directions."
+        },
+        {
+          "heading": "K2",
+          "markdown": "So engineers came up with a clever scheme. They gave the spacecraft a new lease on life by using the pressure of sunlight to maintain its pointing, like a kayak steering into the current. The redesigned mission, “K2,” still hunted for planets, but it scanned a larger swath of sky than before, along the ecliptic plane.\n\nThis extended mission required the spacecraft to shift its field of view to new portions of the sky roughly every three months in what the team referred to as a “campaign.” Initially, the Kepler team estimated that the K2 mission could conduct 10 campaigns with the remaining fuel; it reached 19.\n\nK2 lasted as long as the first mission and bumped Kepler's count of surveyed stars up to more than 500,000. The mission began new types of research as well, such as the study of objects within our solar system, exploded stars, and distant supermassive black holes at the hearts of galaxies."
+        },
+        {
+          "heading": "Legacy",
+          "markdown": "The observation of so many stars has allowed scientists to better understand stellar behaviors and properties, which is critical information in studying the planets that orbit them. New research into stars with Kepler data also is furthering other areas of astronomy, such as the history of our Milky Way galaxy and the beginning stages of exploding stars called supernovae that are used to study how fast the universe is expanding. The data from the extended mission were also made available to the public and science community immediately, allowing discoveries to be made at an incredible pace and setting a high bar for other missions. Scientists are expected to spend a decade or more in search of new discoveries in the treasure trove of data Kepler provided.\n\nBefore retiring the spacecraft on Oct. 30, 2018, scientists pushed Kepler to its full potential, successfully completing multiple observation campaigns and downloading valuable science data even after initial warnings of low fuel. The latest data, from Campaign 19, will complement the data from NASA's newest planet hunter, the Transiting Exoplanet Survey Satellite, launched in April 2018. TESS builds on Kepler's foundation with fresh batches of data in its search of planets orbiting some 200,000 of the brightest and nearest stars to the Earth, worlds that can later be explored for signs of life by missions such as NASA's James Webb Space Telescope, and other observatories to come.\n\nKepler has opened our eyes to the diversity of planets that exist in our galaxy. Analysis of Kepler’s discoveries concludes that 20 to 50 percent of the stars visible in the night sky are likely to have small, possibly rocky, planets similar in size to Earth, and located within the habitable zone of their parent stars. That means they’re located at distances from their parent stars where liquid water — a vital ingredient to life as we know it — might pool on the planet's surface."
+        },
+        {
+          "heading": "'Light Leads the Way'",
+          "markdown": "The father of the Kepler telescope describes how starlight can help reveal — not just the existence of an exoplanet — but even its mass and temperature.\n\n**Video:** [The Legacy of NASA's Kepler Space Telescope: More Planets Than Stars (YouTube)](https://youtu.be/3yij1rJOefM)"
+        },
+        {
+          "heading": "Discoveries Dashboard",
+          "markdown": "The otherworldly findings by Kepler and its brethren: 6,000-plus exoplanets, and counting...\n\n[Go To Gallery (46 images)](https://science.nasa.gov/gallery/kepler-k2/)"
+        },
+        {
+          "heading": "Kepler/K2 Stories",
+          "markdown": "- [Starstruck: NASA Research Shows How Sun’s Ancient History Shaped Earth — 6 min read](https://science.nasa.gov/solar-system/starstruck-nasa-research-shows-how-suns-ancient-history-shaped-earth/)\n- [NASA AI Model That Found 370 Exoplanets Now Digs Into TESS Data — 4 min read](https://science.nasa.gov/open-science/deep-learning-exoplanets-tess/)\n- [NASA’s Pandora Satellite, CubeSats to Explore Exoplanets, Beyond — 6 min read](https://science.nasa.gov/universe/exoplanets/nasas-pandora-satellite-cubesats-to-explore-exoplanets-beyond/)\n- [NASA’s Roman Could Bring New Waves of Information on Galaxy’s Stars — 6 min read](https://www.nasa.gov/missions/roman-space-telescope/nasas-roman-could-bring-new-waves-of-information-on-galaxys-stars/)\n\n[Explore All Kepler/K2 Stories](https://science.nasa.gov/mission/kepler/stories/)"
+        }
+      ]
+    },
+    "media": {
+      "hero_image": {
+        "url": "https://images-assets.nasa.gov/image/PIA18904/PIA18904~large.jpg",
+        "photojournal_id": "PIA18904",
+        "context": "og:image strony (artist concept of Kepler in K2 profile)",
+        "credit": "NASA"
+      },
+      "images": [
+        {
+          "url": "https://images-assets.nasa.gov/image/PIA18904/PIA18904~large.jpg",
+          "photojournal_id": "PIA18904",
+          "caption": "This artist concept shows NASA's planet-hunting Kepler spacecraft operating in a new mission profile called K2. In 2013 the spacecraft lost its ability to precisely stare at its original target area, but a clever fix created a second life for the telescope that proved scientifically fruitful, showing K2 could still find exoplanets.",
+          "context": "zdjęcie główne na szczycie strony (Overview)",
+          "credit": "NASA, ESA, CSA, and STScI"
+        },
+        {
+          "url": "https://images-assets.nasa.gov/image/ACD18-0204-002/ACD18-0204-002~large.jpg",
+          "caption": "Illustration depicting the Kepler spacecraft in a sky filled with exoplanets and planetary systems. After nine years in deep space, NASA’s Kepler space telescope ran out of fuel. Kepler leaves a legacy of more than 2,600 planet discoveries.",
+          "context": "sekcja 'Legacy' (ilustracja końca misji)",
+          "credit": "NASA/Ames Research Center/W. Stenzel/D. Rutter"
+        },
+        {
+          "url": "https://images-assets.nasa.gov/image/ARC-2012-ACD12-0022-002/ARC-2012-ACD12-0022-002~orig.jpg",
+          "caption": "Kepler mission image (Ames Research Center archive photo).",
+          "context": "sekcja 'Learn More'",
+          "credit": "NASA/Ames Research Center"
+        },
+        {
+          "url": "https://science.nasa.gov/wp-content/uploads/2023/05/Kepler_sm.png",
+          "caption": "Kepler spacecraft icon.",
+          "context": "sekcja \"'Light Leads the Way'\" (ikona)",
+          "credit": "NASA"
+        }
+      ],
+      "gifs": [],
+      "videos": [
+        {
+          "platform": "youtube",
+          "video_id": "3yij1rJOefM",
+          "url": "https://youtu.be/3yij1rJOefM",
+          "embed_url": "https://www.youtube.com/embed/3yij1rJOefM",
+          "title": "The Legacy of NASA's Kepler Space Telescope: More Planets Than Stars",
+          "channel": "NASA's Ames Research Center",
+          "context": "sekcja 'Overview' (osadzony oembed) / \"'Light Leads the Way'\""
+        }
+      ],
+      "models_3d": [],
+      "interactive": [],
+      "downloads": []
+    },
+    "related": {
+      "mission_pages": [
+        {
+          "title": "Kepler In Depth (Key Facts, Key Dates, full history)",
+          "url": "https://science.nasa.gov/mission/kepler/in-depth/"
+        },
+        {
+          "title": "Kepler's Legacy (science site)",
+          "url": "https://exoplanets.nasa.gov/keplerscience/"
+        },
+        {
+          "title": "All Kepler/K2 Stories",
+          "url": "https://science.nasa.gov/mission/kepler/stories/"
+        }
+      ],
+      "galleries": [
+        {
+          "title": "Kepler/K2 Gallery (46 images)",
+          "url": "https://science.nasa.gov/gallery/kepler-k2/"
+        }
+      ],
+      "feature_stories": [
+        {
+          "title": "Starstruck: NASA Research Shows How Sun’s Ancient History Shaped Earth — 6 min read",
+          "url": "https://science.nasa.gov/solar-system/starstruck-nasa-research-shows-how-suns-ancient-history-shaped-earth/"
+        },
+        {
+          "title": "NASA AI Model That Found 370 Exoplanets Now Digs Into TESS Data — 4 min read",
+          "url": "https://science.nasa.gov/open-science/deep-learning-exoplanets-tess/"
+        },
+        {
+          "title": "NASA’s Pandora Satellite, CubeSats to Explore Exoplanets, Beyond — 6 min read",
+          "url": "https://science.nasa.gov/universe/exoplanets/nasas-pandora-satellite-cubesats-to-explore-exoplanets-beyond/"
+        },
+        {
+          "title": "NASA’s Roman Could Bring New Waves of Information on Galaxy’s Stars — 6 min read",
+          "url": "https://www.nasa.gov/missions/roman-space-telescope/nasas-roman-could-bring-new-waves-of-information-on-galaxys-stars/"
+        }
+      ],
+      "successor_missions": [
+        {
+          "title": "TESS — Transiting Exoplanet Survey Satellite (Kepler's successor)",
+          "url": "https://science.nasa.gov/mission/tess/"
+        },
+        {
+          "title": "James Webb Space Telescope (follow-up characterization of exoplanets)",
+          "url": "https://science.nasa.gov/james-webb-space-telescope/"
+        }
+      ]
+    },
+    "notes": [
+      "Strona główna Keplera łączy treści Overview/K2/Legacy z galerią i YouTube; szczegółowa tabela faktów (Nation/Spacecraft Mass/Delta 7925-10L/instrumenty) pochodzi z podstrony /mission/kepler/in-depth/ — włączono ją do specifications i timeline'u.",
+      "Kluczowe daty (start operacji 2009-05-13, koniec misji 2018-10-30) pochodzą z sekcji Key Dates podstrony In Depth.",
+      "Galeria Kepler/K2 zawiera 46 obrazów — link do galerii w related.galleries; w media.images umieszczono 4 obrazy inline ze strony głównej.",
+      "Brak modeli 3D i GIF-ów na stronie; jeden film YouTube (oembed) + odnośnik do 'Discoveries Dashboard' (6,000-plus exoplanets).",
+      "Treść article.sections zachowana w języku angielskim (źródłowym); układ i kolejność sekcji = kolejność na stronie (Contents: Overview, 'Planets are Everywhere', K2, Legacy).",
+      "Wszystkie URL-e w polach media.* zweryfikowane HTTP 200 (2026-11-14, skrypt scripts/verify_urls.py)."
+    ]
+  },
+  "near-shoemaker": {
+    "_format": {
+      "format_version": "nasa-mission-scraper/1.0",
+      "description": "Ujednolicony format eksportu danych ze stron NASA (science.nasa.gov i pokrewnych). Ten sam schemat stosuj do każdej kolejnej strony misji/pojazdu, aby wszystkie wpisy były spójne i mogły być łączone w jedną bazę.",
+      "conventions": [
+        "Klucze zawsze obecne; brak danych = null (nigdy nie usuwaj klucza), brak pozycji = pusta lista [].",
+        "Daty: 'date' zawsze w ISO 8601 (YYYY-MM-DD), 'date_raw' zachowuje oryginalny zapis ze strony.",
+        "Wszystkie URL-e bezwzględne (https://...), bez parametrów śledzących gdzie to możliwe.",
+        "Każdy zasób medialny jest obiektem z minimalnym zestawem pól: url + typ + context (skąd pochodzi na stronie).",
+        "Treść artykułu w polach 'markdown': nagłówki '##'/'###', listy '-', listy numerowane '1.', pogrubienia '**'. Układ = kolejność sekcji ze strony źródłowej.",
+        "Treść zachowywana w języku źródła (pole source.language); nie tłumaczyć przy ekstrakcji.",
+        "Pola 'id' zewnętrznych systemów (np. PIA##### z Photojournal, identyfikatory YouTube, numery modeli 3D) zapisuj w dedykowanych polach *_id, jeśli są znane.",
+        "Weryfikuj dostępność URL-i (HTTP 200) przed zapisem; martwy link oznaczaj w polu 'status'."
+      ],
+      "top_level_keys": [
+        "_format",
+        "source",
+        "vehicle",
+        "specifications",
+        "key_facts",
+        "timeline",
+        "article",
+        "media",
+        "related",
+        "notes"
+      ]
+    },
+    "source": {
+      "url": "https://science.nasa.gov/mission/near-shoemaker/",
+      "canonical_url": "https://science.nasa.gov/mission/near-shoemaker/",
+      "page_title": "NEAR Shoemaker - NASA Science",
+      "page_type": "mission_page",
+      "site": "science.nasa.gov",
+      "language": "en",
+      "scraped_at": "2026-11-14",
+      "page_last_updated": "2024-11-02",
+      "page_editor": null,
+      "responsible_nasa_official": null,
+      "meta_description": "NASA's NEAR was the first spacecraft to orbit an asteroid and also was the first to land on one.",
+      "og_image": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/07/nearspacecraft.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
+    },
+    "vehicle": {
+      "name": "NEAR Shoemaker",
+      "full_name": "Near Earth Asteroid Rendezvous (NEAR) Shoemaker",
+      "agency": "NASA / GSFC / APL",
+      "mission": {
+        "name": "NEAR Shoemaker (first mission of NASA's Discovery program)",
+        "url": "https://science.nasa.gov/mission/near-shoemaker/",
+        "relationship": "single-spacecraft mission; first Discovery-class planetary mission"
+      },
+      "type": {
+        "category": "flyby+orbiter+lander",
+        "name": "Flyby, Orbiter, Lander",
+        "page_label": "Flyby, Orbiter, Lander"
+      },
+      "objective": "Fly by asteroid Mathilde, orbit asteroid Eros and land on Eros",
+      "destination": "Asteroid Eros (433 Eros); flyby of asteroid Mathilde (253 Mathilde)",
+      "status": "mission_completed",
+      "nation": "United States of America (USA)",
+      "spacecraft_designation": "NEAR",
+      "renaming": "NASA renamed the spacecraft NEAR Shoemaker in honor of renowned geologist Eugene M. Shoemaker (1928–1997), on March 14, 2000.",
+      "dates": {
+        "launch": {
+          "date": "1996-02-17",
+          "date_raw": "Feb. 17, 1996 / 20:43:27 UT",
+          "location": "Cape Canaveral, Fla. / Launch Complex 17B",
+          "vehicle": "Delta 7925-8 (no. D232)"
+        },
+        "mathilde_flyby": {
+          "date": "1997-06-27",
+          "date_raw": "June 27, 1997",
+          "event": "Flyby of asteroid Mathilde (closest approach ~750 miles / 1,200 km at 12:56 UT; photographed 60% of the asteroid)"
+        },
+        "earth_flyby": {
+          "date": "1998-01-23",
+          "date_raw": "Jan. 23, 1998",
+          "event": "NEAR flew by Earth for a gravity assist (closest approach ~335 miles / 540 km at 07:23 UT)"
+        },
+        "eros_first_flyby": {
+          "date": "1998-12-23",
+          "date_raw": "Dec. 23, 1998",
+          "event": "Spacecraft flew by Eros for the first time (range ~2,380 miles / 3,827 km at 18:41:23 UT)"
+        },
+        "eros_orbit_insertion": {
+          "date": "2000-02-14",
+          "date_raw": "Feb. 14, 2000",
+          "event": "NEAR entered orbit around Eros at 15:33 UT becoming the first human-made object to orbit an asteroid (parameters ~200 × 225 miles / 321 × 366 km)"
+        },
+        "landing": {
+          "date": "2001-02-12",
+          "date_raw": "Feb. 12, 2001",
+          "event": "NEAR touched down on Eros at 19:44 UT at ~4 mph (6.4 km/h), just south of the saddle-shaped feature Himeros — first landing on an asteroid; first time a U.S. spacecraft was the first to land on a celestial body"
+        },
+        "last_contact": {
+          "date": "2001-02-28",
+          "date_raw": "Feb. 28, 2001",
+          "event": "Last contact with NEAR; spacecraft succumbed to the extreme cold (minus 279°F / minus 173°C)"
+        },
+        "contact_attempt": {
+          "date": "2002-12-10",
+          "date_raw": "Dec. 10, 2002",
+          "event": "NASA's attempt to contact the probe nearly two years later was unsuccessful"
+        }
+      }
+    },
+    "specifications": [
+      {
+        "parameter": "Nation",
+        "value": "United States of America (USA)"
+      },
+      {
+        "parameter": "Objective(s)",
+        "value": "Asteroid Eros Orbit and Landing"
+      },
+      {
+        "parameter": "Spacecraft",
+        "value": "NEAR"
+      },
+      {
+        "parameter": "Spacecraft Mass",
+        "value": "1,775 pounds (805 kilograms)"
+      },
+      {
+        "parameter": "Mission Design and Management",
+        "value": "NASA / GSFC / APL"
+      },
+      {
+        "parameter": "Launch Vehicle",
+        "value": "Delta 7925-8 (no. D232)"
+      },
+      {
+        "parameter": "Launch Date and Time",
+        "value": "Feb. 17, 1996 / 20:43:27 UT"
+      },
+      {
+        "parameter": "Launch Site",
+        "value": "Cape Canaveral, Fla. / Launch Complex 17B"
+      },
+      {
+        "parameter": "Program",
+        "value": "First mission flown under NASA's Discovery program — a series of low-cost (less than about $150 million in mid-1990s dollars) planetary science projects, selected competitively and led by a principal investigator"
+      },
+      {
+        "parameter": "Scientific Instruments — scientific_instruments",
+        "value": "Multi-Spectral Imager (MSI); Magnetometer (MAG); Near Infrared Spectrometer (NIS); X-Ray/Gamma-Ray Spectrometer (XGRS); Laser Rangefinder (NLR); Radio Science and Gravimetry Experiment"
+      },
+      {
+        "parameter": "Scientific Instruments — note",
+        "value": "First spacecraft to rely on solar cells for power during operations beyond Mars orbit."
+      }
+    ],
+    "key_facts": {
+      "what_was": "NASA's NEAR was the first spacecraft to orbit an asteroid and also was the first to land on one.",
+      "bullets": [
+        "NEAR's landing on Eros marked the first time a U.S. spacecraft was the first to land on a celestial body, having been beaten by the Soviets in landing on the Moon, Mars, and Venus.",
+        "Remarkably, the spacecraft – which was not designed as a lander – survived touchdown on the asteroid and returned valuable data for about two weeks.",
+        "NASA renamed the spacecraft NEAR Shoemaker in honor of renowned geologist Eugene M. Shoemaker (1928–1997).",
+        "Last contact with NEAR was Feb. 28, 2001, the spacecraft having succumbed to the extreme cold."
+      ],
+      "firsts": [
+        "First human-made object to orbit an asteroid",
+        "First spacecraft to land on an asteroid"
+      ],
+      "data_returned": "NEAR returned about 10 times more data than originally planned, including 160,000 images; mapped more than 70 percent of Eros' surface using the near-infrared spectrometer; found that Eros had no magnetic field."
+    },
+    "timeline": [
+      {
+        "date": "1996-02-17",
+        "date_raw": "Feb. 17, 1996",
+        "title": "Launch"
+      },
+      {
+        "date": "1997-06-27",
+        "date_raw": "June 27, 1997",
+        "title": "Flyby of asteroid Mathilde"
+      },
+      {
+        "date": "1998-01-23",
+        "date_raw": "Jan. 23, 1998",
+        "title": "NEAR flew by Earth for a gravity assist"
+      },
+      {
+        "date": "1998-12-23",
+        "date_raw": "Dec. 23, 1998",
+        "title": "Spacecraft flew by Eros for the first time"
+      },
+      {
+        "date": "2000-02-14",
+        "date_raw": "Feb. 14, 2000",
+        "title": "NEAR entered orbit around Eros — first human-made object to orbit an asteroid"
+      },
+      {
+        "date": "2000-03-14",
+        "date_raw": "March 14, 2000",
+        "title": "Spacecraft renamed NEAR Shoemaker in honor of Eugene M. Shoemaker"
+      },
+      {
+        "date": "2001-02-12",
+        "date_raw": "Feb. 12, 2001",
+        "title": "NEAR touched down on Eros — first landing on an asteroid"
+      },
+      {
+        "date": "2001-02-28",
+        "date_raw": "Feb. 28, 2001",
+        "title": "Last contact with NEAR"
+      }
+    ],
+    "article": {
+      "title": "NEAR Shoemaker",
+      "lead": "NASA's NEAR was the first spacecraft to orbit an asteroid and also was the first to land on one.",
+      "content_language": "en",
+      "sections": [
+        {
+          "heading": "What was NEAR Shoemaker?",
+          "markdown": "NASA's NEAR was the first spacecraft to orbit an asteroid and also was the first to land on one.\n\n- NEAR's landing on Eros marked the first time a U.S. spacecraft was the first to land on a celestial body, having been beaten by the Soviets in landing on the Moon, Mars, and Venus.\n- Remarkably, the spacecraft – which was not designed as a lander – survived touchdown on the asteroid and returned valuable data for about two weeks.\n- NASA renamed the spacecraft NEAR Shoemaker in honor of renowned geologist Eugene M. Shoemaker (1928–1997).\n- Last contact with NEAR was Feb. 28, 2001, the spacecraft having succumbed to the extreme cold."
+        },
+        {
+          "heading": "Firsts",
+          "markdown": "- First human-made object to orbit an asteroid\n- First spacecraft to land on an asteroid"
+        },
+        {
+          "heading": "Key Dates",
+          "markdown": "- **Feb. 17, 1996:** Launch\n- **June 27, 1997:** Flyby of asteroid Mathilde\n- **Jan. 23, 1998:** NEAR flew by Earth for a gravity assist\n- **Dec. 23, 1998:** Spacecraft flew by Eros for the first time\n- **Feb. 14, 2000:** NEAR entered orbit around Eros becoming the first human-made object to orbit an asteroid\n- **Feb. 12, 2001:** NEAR touched down on Eros – the first time a U.S. spacecraft was the first to land on a celestial body"
+        },
+        {
+          "heading": "In Depth: NEAR Shoemaker",
+          "markdown": "Near Earth Asteroid Rendezvous (NEAR) was the first mission flown under NASA’s Discovery program, a series of low-cost (less than about $150 million in mid-1990s dollar amounts) planetary science projects that were selected competitively and led by a principal investigator rather than a NASA manager.\n\nNEAR’s primary goal was to rendezvous with the minor planet 433 Eros (an S-class asteroid), approximately 221 million miles (355 million kilometers) from Earth, and to gather data on its physical properties, mineral components, morphology, internal mass distribution, and magnetic field. The spacecraft was the first to rely on solar cells for power during operations beyond Mars orbit.\n\nOn the way to its primary mission, NEAR performed a 25-minute flyby of the asteroid 253 Mathilde on June 27, 1997. The closest approach was about 750 miles (1,200 kilometers) at 12:56 UT. During the encounter, the spacecraft photographed 60 percent of the minor planet from a range of 750 miles (1,200 kilometers).\n\nThe information gathered indicated that the 4.5 billion-year-old asteroid is covered with craters and is less dense than previously believed.\n\nAfter a course correction on July 3, 1997, NEAR flew by Earth on Jan. 23, 1998, at 07:23 UT for a gravity assist on its way to Eros. The closest approach was about 335 miles (540 kilometers).\n\nAfter the Earth flyby encounter, NEAR’s previously planned mission profile had to be revised because of an aborted engine burn on Dec. 20, 1998, that prevented a critical trajectory correction needed to meet up with Eros a month later.\n\nInstead, NEAR was put on a backup trajectory that afforded a different flyby than originally planned. As part of this new plan, the spacecraft first flew past Eros on Dec. 23, 1998, at 18:41:23 UT at a range of about 2,380 miles (3,827 kilometers) (distance measured from the center of mass) during which it observed about 60 percent of the asteroid, and discovered that the minor planet was smaller than expected.\n\nNEAR also found that the asteroid has two medium-sized craters, a long surface ridge, and a density similar to Earth’s crust. After several more trajectory adjustments, NEAR finally moved into orbit around Eros at 15:33 UT Feb. 14, 2000, roughly a year later than intended, becoming the first human-made object to orbit a minor planet. Orbital parameters were about 200 × 225 miles (321 × 366 kilometers).\n\nThrough 2000, NEAR’s orbit was shifted in stages to permit specific research programs. There were a few problems in the lead-up to the landing on the asteroid. For example, on May 13, 2000, controllers had to turn off the near-infrared spectrometer due to an excessive power surge.\n\nBy April 30, 2000, the spacecraft was in its operational orbit at an altitude of about 31 miles (50 kilometers) from Eros’ center.\n\nOn July 13, 2000, NEAR entered an even lower orbit at about 22 miles (35 kilometers) that brought the vehicle to about 12 miles (19 kilometers) from the surface. After about 10 days, NEAR moved back to a higher orbit.\n\nOn Oct. 26, 2000, NEAR performed another close flyby, this time to about 3 miles (5.3 kilometers) above the surface.\n\nBy the end of the year, the spacecraft had entered a circular 22-mile (35-kilometer) low orbit around the asteroid and began to make a series of very close passes – on the order of about 3 to 4 miles (5 to 6 kilometers) – above the surface.\n\nFollowing a slow, controlled descent, during which it took 69 high-resolution photos of Eros, NEAR touched down on Eros at a gentle 4 miles per hour (6.4 kilometers per hour), just south of a saddle-shaped feature named Himeros, on Feb. 12, 2001, at 19:44 UT.\n\nThis was the first time a U.S. spacecraft was the first to land on a celestial body, having been beaten by the Soviets in landing on the Moon, Mars, and Venus.\n\nRemarkably, the orbiter survived contact and returned valuable data, especially from its gamma-ray spectrometer, for about two weeks.\n\nThe last contact with NEAR was Feb. 28, 2001, the spacecraft having succumbed to the extreme cold (minus 279 degrees Fahrenheit or minus 173 degrees Celsius). NASA’s attempt to contact the probe nearly two years later on Dec. 10, 2002, was unsuccessful.\n\nNEAR data showed that Eros had no magnetic field. It mapped more than 70 percent of the surface using the near-infrared spectrometer and provided important data about the asteroid’s interior. The spacecraft returned about 10 times more data than originally planned, including 160,000 images.\n\nEarlier, on March 14, 2000, a month after entering asteroid orbit, NASA renamed the NEAR spacecraft NEAR Shoemaker in honor of Eugene M. Shoemaker (1928–1997), the renowned geologist."
+        },
+        {
+          "heading": "Mission Statistics",
+          "markdown": "- **Nation:** United States of America (USA)\n- **Objective(s):** Asteroid Eros Orbit and Landing\n- **Spacecraft:** NEAR\n- **Spacecraft Mass:** 1,775 pounds (805 kilograms)\n- **Mission Design and Management:** NASA / GSFC / APL\n- **Launch Vehicle:** Delta 7925-8 (no. D232)\n- **Launch Date and Time:** Feb. 17, 1996 / 20:43:27 UT\n- **Launch Site:** Cape Canaveral, Fla. / Launch Complex 17B\n\n**Scientific Instruments:**\n\n1. Multi-Spectral Imager (MSI)\n2. Magnetometer (MAG)\n3. Near Infrared Spectrometer (NIS)\n4. X-Ray/Gamma-Ray Spectrometer (XGRS)\n5. Laser Rangefinder (NLR)\n6. Radio Science and Gravimetry Experiment"
+        },
+        {
+          "heading": "Key Source",
+          "markdown": "Siddiqi, Asif A. [Beyond Earth: A Chronicle of Deep Space Exploration, 1958-2016](https://solarsystem.nasa.gov/resources/1060/beyond-earth-a-chronicle-of-deep-space-exploration/). NASA History Program Office, 2018."
+        }
+      ]
+    },
+    "media": {
+      "hero_image": {
+        "url": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/07/nearspacecraft.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+        "context": "og:image strony",
+        "credit": "NASA"
+      },
+      "images": [
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/nearspacecraft.jpg",
+          "caption": "An illustration of NASA's Near Earth Asteroid Rendezvous (NEAR) spacecraft at asteroid Eros.",
+          "context": "zdjęcie główne na szczycie strony",
+          "credit": "NASA"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/3964/Asteroid_Eros.jpeg",
+          "caption": "Asteroid Eros.",
+          "context": "sekcja 'In Depth' (mosaika południowej półkuli Eros)",
+          "credit": "NASA"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/3964/Asteroid_Eros.jpeg",
+          "caption": "NASA's NEAR Shoemaker spacecraft landed on the surface of the 21-mile long asteroid Eros on February 12, 2001. This image mosaic shows Eros' southern hemisphere, offering a long-distance look at the cratered terrain where the spacecraft touched down.",
+          "context": "sekcja 'Key Dates' / lądowanie (mosaika)",
+          "credit": "NASA"
+        }
+      ],
+      "gifs": [],
+      "videos": [],
+      "models_3d": [],
+      "downloads": []
+    },
+    "related": {
+      "mission_pages": [
+        {
+          "title": "All NEAR Shoemaker Stories",
+          "url": "https://science.nasa.gov/mission/near-shoemaker/stories/"
+        }
+      ],
+      "feature_stories": [
+        {
+          "title": "Pioneer 10 Crosses the Asteroid Belt (image article)",
+          "url": "https://www.nasa.gov/image-article/pioneer-10-crosses-the-asteroid-belt/"
+        },
+        {
+          "title": "10 Facts about the Pioneer Spacecraft",
+          "url": "https://www.nasa.gov/missions/pioneer/pioneer-11/10-things-about-pioneer-spacecraft/"
+        },
+        {
+          "title": "50 Years Ago: Pioneer 10 Launches to Explore Jupiter",
+          "url": "https://www.nasa.gov/history/50-years-ago-pioneer-10-launches-to-explore-jupiter/"
+        }
+      ],
+      "other_links": [
+        {
+          "title": "Beyond Earth: A Chronicle of Deep Space Exploration (source book)",
+          "url": "https://solarsystem.nasa.gov/resources/1060/beyond-earth-a-chronicle-of-deep-space-exploration/"
+        }
+      ]
+    },
+    "notes": [
+      "Strona NEAR Shoemaker to starszy typ strony misji NASA: brak filmów, GIF-ów i modeli 3D — tylko 2 unikalne obrazy (ilustracja pojazdu + Eros).",
+      "Trzeci wpis na liście images to ta sama grafika Eros (internal_resources/3964), ale z pełnym podpisem z sekcji lądowania — pozostawiono oba konteksty, URL identyczny.",
+      "Daty: start 1996-02-17; orbita Eros 2000-02-14 (początek głównych operacji); lądowanie 2001-02-12 (koniec operacji orbitalnych); ostatni kontakt 2001-02-28 — rozdzielone zgodnie z sekcją Key Dates i In Depth.",
+      "Sekcja 'NEAR Shoemaker Stories' na stronie zawiera aktualne ogólne artykuły NASA (APOD itp.) niezwiązane bezpośrednio z misją — wybrane powiązane pozycje o tematyce asteroid/pioneer przeniesiono do related.feature_stories.",
+      "Treść article.sections zachowana w języku angielskim (źródłowym); układ i kolejność sekcji = kolejność na stronie.",
+      "Wszystkie URL-e w polach media.* zweryfikowane HTTP 200 (2026-11-14, skrypt scripts/verify_urls.py)."
+    ]
+  },
+  "pioneer-10": {
+    "_format": {
+      "format_version": "nasa-mission-scraper/1.0",
+      "description": "Ujednolicony format eksportu danych ze stron NASA (science.nasa.gov i pokrewnych). Ten sam schemat stosuj do każdej kolejnej strony misji/pojazdu, aby wszystkie wpisy były spójne i mogły być łączone w jedną bazę.",
+      "conventions": [
+        "Klucze zawsze obecne; brak danych = null (nigdy nie usuwaj klucza), brak pozycji = pusta lista [].",
+        "Daty: 'date' zawsze w ISO 8601 (YYYY-MM-DD), 'date_raw' zachowuje oryginalny zapis ze strony.",
+        "Wszystkie URL-e bezwzględne (https://...), bez parametrów śledzących gdzie to możliwe.",
+        "Każdy zasób medialny jest obiektem z minimalnym zestawem pól: url + typ + context (skąd pochodzi na stronie).",
+        "Treść artykułu w polach 'markdown': nagłówki '##'/'###', listy '-', listy numerowane '1.', pogrubienia '**'. Układ = kolejność sekcji ze strony źródłowej.",
+        "Treść zachowywana w języku źródła (pole source.language); nie tłumaczyć przy ekstrakcji.",
+        "Pola 'id' zewnętrznych systemów (np. PIA##### z Photojournal, identyfikatory YouTube, numery modeli 3D) zapisuj w dedykowanych polach *_id, jeśli są znane.",
+        "Weryfikuj dostępność URL-i (HTTP 200) przed zapisem; martwy link oznaczaj w polu 'status'."
+      ],
+      "top_level_keys": [
+        "_format",
+        "source",
+        "vehicle",
+        "specifications",
+        "key_facts",
+        "timeline",
+        "article",
+        "media",
+        "related",
+        "notes"
+      ]
+    },
+    "source": {
+      "url": "https://science.nasa.gov/mission/pioneer-10/",
+      "canonical_url": "https://science.nasa.gov/mission/pioneer-10/",
+      "page_title": "Pioneer 10 - NASA Science",
+      "page_type": "mission_page",
+      "site": "science.nasa.gov",
+      "language": "en",
+      "scraped_at": "2026-11-14",
+      "page_last_updated": "2024-11-06",
+      "page_editor": null,
+      "responsible_nasa_official": null,
+      "meta_description": "First to Jupiter",
+      "og_image": "https://assets.science.nasa.gov/content/dam/science/psd/solar/internal_resources/731/Illustrated_Pioneer_10_at_Jupiter.jpeg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
+    },
+    "vehicle": {
+      "name": "Pioneer 10",
+      "full_name": "Pioneer 10 (Pioneer F)",
+      "agency": "NASA / ARC",
+      "mission": {
+        "name": "Pioneer 10",
+        "url": "https://science.nasa.gov/mission/pioneer-10/",
+        "relationship": "single-spacecraft mission; first NASA mission to the outer planets"
+      },
+      "type": {
+        "category": "flyby",
+        "name": "Flyby",
+        "page_label": "Flyby"
+      },
+      "objective": "Jupiter Flyby",
+      "destination": "Jupiter (then out of the solar system toward Aldebaran)",
+      "status": "mission_completed",
+      "nation": "United States of America (USA)",
+      "spacecraft_designation": "Pioneer-F",
+      "dates": {
+        "launch": {
+          "date": "1972-03-02",
+          "date_raw": "March 2, 1972 / 01:49:04 UT",
+          "location": "Cape Canaveral, Florida / Launch Complex 36A",
+          "vehicle": "Atlas Centaur (AC-27 / Atlas 3C no. 5007C / Centaur D-1A)"
+        },
+        "asteroid_belt_entry": {
+          "date": "1972-07-15",
+          "date_raw": "July 15, 1972",
+          "event": "Spacecraft entered the asteroid belt (emerged February 1973 after ~271 million miles / 435 million km)"
+        },
+        "jupiter_closest_approach": {
+          "date": "1973-12-04",
+          "date_raw": "Dec. 4, 1973",
+          "event": "Pioneer 10’s closest approach to Jupiter at 02:26 UT, range 81,000 miles (130,354 km), velocity ~78,000 mph (126,000 km/h)"
+        },
+        "saturn_orbit_crossing": {
+          "date": "1976-02-01",
+          "date_raw": "Feb. 1976",
+          "event": "Pioneer crossed Saturn’s orbit; data indicated Jupiter’s magnetic tail almost 800 million kilometers long covered the distance between the two planets"
+        },
+        "neptune_orbit_crossing": {
+          "date": "1983-06-13",
+          "date_raw": "June 13, 1983",
+          "event": "Pioneer 10 crossed the orbit of Neptune — first human-made object to go beyond the furthest planet"
+        },
+        "routine_contact_ended": {
+          "date": "1997-03-31",
+          "date_raw": "March 31, 1997",
+          "event": "Routine contact terminated (spacecraft 67 AU from Earth) due to budgetary reasons"
+        },
+        "last_signal": {
+          "date": "2003-01-23",
+          "date_raw": "Jan. 23, 2003",
+          "event": "Pioneer 10's last signal received on Earth, from 7.6 billion miles (12.23 billion km); signal took 11 hours 20 minutes to reach Earth; RTG power had decayed below transmitter needs"
+        }
+      }
+    },
+    "specifications": [
+      {
+        "parameter": "Nation",
+        "value": "United States of America (USA)"
+      },
+      {
+        "parameter": "Objective(s)",
+        "value": "Jupiter Flyby"
+      },
+      {
+        "parameter": "Spacecraft",
+        "value": "Pioneer-F"
+      },
+      {
+        "parameter": "Spacecraft Mass",
+        "value": "569 pounds (258 kilograms)"
+      },
+      {
+        "parameter": "Mission Design and Management",
+        "value": "NASA / ARC"
+      },
+      {
+        "parameter": "Launch Vehicle",
+        "value": "Atlas Centaur (AC-27 / Atlas 3C no. 5007C / Centaur D-1A)"
+      },
+      {
+        "parameter": "Launch Date and Time",
+        "value": "March 2, 1972 / 01:49:04 UT"
+      },
+      {
+        "parameter": "Launch Site",
+        "value": "Cape Canaveral, Florida / Launch Complex 36A"
+      },
+      {
+        "parameter": "Power",
+        "value": "All-nuclear electrical power: two SNAP-19 radioisotope thermal generators (RTGs), ~140 W during the Jupiter encounter"
+      },
+      {
+        "parameter": "Max escape velocity",
+        "value": "32,110 miles per hour (51,682 kilometers per hour) — faster than any previous human-made object at the time"
+      },
+      {
+        "parameter": "Design lifetime vs actual",
+        "value": "Originally designed for a 21-month mission to fly by Jupiter; lasted more than 30 years"
+      },
+      {
+        "parameter": "Scientific Instruments — scientific_instruments",
+        "value": "Imaging Photopolarimeter; Helium Vector Magnetometer (HVM); Infrared Radiometer; Quadrispherical Plasma Analyzer; Ultraviolet Photometer; Charged Particle Instrument (CPI); Cosmic Ray Telescope (CRT); Geiger Tube Telescope (GTT); Sisyphus Asteroid/Meteoroid Detector (AMD); Meteoroid Detectors; Trapped Radiation Detector (TRD)"
+      }
+    ],
+    "key_facts": {
+      "what_was": "Pioneer 10 was NASA's first mission to the outer planets. The mission was a spectacular success and the spacecraft notched a series of firsts unmatched by any other robotic spacecraft to date.",
+      "bullets": [
+        "Originally designed for a 21-month mission to fly by Jupiter, Pioneer 10 lasted more than 30 years.",
+        "Pioneer 10 sent its last signal to Earth in January 2003 from a distance of 7.6 billion miles (12.23 billion kilometers)."
+      ],
+      "firsts": [
+        "First spacecraft placed on a trajectory to escape the solar system into interstellar space",
+        "First spacecraft to fly beyond Mars",
+        "First spacecraft to fly through the main asteroid belt",
+        "First spacecraft to fly past Jupiter",
+        "Crossed the orbit of Neptune to become the first human-made object to go beyond Neptune",
+        "First spacecraft to use all-nuclear electrical power"
+      ],
+      "plaque": "In case it's intercepted by intelligent life, Pioneer 10 carries an aluminum plaque with diagrams of a man and a woman, the solar system, and its location relative to 14 pulsars.",
+      "current_status": "By Nov. 5, 2017, the inert Pioneer 10 spacecraft was roughly 118.824 AUs (about 11 billion miles or 17.7 billion kilometers) from Earth, second only to Voyager 1. It is heading toward the red star Aldebaran (eye of the Taurus constellation), which it will pass in about two million years."
+    },
+    "timeline": [
+      {
+        "date": "1972-03-02",
+        "date_raw": "March 2, 1972",
+        "title": "Launch"
+      },
+      {
+        "date": "1972-07-15",
+        "date_raw": "July 15, 1972",
+        "title": "Spacecraft entered the asteroid belt"
+      },
+      {
+        "date": "1973-12-04",
+        "date_raw": "Dec. 4, 1973",
+        "title": "Pioneer 10’s closest approach to Jupiter"
+      },
+      {
+        "date": "1976-02-01",
+        "date_raw": "Feb. 1976",
+        "title": "Pioneer crossed Saturn’s orbit"
+      },
+      {
+        "date": "1983-06-13",
+        "date_raw": "June 13, 1983",
+        "title": "Pioneer 10 crossed the orbit of Neptune"
+      },
+      {
+        "date": "1997-03-31",
+        "date_raw": "March 31, 1997",
+        "title": "Routine contact with spacecraft terminated"
+      },
+      {
+        "date": "2003-01-23",
+        "date_raw": "Jan. 23, 2003",
+        "title": "Pioneer 10's last signal is received on Earth"
+      }
+    ],
+    "article": {
+      "title": "Pioneer 10",
+      "lead": "Pioneer 10 was NASA's first mission to the outer planets — first to Jupiter.",
+      "content_language": "en",
+      "sections": [
+        {
+          "heading": "What was Pioneer 10?",
+          "markdown": "Pioneer 10 was NASA's first mission to the outer planets. The mission was a spectacular success and the spacecraft notched a series of firsts unmatched by any other robotic spacecraft to date.\n\n- Originally designed for a 21-month mission to fly by Jupiter, Pioneer 10 lasted more than 30 years.\n- Pioneer 10 sent its last signal to Earth in January 2003 from a distance of 7.6 billion miles (12.23 billion kilometers)."
+        },
+        {
+          "heading": "Firsts",
+          "markdown": "- First spacecraft placed on a trajectory to escape the solar system into interstellar space\n- First spacecraft to fly beyond Mars\n- First spacecraft to fly through the main asteroid belt\n- First spacecraft to fly past Jupiter\n- Crossed the orbit of Neptune to become the first human-made object to go beyond Neptune\n- First spacecraft to use all-nuclear electrical power"
+        },
+        {
+          "heading": "Key Dates",
+          "markdown": "- **March 2, 1972:** Launch\n- **July 15, 1972:** Spacecraft entered the asteroid belt\n- **Dec. 4, 1973:** Pioneer 10’s closest approach to Jupiter\n- **Feb. 1976:** Pioneer crossed Saturn’s orbit\n- **June 13, 1983:** Pioneer 10 crossed the orbit of Neptune\n- **March 31, 1997:** Routine contact with spacecraft terminated\n- **Jan. 23, 2003:** Pioneer 10's last signal is received on Earth"
+        },
+        {
+          "heading": "In Depth: Pioneer 10",
+          "markdown": "Pioneer 10, the first NASA mission to the outer planets, garnered a series of firsts perhaps unmatched by any other robotic spacecraft in the space era: the first vehicle placed on a trajectory to escape the solar system into interstellar space; the first spacecraft to fly beyond Mars; the first to fly through the asteroid belt; the first to fly past Jupiter; and the first to use all-nuclear electrical power (two SNAP-19 radioisotope thermal generators [RTGs] capable of delivering about 140 W during the Jupiter encounter).\n\nAfter launch by a three-stage version of the Atlas Centaur (with a TE-M-364-4 solid propellant engine modified from the Surveyor lander), Pioneer 10 reached a maximum escape velocity of 32,110 miles per hour (51,682 kilometers per hour), faster than any previous human-made object at that point in time.\n\nControllers carried out two course corrections, on March 7 and March 26, the latter to ensure an occultation experiment with Jupiter’s moon Io.\n\nThere were some initial problems during the outbound voyage when direct sunlight caused heating problems, but nothing to endanger the mission.\n\nOn July 15, 1972, the spacecraft entered the asteroid belt, emerging in February 1973 after a voyage of about 271 million miles (435 million kilometers). During this period, the spacecraft encountered some asteroid hits, although fewer than expected, and also measured the intensity of Zodiacal light in interplanetary space.\n\nIn conjunction with Pioneer 9 (in solar orbit), on Aug. 7, Pioneer 10 recorded details of one of the most violent solar storms in recent record.\n\nAt 20:30 UT Nov. 26, the spacecraft reported a decrease in the solar wind and a 100-fold increase in temperature indicating that it was passing through the front of Jupiter’s bow shock. In other words, it had entered Jupiter’s magnetosphere.\n\nBy Dec. 1, Pioneer 10 was returning better images of the planet than possible from Earth. (It had already begun imaging as early as Nov. 6, 1973). Command-and-return time was up to 92 minutes by this time.\n\nPioneer 10’s closest approach to Jupiter was at 02:26 UT Dec. 4, 1973, when the spacecraft raced by the planet at a range of 81,000 miles (130,354 kilometers) at a velocity of approximately 78,000 miles per hour (126,000 kilometers/hour).\n\nOf the spacecraft’s 11 scientific instruments, 6 operated continuously through the encounter.\n\nThe spacecraft passed by a series of Jovian moons, obtaining photos of Callisto, Ganymede, and Europa (but not of Io, as the photopolarimeter succumbed to radiation by that time).\n\nApproximately 78 minutes after the closest approach, Pioneer 10 passed behind Jupiter’s limb for a radio occultation experiment. In addition, the infrared radiometer provided further information on the planet’s atmosphere.\n\nBetween Nov. 6 and Dec. 31, the spacecraft took about 500 pictures of Jupiter’s atmosphere with the highest resolution of about 200 miles (320 kilometers), clearly showing such landmarks as the Great Red Spot.\n\nThe Jupiter encounter was declared over Jan. 2, 1974.\n\nPioneer 10 fulfilled all objectives except one due to false commands triggered by Jupiter’s intense radiation. Based on the data, scientists identified plasma in Jupiter’s magnetic field.\n\nThe spacecraft crossed Saturn’s orbit in February 1976, recording data that indicated that Jupiter’s enormous magnetic tail, almost 800 million kilometers long, covered the whole distance between the two planets.\n\nStill operating nominally, Pioneer 10 crossed the orbit of Neptune (then the outermost planet) on June 13, 1983, thus becoming the first human-made object to go beyond the furthest planet.\n\nNASA maintained routine contact with Pioneer 10 for over two decades until 19:35 UT March 31, 1997, (when the spacecraft was 67 AU from Earth) when routine contact was terminated due to budgetary reasons. Intermittent contact, however, continued, but only as permitted by the onboard power source, with data collections from the Geiger tube telescope and the charged particle instrument.\n\nUntil Feb. 17, 1998, Pioneer 10 was the farthest human-made object in existence (69.4 AU) when it was passed by Voyager 1.\n\nA NASA ground team received a signal on the state of spacecraft systems (still nominal) Aug. 5, 2000. The spacecraft returned its last telemetry data April 27, 2002, and less than a year later, on Jan. 23, 2003, it sent its last signal when it was 7.6 billion miles (12.23 billion kilometers) from Earth. That signal took 11 hours and 20 minutes to reach Earth. By that time, it was clear that the spacecraft’s RTG power source had decayed, thus delivering insufficient power to the radio transmitter.\n\nA final attempt to contact Pioneer 10 on March 4, 2006, failed. Originally designed for a 21-month mission, the mission’s lifetime far exceeded expectations.\n\nBy Nov. 5, 2017, the inert Pioneer 10 spacecraft was roughly 118.824 AUs (about 11 billion miles or 17.7 billion kilometers) from Earth, a range second only to Voyager 1. The spacecraft is generally heading in the direction of the red star Aldebaran which forms the eye of the Taurus constellation. It is expected to pass by Aldebaran in about two million years.\n\nPioneer 10 is heading out of the solar system in a direction very different from the two Voyager probes and Pioneer 11, i.e., towards the nose of the heliosphere in an upstream direction relative to the inflowing interstellar gas.\n\nIn case it's intercepted by intelligent life, Pioneer 10 carries an aluminum plaque with diagrams of a man and a woman, the solar system, and its location relative to 14 pulsars. The expectation is that intelligent beings would be able to interpret the diagram to determine the position of the Sun— and thus, Earth— at the time of launch relative to the pulsars."
+        },
+        {
+          "heading": "Mission Statistics",
+          "markdown": "- **Nation:** United States of America (USA)\n- **Objective(s):** Jupiter Flyby\n- **Spacecraft:** Pioneer-F\n- **Spacecraft Mass:** 569 pounds (258 kilograms)\n- **Mission Design and Management:** NASA / ARC\n- **Launch Vehicle:** Atlas Centaur (AC-27 / Atlas 3C no. 5007C / Centaur D-1A)\n- **Launch Date and Time:** March 2, 1972 / 01:49:04 UT\n- **Launch Site:** Cape Canaveral, Florida / Launch Complex 36A\n\n**Scientific Instruments:**\n\n1. Imaging Photopolarimeter\n2. Helium Vector Magnetometer (HVM)\n3. Infrared Radiometer\n4. Quadrispherical Plasma Analyzer\n5. Ultraviolet Photometer\n6. Charged Particle Instrument (CPI)\n7. Cosmic Ray Telescope (CRT)\n8. Geiger Tube Telescope (GTT)\n9. Sisyphus Asteroid/Meteoroid Detector (AMD)\n10. Meteoroid Detectors\n11. Trapped Radiation Detector (TRD)"
+        },
+        {
+          "heading": "Key Source",
+          "markdown": "Siddiqi, Asif A. [Beyond Earth: A Chronicle of Deep Space Exploration, 1958-2016](https://solarsystem.nasa.gov/resources/1060/beyond-earth-a-chronicle-of-deep-space-exploration/). NASA History Program Office, 2018."
+        }
+      ]
+    },
+    "media": {
+      "hero_image": {
+        "url": "https://assets.science.nasa.gov/content/dam/science/psd/solar/internal_resources/731/Illustrated_Pioneer_10_at_Jupiter.jpeg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+        "context": "og:image strony (artist's concept at Jupiter)",
+        "credit": "NASA"
+      },
+      "images": [
+        {
+          "url": "https://science.nasa.gov/wp-content/uploads/2023/04/jupiter_pioneer_10_art-jpg.webp",
+          "caption": "An artist's concept of the Pioneer 10 spacecraft.",
+          "context": "sekcja 'What was Pioneer 10?'",
+          "credit": "NASA"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/740/Pioneer_plaque_mounted_to_spacecraft.jpeg",
+          "caption": "Pioneers 10 and 11 both carried small metal plaques identifying their time and place of origin for the benefit of any other spacefarers that might find them in the future.",
+          "context": "sekcja 'In Depth' (plakietka Pioneer)",
+          "credit": "NASA"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/5211/Pioneer_10_Ganymede-1.jpeg",
+          "caption": "NASA's Pioneer 10 snapped this image of Ganymede during its flyby in Dec. 1973. It was the first spacecraft to obtain close-up images of Ganymede.",
+          "context": "sekcja 'In Depth' (zdjęcie Ganymede)",
+          "credit": "NASA"
+        }
+      ],
+      "gifs": [],
+      "videos": [],
+      "models_3d": [],
+      "downloads": []
+    },
+    "related": {
+      "mission_pages": [
+        {
+          "title": "All Pioneer 10 Stories",
+          "url": "https://science.nasa.gov/mission/pioneer-10/stories/"
+        }
+      ],
+      "feature_stories": [
+        {
+          "title": "Pioneer 10 Crosses the Asteroid Belt (image article, 1 min read)",
+          "url": "https://www.nasa.gov/image-article/pioneer-10-crosses-the-asteroid-belt/"
+        },
+        {
+          "title": "10 Facts about the Pioneer Spacecraft (4 min read)",
+          "url": "https://www.nasa.gov/missions/pioneer/pioneer-11/10-things-about-pioneer-spacecraft/"
+        },
+        {
+          "title": "50 Years Ago: Pioneer 10 Launches to Explore Jupiter (6 min read)",
+          "url": "https://www.nasa.gov/history/50-years-ago-pioneer-10-launches-to-explore-jupiter/"
+        }
+      ],
+      "other_links": [
+        {
+          "title": "Beyond Earth: A Chronicle of Deep Space Exploration (source book)",
+          "url": "https://solarsystem.nasa.gov/resources/1060/beyond-earth-a-chronicle-of-deep-space-exploration/"
+        }
+      ]
+    },
+    "notes": [
+      "Strona Pioneer 10 to starszy typ strony misji NASA: brak filmów, GIF-ów i modeli 3D — 3 obrazy (koncepcja artystyczna, plakietka, Ganymede).",
+      "Strona podaje tylko 'March 2, 1972: Launch' — godzina 01:49:04 UT i rakieta Atlas Centaur pochodzą z tabeli faktów (Mission Statistics) na tej samej stronie.",
+      "Data 'rozpoczęcia operacji' nie występuje wprost — misja przyłówkowa zaczęła się od startu 1972-03-02; najbliższe podejście do Jowisza 1973-12-04 to główny cel misji; ostatni sygnał 2003-01-23.",
+      "Sekcja 'Pioneer 10 Stories' zawierała jeden artykuł niepowiązany (New Glenn/ESCAPADE) — pominięto go; pozostałe 3 pozycje o Pioneerach zebrane w related.feature_stories.",
+      "Treść article.sections zachowana w języku angielskim (źródłowym); układ i kolejność sekcji = kolejność na stronie.",
+      "Wszystkie URL-e w polach media.* zweryfikowane HTTP 200 (2026-11-14, skrypt scripts/verify_urls.py)."
+    ]
+  },
+  "viking-1": {
+    "_format": {
+      "format_version": "nasa-mission-scraper/1.0",
+      "description": "Ujednolicony format eksportu danych ze stron NASA (science.nasa.gov i pokrewnych). Ten sam schemat stosuj do każdej kolejnej strony misji/pojazdu, aby wszystkie wpisy były spójne i mogły być łączone w jedną bazę.",
+      "conventions": [
+        "Klucze zawsze obecne; brak danych = null (nigdy nie usuwaj klucza), brak pozycji = pusta lista [].",
+        "Daty: 'date' zawsze w ISO 8601 (YYYY-MM-DD), 'date_raw' zachowuje oryginalny zapis ze strony.",
+        "Wszystkie URL-e bezwzględne (https://...), bez parametrów śledzących gdzie to możliwe.",
+        "Każdy zasób medialny jest obiektem z minimalnym zestawem pól: url + typ + context (skąd pochodzi na stronie).",
+        "Treść artykułu w polach 'markdown': nagłówki '##'/'###', listy '-', listy numerowane '1.', pogrubienia '**'. Układ = kolejność sekcji ze strony źródłowej.",
+        "Treść zachowywana w języku źródła (pole source.language); nie tłumaczyć przy ekstrakcji.",
+        "Pola 'id' zewnętrznych systemów (np. PIA##### z Photojournal, identyfikatory YouTube, numery modeli 3D) zapisuj w dedykowanych polach *_id, jeśli są znane.",
+        "Weryfikuj dostępność URL-i (HTTP 200) przed zapisem; martwy link oznaczaj w polu 'status'."
+      ],
+      "top_level_keys": [
+        "_format",
+        "source",
+        "vehicle",
+        "specifications",
+        "key_facts",
+        "timeline",
+        "article",
+        "media",
+        "related",
+        "notes"
+      ]
+    },
+    "source": {
+      "url": "https://science.nasa.gov/mission/viking-1/",
+      "canonical_url": "https://science.nasa.gov/mission/viking-1/",
+      "page_title": "Viking 1 - NASA Science",
+      "page_type": "mission_page",
+      "site": "science.nasa.gov",
+      "language": "en",
+      "scraped_at": "2026-11-14",
+      "page_last_updated": "2026-07-20",
+      "page_editor": null,
+      "responsible_nasa_official": null,
+      "meta_description": "Viking 1 made the first truly successful landing on Mars. The Soviet Mars 3 lander claimed a technical first, but contact was lost almost immediately.",
+      "og_image": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/07/Viking_1_First_Image_From_Mars_1280.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
+    },
+    "vehicle": {
+      "name": "Viking 1",
+      "full_name": "Viking 1 (Orbiter & Lander)",
+      "agency": "NASA / Langley Research Center (LaRC) / Jet Propulsion Laboratory (JPL)",
+      "mission": {
+        "name": "Viking program (mission pair with Viking 2)",
+        "url": "https://science.nasa.gov/mission/viking/",
+        "relationship": "first of two orbiter+lander spacecraft of the Viking program"
+      },
+      "type": {
+        "category": "orbiter+lander",
+        "name": "Orbiter, Lander",
+        "page_label": "Orbiter, Lander"
+      },
+      "objective": "Mars Landing and Orbit — collect evidence on the possibility of life on Mars",
+      "destination": "Mars (Chryse Planitia landing site)",
+      "status": "mission_completed",
+      "nation": "United States of America (USA)",
+      "spacecraft_designation": "Viking-B",
+      "dates": {
+        "launch": {
+          "date": "1975-08-20",
+          "date_raw": "Aug. 20, 1975 / 21:22:00 UT",
+          "location": "Cape Canaveral, Fla. / Launch Complex 41",
+          "vehicle": "Titan IIIE-Centaur (TC-4 / Titan no. E-4 / Centaur D-1T)"
+        },
+        "arrival": {
+          "date": "1976-06-19",
+          "date_raw": "June 19, 1976",
+          "event": "Spacecraft entered orbit around Mars"
+        },
+        "landing": {
+          "date": "1976-07-20",
+          "date_raw": "July 20, 1976 / 11:53:06 UT",
+          "location": "Chryse Planitia (22.483°N, 47.94°W), Mars",
+          "note": "first truly successful landing on Mars; ~17 miles (28 km) from planned target"
+        },
+        "end_of_operations": {
+          "date": "1980-08-07",
+          "date_raw": "Aug. 7, 1980",
+          "event": "Orbiter shut down after running out of attitude-control propellant on its 1,489th orbit"
+        },
+        "mission_end": {
+          "date": "1982-11-11",
+          "date_raw": "Nov. 11, 1982",
+          "event": "Lander stopped operating after a faulty command interrupted communications; contact never regained"
+        }
+      }
+    },
+    "specifications": [
+      {
+        "parameter": "Spacecraft Mass",
+        "value": "7,776 pounds (3,527 kilograms) total; orbiter 5,157 pounds (2,339 kg) + lander 2,156 pounds (978 kg)"
+      },
+      {
+        "parameter": "Spacecraft Power",
+        "value": "Each lander carried two SNAP-19 Radioisotope Thermoelectric Generators (RTGs); orbiters were solar-powered"
+      },
+      {
+        "parameter": "Launch Vehicle",
+        "value": "Titan IIIE-Centaur (TC-4 / Titan no. E-4 / Centaur D-1T)"
+      },
+      {
+        "parameter": "Mission Design and Management",
+        "value": "NASA / Langley Research Center (LaRC) / Jet Propulsion Laboratory (JPL)"
+      },
+      {
+        "parameter": "Initial orbit around Mars",
+        "value": "932 × 31,255 miles (1,500 × 50,300 kilometers); operational orbit 932 × 20,381 miles (1,500 × 32,800 km)"
+      },
+      {
+        "parameter": "Scientific Instruments — orbiters",
+        "value": "Imaging System (2 Vidicon Cameras) (VIS); Infrared Spectrometer for Water Vapor Mapping (MAWD); Infrared Radiometer for Thermal Mapping (IRTM)"
+      },
+      {
+        "parameter": "Scientific Instruments — landers",
+        "value": "Imaging System (2 facsimile cameras); Gas Chromatograph Mass Spectrometer (GCMS); Seismometer; X-Ray Fluorescence Spectrometer; Biological Laboratory; Weather Instrument Package (Temperature, Pressure, Wind Velocity); Remote Sampler Arm"
+      },
+      {
+        "parameter": "Scientific Instruments — aeroshells",
+        "value": "Retarding Potential Analyzer; Upper-Atmosphere Mass Spectrometer; Pressure, Temperature, and Density Sensors"
+      }
+    ],
+    "key_facts": {
+      "what_was": "NASA's Viking 1 made the first truly successful landing on Mars. The Soviet Mars 3 lander claimed a technical first with a survivable landing in 1971, but contact was lost seconds after it touched down.",
+      "bullets": [
+        "Both NASA Viking missions used a combination of orbiter and lander to explore Mars in unprecedented detail.",
+        "In total, the two Viking orbiters returned 52,663 images of Mars and mapped about 97 percent of the surface at a resolution of 984 feet (300 meters). The landers returned 4,500 photos of the two landing sites."
+      ],
+      "anniversary_campaign": {
+        "title": "Viking: 50 Years on Mars",
+        "url": "https://science.nasa.gov/mission/viking/viking-50-years-on-mars/"
+      }
+    },
+    "timeline": [
+      {
+        "date": "1975-08-20",
+        "date_raw": "Aug. 20, 1975",
+        "title": "Launch"
+      },
+      {
+        "date": "1976-06-19",
+        "date_raw": "June 19, 1976",
+        "title": "Spacecraft entered orbit around Mars"
+      },
+      {
+        "date": "1976-07-20",
+        "date_raw": "July 20, 1976",
+        "title": "Lander touched down"
+      },
+      {
+        "date": "1980-08-07",
+        "date_raw": "Aug. 7, 1980",
+        "title": "Orbiter was shut down after running out of attitude-control propellant"
+      },
+      {
+        "date": "1982-11-11",
+        "date_raw": "Nov. 11, 1982",
+        "title": "Lander stopped operating after getting a faulty command"
+      }
+    ],
+    "article": {
+      "title": "Viking 1",
+      "lead": "Viking 1 made the first truly successful landing on Mars.",
+      "content_language": "en",
+      "sections": [
+        {
+          "heading": "Viking: 50 Years on Mars",
+          "markdown": "Throughout history, Mars had been in sight, but never within reach — until July 20, 1976, when NASA’s Viking 1 lander touched down safely and began transmitting the first images from the surface of the Red Planet. Viking 1 broke ground on Mars surface exploration, beginning an effort that continues through today. Mars missions ever since, and those yet to come, seek to uncover whether the planet’s once warm and wet climate was ever habitable to some form of life, as our discoveries help inform sustainability for human exploration in the future. These missions continue building on what the Vikings began.\n\n[Join the Celebration: Stories, Images, Videos, Posters, and More about Viking: 50 Years on Mars](https://science.nasa.gov/mission/viking/viking-50-years-on-mars/)"
+        },
+        {
+          "heading": "What was Viking 1?",
+          "markdown": "NASA's Viking 1 made the first truly successful landing on Mars. The Soviet Mars 3 lander claimed a technical first with a survivable landing in 1971, but contact was lost seconds after it touched down.\n\n- Both NASA Viking missions used a combination of orbiter and lander to explore Mars in unprecedented detail.\n- In total, the two Viking orbiters returned 52,663 images of Mars and mapped about 97 percent of the surface at a resolution of 984 feet (300 meters) resolution. The landers returned 4,500 photos of the two landing sites."
+        },
+        {
+          "heading": "Key Dates",
+          "markdown": "- **Aug. 20, 1975:** Launch\n- **June 19, 1976:** Spacecraft entered orbit around Mars\n- **July 20, 1976:** Lander touched down\n- **Aug. 7, 1980:** Orbiter was shut down after running out of attitude-control propellant\n- **Nov. 11, 1982:** Lander stopped operating after getting a faulty command"
+        },
+        {
+          "heading": "Results",
+          "markdown": "Viking 1 was the first of a pair of complex deep-space probes that were designed to reach Mars and collect evidence on the possibility on life on Mars.\n\nEach spacecraft was composed of two primary elements, an orbiter (5,157 pounds or 2,339 kilograms) and a lander (2,156 pounds or 978 kilograms). The orbiter design borrowed heavily from the [Mariner](https://science.nasa.gov/mission/mariner-9/) spacecraft buses, or the main body and infrastructure, while the lander looked superficially like a much larger version of the [Surveyor](https://science.nasa.gov/mission/surveyor-1/) lunar lander.\n\nPrior to launch, the batteries of the first spacecraft were discharged, prompting NASA to replace the original first spacecraft with the second, which was launched as Viking 1.\n\nAfter three course corrections (Aug. 27, 1975, June 10, 1976, and June 15, 1976), the spacecraft entered orbit around Mars June 19, 1976. Initial orbital parameters were 932 × 31,255 miles (1,500 × 50,300 kilometers). The following day, the orbiter moved into an operational orbit at 932 × 20,381 miles (1,500 × 32,800 kilometers).\n\nThe same day, when the orbiter began transmitting back photos of the primary landing site in the Chryse region, scientists discovered that the area was rougher than expected. Using the new photos, scientists targeted the lander to a different site on the western slopes of Chryse Planitia (Golden Plain).\n\nThe lander separated from the orbiter at 08:32 UT July 20, 1976, and after a complicated atmospheric entry sequence during which the probe took air samples, Viking Lander 1 set down safely at 22.483 degrees north latitude and 47.94 degrees west longitude at 11:53:06 UT July 20, 1976. It landed about 17 miles (28 kilometers) from its planned target.\n\nOnce down, the spacecraft began taking high-quality photographs (in three colors) of its surroundings. Besides high-resolution images, the lander also took a 300-degree panorama of its surroundings that showed not only parts of the spacecraft itself but also the gently rolling plains of the environs.\n\nInstruments recorded temperatures ranging from minus 123 degrees Fahrenheit (minus 86 degrees Celsius) before dawn to minus 27 degrees Fahrenheit (minus 33 degrees Celsius) in the afternoon. The seismometer on the lander was, however, inoperable.\n\nOn July 28, 1976, the lander’s robot arm scooped up the first soil samples and deposited them into a special biological laboratory that included a gas chromatograph mass spectrometer.\n\nThe cumulative data from the four samples collected could have been construed as indicating the presence of life (weak positive), but the major test for organic compounds using the gas chromatograph experiment (capable of detecting organic compounds that comprised more than 10-100 parts per billion in the soil) gave negative results.\n\nData showed an abundance of sulfur, certainly different from any known material found on Earth or the Moon.\n\nWhile the primary mission for both Viking 1 and Viking 2 ended in November 1976, activities continued through the Extended Mission (November 1976 to May 1978) and the Continuation Mission (May 1978 to July 1979). Viking 1’s orbiter then continued a Survey Mission from July 1979 to July 1980.\n\nThe lander continued to return daily (and then eventually weekly) weather reports as part of the Viking Monitor Mission. In January 1982, it was renamed the Thomas Mutch Memorial Station in honor of Thomas A. Mutch (1931-1980) the leader of the Viking imaging team who had died Oct. 6, 1980.\n\nThe lander operated until Nov. 11, 1982, when a faulty command sent from Earth resulted in an interruption of communications. Further attempts to regain contact proved to be unsuccessful.\n\nThe orbiter, after taking many more high-resolution images of the planet and its two moons, far superior than those from Mariner 9, was shut down Aug. 7, 1980, after it ran out of attitude control propellant on its 1,489th orbit around Mars."
+        },
+        {
+          "heading": "Mission Statistics",
+          "markdown": "- **Nation:** United States of America (USA)\n- **Objective(s):** Mars Landing and Orbit\n- **Spacecraft:** Viking-B\n- **Spacecraft Mass:** 7,776 pounds (3,527 kilograms)\n- **Spacecraft Power:** Each lander carried two [SNAP-19 Radioisotope Thermoelectric Generators (RTGs)](https://rps.nasa.gov/power-and-thermal-systems/legacy-power-systems/); Orbiters were solar-powered\n- **Mission Design and Management:** NASA / Langley Research Center (LaRC) / Jet Propulsion Laboratory (JPL)\n- **Launch Vehicle:** Titan IIIE-Centaur (TC-4 / Titan no. E-4 / Centaur D-1T)\n- **Launch Date and Time:** Aug. 20, 1975 / 21:22:00 UT\n- **Launch Site:** Cape Canaveral, Fla. / Launch Complex 41\n\n**Scientific Instruments:**\n\n*Orbiters:*\n1. Imaging System (2 Vidicon Cameras) (VIS)\n2. Infrared Spectrometer for Water Vapor Mapping (MAWD)\n3. Infrared Radiometer for Thermal Mapping (IRTM)\n\n*Landers:*\n1. Imaging System (2 facsimile cameras)\n2. Gas Chromatograph Mass Spectrometer (GCMS)\n3. Seismometer\n4. X-Ray Fluorescence Spectrometer\n5. Biological Laboratory\n6. Weather Instrument Package (Temperature, Pressure, Wind Velocity)\n7. Remote Sampler Arm\n\n*Aeroshells:*\n1. Retarding Potential Analyzer\n2. Upper-Atmosphere Mass Spectrometer\n3. Pressure, Temperature, and Density Sensors"
+        },
+        {
+          "heading": "Key Source",
+          "markdown": "Siddiqi, Asif A. [Beyond Earth: A Chronicle of Deep Space Exploration, 1958-2016](https://solarsystem.nasa.gov/resources/1060/beyond-earth-a-chronicle-of-deep-space-exploration/). NASA History Program Office, 2018."
+        }
+      ]
+    },
+    "media": {
+      "hero_image": {
+        "url": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/07/Viking_1_First_Image_From_Mars_1280.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+        "context": "og:image strony",
+        "credit": "NASA"
+      },
+      "images": [
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia00/pia00381/PIA00381.tif?w=2048",
+          "photojournal_id": "PIA00381",
+          "caption": "This is the first photograph ever taken on the surface of the planet Mars. It was obtained by NASA's Viking 1 just minutes after the spacecraft landed successfully July 20, 1976.",
+          "context": "zdjęcie główne na szczycie strony (sekcja 'Viking: 50 Years on Mars')",
+          "credit": "NASA/JPL-Caltech"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/3513/Line_drawing_of_Viking_Orbiter-1.jpeg",
+          "caption": "Line drawing of Viking Orbiter",
+          "context": "sekcja 'Results' (rycina techniczna orbitera)",
+          "credit": "NASA"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/3514/Viking_Lander_Line_Drawing-1.jpeg",
+          "caption": "Viking Lander Line Drawing",
+          "context": "sekcja 'Results' (rycina techniczna lądownika)",
+          "credit": "NASA"
+        }
+      ],
+      "gifs": [],
+      "videos": [],
+      "models_3d": [],
+      "downloads": []
+    },
+    "related": {
+      "mission_pages": [
+        {
+          "title": "Viking Program Overview",
+          "url": "https://science.nasa.gov/mission/viking/"
+        },
+        {
+          "title": "Viking 2 Orbiter & Lander",
+          "url": "https://science.nasa.gov/mission/viking-2/"
+        },
+        {
+          "title": "Viking: Spacecraft and Science",
+          "url": "https://science.nasa.gov/mission/viking/spacecraft-and-science/"
+        },
+        {
+          "title": "Viking: 50 Years on Mars (celebration hub)",
+          "url": "https://science.nasa.gov/mission/viking/viking-50-years-on-mars/"
+        }
+      ],
+      "related_missions": [
+        {
+          "title": "Mariner 9 (orbiter design heritage)",
+          "url": "https://science.nasa.gov/mission/mariner-9/"
+        },
+        {
+          "title": "Surveyor 1 (lander design heritage)",
+          "url": "https://science.nasa.gov/mission/surveyor-1/"
+        }
+      ],
+      "feature_stories": [
+        {
+          "title": "Mars News & Features",
+          "url": "https://science.nasa.gov/mars/stories/"
+        },
+        {
+          "title": "Mars Resources (resource package)",
+          "url": "https://science.nasa.gov/solar-system/resources/resource-packages/mars-resources/"
+        }
+      ],
+      "other_links": [
+        {
+          "title": "SNAP-19 RTGs (Radioisotope Power Systems)",
+          "url": "https://rps.nasa.gov/power-and-thermal-systems/legacy-power-systems/"
+        },
+        {
+          "title": "Beyond Earth: A Chronicle of Deep Space Exploration (source book)",
+          "url": "https://solarsystem.nasa.gov/resources/1060/beyond-earth-a-chronicle-of-deep-space-exploration/"
+        }
+      ]
+    },
+    "notes": [
+      "Strona misji Viking 1 jest starszego typu: brak osadzonych filmów, GIF-ów, modeli 3D i plików do pobrania — pola media pozostają puste zgodnie z konwencją formatu.",
+      "Daty zakończenia: orbiter (1980-08-07) i lądownik (1982-11-11) różnią się — strona podaje obie; w vehicle.dates rozdzielono end_of_operations (orbiter) i mission_end (lander).",
+      "Model 3D nie jest dostępny na stronie misji, ale Viking Lander występuje w katalogu NASA 3D Resources: https://science.nasa.gov/3d-resources/ (link w related).",
+      "Treść article.sections zachowana w języku angielskim (źródłowym); układ i kolejność sekcji = kolejność na stronie.",
+      "Wszystkie URL-e w polach media.* zweryfikowane HTTP 200 (2026-11-14, skrypt scripts/verify_urls.py)."
+    ]
+  }
+}

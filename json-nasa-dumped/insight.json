@@ -1,0 +1,391 @@
+{
+  "_format": {
+    "format_version": "nasa-mission-scraper/1.0",
+    "description": "Ujednolicony format eksportu danych ze stron NASA (science.nasa.gov i pokrewnych). Ten sam schemat stosuj do każdej kolejnej strony misji/pojazdu, aby wszystkie wpisy były spójne i mogły być łączone w jedną bazę.",
+    "conventions": [
+      "Klucze zawsze obecne; brak danych = null (nigdy nie usuwaj klucza), brak pozycji = pusta lista [].",
+      "Daty: 'date' zawsze w ISO 8601 (YYYY-MM-DD), 'date_raw' zachowuje oryginalny zapis ze strony.",
+      "Wszystkie URL-e bezwzględne (https://...), bez parametrów śledzących gdzie to możliwe.",
+      "Każdy zasób medialny jest obiektem z minimalnym zestawem pól: url + typ + context (skąd pochodzi na stronie).",
+      "Treść artykułu w polach 'markdown': nagłówki '##'/'###', listy '-', listy numerowane '1.', pogrubienia '**'. Układ = kolejność sekcji ze strony źródłowej.",
+      "Treść zachowywana w języku źródła (pole source.language); nie tłumaczyć przy ekstrakcji.",
+      "Pola 'id' zewnętrznych systemów (np. PIA##### z Photojournal, identyfikatory YouTube, numery modeli 3D) zapisuj w dedykowanych polach *_id, jeśli są znane.",
+      "Weryfikuj dostępność URL-i (HTTP 200) przed zapisem; martwy link oznaczaj w polu 'status'."
+    ],
+    "top_level_keys": [
+      "_format",
+      "source",
+      "vehicle",
+      "specifications",
+      "key_facts",
+      "timeline",
+      "article",
+      "media",
+      "related",
+      "notes"
+    ]
+  },
+  "source": {
+    "url": "https://science.nasa.gov/mission/insight/",
+    "canonical_url": "https://science.nasa.gov/mission/insight/",
+    "page_title": "InSight Lander - NASA Science",
+    "page_type": "mission_page",
+    "site": "science.nasa.gov",
+    "language": "en",
+    "scraped_at": "2026-11-14",
+    "page_last_updated": "2026-06-23",
+    "page_editor": null,
+    "responsible_nasa_official": null,
+    "meta_description": "InSight Lander was the first outer space robotic explorer to study in-depth the inner space of Mars: its crust, mantle, and core.",
+    "og_image": "https://science.nasa.gov/wp-content/uploads/2008/02/insight.jpg"
+  },
+  "vehicle": {
+    "name": "InSight",
+    "full_name": "Interior Exploration using Seismic Investigations, Geodesy and Heat Transport (InSight)",
+    "agency": "NASA / JPL-Caltech",
+    "mission": {
+      "name": "InSight (Discovery-class Mars lander mission)",
+      "url": "https://science.nasa.gov/mission/insight/",
+      "relationship": "single-spacecraft mission; landed platform based on Mars Phoenix design"
+    },
+    "type": {
+      "category": "lander",
+      "name": "Lander",
+      "page_label": "Lander"
+    },
+    "objective": "Study Mars' interior structure",
+    "destination": "Mars (Elysium Planitia)",
+    "status": "mission_completed",
+    "dates": {
+      "launch": {
+        "date": "2018-05-05",
+        "date_raw": "May 5, 2018 (4:05 a.m. PT / 7:05 a.m. ET)",
+        "location": "Vandenberg Air Force Base, California",
+        "vehicle": "Atlas V-401",
+        "note": "first interplanetary launch from Vandenberg"
+      },
+      "landing": {
+        "date": "2018-11-26",
+        "date_raw": "Nov. 26, 2018, at 11:52:59 a.m. PT (2:52:59 p.m. ET)",
+        "location": "Elysium Planitia, Mars (about 4.5°N, 135.9°E)"
+      },
+      "end_of_operations": {
+        "date": "2022-12-15",
+        "date_raw": "Dec. 15, 2022",
+        "event": "End of Mission — NASA declared the mission over after the lander fell silent (dust on solar panels + declining power)"
+      }
+    }
+  },
+  "specifications": [
+    {
+      "parameter": "Length",
+      "value": "19 feet 8 inches (6 meters) with solar panels deployed (\"wingspan\")"
+    },
+    {
+      "parameter": "Width",
+      "value": "5 feet 1 inch (1.56 meters) (lander deck diameter)"
+    },
+    {
+      "parameter": "Deck Height",
+      "value": "33 to 43 inches (83 to 108 centimeters)"
+    },
+    {
+      "parameter": "Length of Robotic Arm",
+      "value": "5 feet 9 inches (1.8 meters)"
+    },
+    {
+      "parameter": "Weight",
+      "value": "794 pounds (360 kilograms)"
+    },
+    {
+      "parameter": "Electrical Power",
+      "value": "Two solar panels, about 7 feet (2.2 meters) each in diameter"
+    },
+    {
+      "parameter": "Cameras",
+      "value": "2 color cameras (1 is a \"fisheye\"); image size 1,024 pixels by 1,024 pixels"
+    },
+    {
+      "parameter": "Science Instruments",
+      "value": "3 (a seismometer, heat probe, and a radio science experiment)"
+    },
+    {
+      "parameter": "Robotic Arm — Main Function",
+      "value": "To place SEIS, the seismometer, and HP3, the Heat Flow and Physical Properties Package, on the surface of Mars"
+    },
+    {
+      "parameter": "Robotic Arm — Degrees of Freedom",
+      "value": "Four (side-to-side and up-and-down at the shoulder, plus bending at the elbow and wrist joints) with four motors"
+    },
+    {
+      "parameter": "Scientific Instruments — science_instruments",
+      "value": "SEIS — Seismic Experiment for Interior Structure (seismometer); HP3 — Heat Flow and Physical Properties Package (heat probe / \"mole\"); RISE — Rotation and Interior Structure Experiment (radio science)"
+    },
+    {
+      "parameter": "Scientific Instruments — cameras",
+      "value": "IDC — Instrument Deployment Camera (on the arm; 45-degree field of view, full color); ICC — Instrument Context Camera (below the deck edge; 120-degree \"fisheye\" field of view)"
+    }
+  ],
+  "key_facts": {
+    "key_dates_raw": [
+      "Launched: May 5, 2018 (4:05 a.m. PT/7:05 a.m. ET)",
+      "Launch Vehicle: Atlas V-401",
+      "Launch Location: Vandenberg Air Force Base, California",
+      "Landed: Nov. 26, 2018, at 11:52:59 a.m. PT (2:52:59 p.m. ET)",
+      "Landing Site: Elysium Planitia, Mars",
+      "End of Mission: Dec. 15, 2022"
+    ],
+    "featured_story": {
+      "title": "NASA Marsquake Data Reveals Lumpy Nature of Red Planet’s Interior",
+      "url": "https://www.nasa.gov/missions/insight/nasa-marsquake-data-reveals-lumpy-nature-of-red-planets-interior/",
+      "summary": "Rocky material that impacted Mars lies scattered in giant lumps throughout the planet’s mantle, offering clues about Mars’ interior…"
+    },
+    "objectives_note": "The InSight mission had two major goals, each with several science investigations, designed to help uncover the process that shaped all of the rocky planets in the inner solar system. InSight studied the deep interior of Mars and was designed to take the planet's vital signs: its pulse, temperature, and reflexes.",
+    "marco_cubesats": "The rocket that launched InSight also launched a separate NASA technology experiment: two mini-spacecraft called Mars Cube One, or MarCO — the first interplanetary CubeSats."
+  },
+  "timeline": [
+    {
+      "date": "2018-05-05",
+      "date_raw": "May 5, 2018",
+      "title": "Launch (Atlas V-401, Vandenberg AFB)"
+    },
+    {
+      "date": "2018-11-26",
+      "date_raw": "Nov. 26, 2018",
+      "title": "Landing at Elysium Planitia, Mars"
+    },
+    {
+      "date": "2018-12-01",
+      "date_raw": "Dec. 1, 2018",
+      "title": "Sensors captured Martian wind sounds (10–15 mph)"
+    },
+    {
+      "date": "2022-12-15",
+      "date_raw": "Dec. 15, 2022",
+      "title": "End of Mission"
+    }
+  ],
+  "article": {
+    "title": "InSight Lander",
+    "lead": "InSight Lander was the first outer space robotic explorer to study in-depth the inner space of Mars: its crust, mantle, and core.",
+    "content_language": "en",
+    "sections": [
+      {
+        "heading": "Featured Story: NASA Marsquake Data Reveals Lumpy Nature of Red Planet’s Interior",
+        "markdown": "Rocky material that impacted Mars lies scattered in giant lumps throughout the planet’s mantle, offering clues about Mars’ interior…\n\n[Read the Story](https://www.nasa.gov/missions/insight/nasa-marsquake-data-reveals-lumpy-nature-of-red-planets-interior/)"
+      },
+      {
+        "heading": "Meet InSight",
+        "markdown": "The lander was built on the proven design of NASA's [Mars Phoenix lander](https://science.nasa.gov/mission/phoenix/). InSight's robotic arm was over 5 feet 9 inches (1.8 meters) long. It lifted a seismometer and heat flow probe from the deck and placed them on the surface.\n\n[Learn More About the Spacecraft](https://science.nasa.gov/mission/insight/spacecraft/)"
+      },
+      {
+        "heading": "Wind Sounds on Mars",
+        "markdown": "InSight sensors captured a haunting low rumble caused by vibrations from the Martian wind, estimated to be blowing at 10 to 15 mph (5 to 7 meters a second) on Dec. 1, 2018. The winds were consistent with the direction of dust devil streaks in the landing area, which were observed from orbit.\n\n**Audio/Video:** [Sounds of Mars: NASA’s InSight Senses Martian Wind (YouTube)](https://youtu.be/yT50Q_Zbf3s)"
+      },
+      {
+        "heading": "Key Dates",
+        "markdown": "- **Launched:** May 5, 2018 (4:05 a.m. PT / 7:05 a.m. ET)\n- **Launch Vehicle:** Atlas V-401\n- **Launch Location:** Vandenberg Air Force Base, California\n- **Landed:** Nov. 26, 2018, at 11:52:59 a.m. PT (2:52:59 p.m. ET)\n- **Landing Site:** Elysium Planitia, Mars\n- **End of Mission:** Dec. 15, 2022"
+      },
+      {
+        "heading": "Read More",
+        "markdown": "- **Objective** — The InSight mission had two major goals, each with several science investigations, designed to help uncover the process that shaped all of the rocky planets in the inner solar system. [Explore](https://science.nasa.gov/mission/insight/science/)\n- **Science** — InSight studied the deep interior of Mars and was designed to take the planet's vital signs: its pulse, temperature, and reflexes. [Explore](https://go.nasa.gov/3X2YxNh)\n- **Resources** — Visit the one-stop-shop for all InSight media. [Explore](https://science.nasa.gov/mars/resources/?search=InSight)\n- **Raw Images** — View raw images sent back by InSight from its explorations on Mars. [Explore](https://mars.nasa.gov/insight/multimedia/raw-images/)"
+      },
+      {
+        "heading": "Landing Site: Elysium Planitia",
+        "markdown": "InSight landed near Mars' equator on the western side of a flat, smooth plain called Elysium Planitia. Elysium Planitia was selected not for its surface features, but for safety considerations. InSight's purpose was to study the interior of Mars, not the surface. Thus, in the selection of a landing site, what's on the surface mattered less than for previous rover missions focused on the geology.\n\nPlanitia is Latin for a flat surface, geometric plane, or flatness or a plain. Elysium is from the ancient Greek name for an afterlife paradise, usually referred to in English as the Elysian Fields. The landing site lies in the western portion of Elysium Planitia, centered at about 4.5 degrees north latitude and 135.9 degrees east longitude. This is just 373 miles (600 kilometers) from Curiosity’s landing site, Gale Crater.\n\n*Image: The red dot marks the final landing location of NASA's InSight lander in this annotated image of the surface of Mars, taken by the THEMIS camera on NASA's 2001 Mars Odyssey orbiter in 2015. Credit: NASA/JPL-Caltech/ASU*"
+      },
+      {
+        "heading": "Mars Cube One: The First Interplanetary CubeSats",
+        "markdown": "The rocket that launched InSight also launched a separate NASA technology experiment: two mini-spacecraft called Mars Cube One, or MarCO. These briefcase-sized CubeSats flew on their own path to Mars behind InSight.\n\n[Learn More](https://science.nasa.gov/mission/marco/)"
+      },
+      {
+        "heading": "News and Features",
+        "markdown": "- [Impactor Debris Scattered Within Mars’ Mantle (Artist’s Concept) — 3 min read](https://science.nasa.gov/photojournal/impactor-debris-scattered-within-mars-mantle-artists-concept/)\n- [Giant Impacts on Ancient Mars (Artist’s Concept) — 2 min read](https://science.nasa.gov/photojournal/giant-impacts-on-ancient-mars-artists-concept/)\n- [NASA Marsquake Data Reveals Lumpy Nature of Red Planet’s Interior — 6 min read](https://www.nasa.gov/missions/insight/nasa-marsquake-data-reveals-lumpy-nature-of-red-planets-interior/)\n- [NASA’s InSight Finds Marsquakes From Meteoroids Go Deeper Than Expected — 6 min read](https://www.nasa.gov/missions/nasas-insight-finds-marsquakes-from-meteoroids-go-deeper-than-expected/)\n- [NASA Mars Orbiter Spots Retired InSight Lander to Study Dust Movement — 5 min read](https://www.nasa.gov/missions/insight/nasa-mars-orbiter-spots-retired-insight-lander-to-study-dust-movement/)\n\n[All InSight News](https://science.nasa.gov/mission/insight/stories)"
+      }
+    ]
+  },
+  "media": {
+    "hero_image": {
+      "url": "https://science.nasa.gov/wp-content/uploads/2008/02/insight.jpg",
+      "context": "og:image strony",
+      "credit": "NASA"
+    },
+    "images": [
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/3/8/38686_Mars-InSight-Solar-Panels-Open-pia196641.jpg",
+        "photojournal_id": "PIA19664",
+        "caption": "The solar arrays on NASA's InSight lander are deployed in this test inside a clean room at Lockheed Martin Space Systems, Denver. This configuration is how the spacecraft will look on the surface of Mars. The image was taken on April 30, 2015.",
+        "context": "zdjęcie główne na szczycie strony",
+        "credit": "NASA/JPL-Caltech/Lockheed Martin Space"
+      },
+      {
+        "url": "https://www.nasa.gov/wp-content/uploads/2025/08/1-pia26635-illustration-giant-asteroid-impacting-ancient-mars.jpg",
+        "photojournal_id": "PIA26635",
+        "caption": "Illustration of a giant asteroid impacting ancient Mars (featured story image).",
+        "context": "sekcja 'Featured Story' (Marsquake Data Reveals Lumpy Nature of Red Planet's Interior)",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://science.nasa.gov/wp-content/uploads/2024/03/pia22230.jpg",
+        "photojournal_id": "PIA22230",
+        "caption": "Seismograph waves are superimposed over an illustration of Mars.",
+        "context": "sekcja 'Read More' (Objective)",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://science.nasa.gov/wp-content/uploads/2024/04/insight-robotic-arm.jpeg",
+        "caption": "The robotic arm of the InSight Lander, indicated on an artist's concept of the lander.",
+        "context": "podstrona Spacecraft — sekcja 'Robotic Arm'",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://science.nasa.gov/wp-content/uploads/2024/04/insight-cameras.png",
+        "caption": "InSight lander with the Instrument Deployment Camera and the Instrument Context Camera.",
+        "context": "podstrona Spacecraft — sekcja 'Cameras'",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/2/6/26761_26761_PIA25287-clean-web.jpg",
+        "photojournal_id": "PIA25287",
+        "caption": "NASA’s InSight Mars lander took this final selfie on April 24, 2022, the 1,211th Martian day, or sol, of the mission.",
+        "context": "podstrona Spacecraft — zdjęcie główne",
+        "credit": "NASA/JPL-Caltech"
+      }
+    ],
+    "gifs": [
+      {
+        "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/news_items/main_images/8529_Sol333_imaging-of-pit_512x512.gif",
+        "caption": "InSight's Arm Camera Stares Into the Pit: The shadow of NASA InSight's robotic arm moves over its heat probe, or \"mole,\" on Nov. 3, 2019, the 333rd Martian day, or sol, of the mission.",
+        "context": "podstrona Spacecraft — sekcja 'Robotic Arm' (animacja GIF)",
+        "credit": "NASA/JPL-Caltech"
+      }
+    ],
+    "videos": [
+      {
+        "platform": "youtube",
+        "video_id": "yT50Q_Zbf3s",
+        "url": "https://youtu.be/yT50Q_Zbf3s",
+        "embed_url": "https://www.youtube.com/embed/yT50Q_Zbf3s",
+        "title": "Sounds of Mars: NASA’s InSight Senses Martian Wind",
+        "channel": "NASA Jet Propulsion Laboratory",
+        "context": "sekcja 'Wind Sounds on Mars' (osadzony oembed)"
+      },
+      {
+        "platform": "nasa_assets",
+        "video_id": "PIA24450",
+        "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/downloadable_items/4/5/45926_PIA24450.m4v",
+        "title": "InSight Robotic Arm",
+        "channel": "NASA/JPL-Caltech",
+        "context": "podstrona Spacecraft — sekcja 'Robotic Arm' (osadzony odtwarzacz video-js, plik m4v)"
+      }
+    ],
+    "models_3d": [
+      {
+        "name": "InSight Mars Lander — interaktywny podgląd",
+        "model_id": "2380",
+        "format": "web_viewer",
+        "url": "https://solarsystem.nasa.gov/gltf_embed/2380/",
+        "poster": "https://solarsystem.nasa.gov/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1b8ab3cd67ff0afa80bc056d074c3c6885bd283e/spacecraft_th_insight.jpg",
+        "context": "sekcja 'Meet InSight' — osadzony model-viewer (glTF embed)"
+      },
+      {
+        "name": "InSight Mars Lander (deployed)",
+        "model_id": "2380",
+        "format": "glb",
+        "url": "https://solarsystem.nasa.gov/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--82324e2db624a4854937205def0af0cb00e65e44/InSight_deployed.glb",
+        "context": "plik źródłowy modelu 3D używany przez viewer gltf_embed/2380"
+      },
+      {
+        "name": "InSight Mars Lander (deployed)",
+        "model_id": "2380",
+        "format": "usdz",
+        "url": "https://solarsystem.nasa.gov/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdllRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ebced1433ba92e9b3cfd4aaf5c1c457b7f81eadc/InSight_deployed.usdz",
+        "context": "wariant AR dla iOS (Quick Look) z viewera gltf_embed/2380"
+      }
+    ],
+    "interactive": [
+      {
+        "name": "Eyes on the Solar System — InSight",
+        "url": "https://eyes.nasa.gov/apps/solar-system/#/sc_insight",
+        "context": "interaktywna symulacja 3D misji (iframe na stronie)"
+      }
+    ],
+    "downloads": []
+  },
+  "related": {
+    "mission_pages": [
+      {
+        "title": "InSight Science Overview",
+        "url": "https://science.nasa.gov/mission/insight/science/"
+      },
+      {
+        "title": "InSight Science Instruments",
+        "url": "https://science.nasa.gov/mission/insight/science-instruments/"
+      },
+      {
+        "title": "InSight Science Highlights",
+        "url": "https://science.nasa.gov/mission/insight/science-highlights/"
+      },
+      {
+        "title": "InSight Spacecraft",
+        "url": "https://science.nasa.gov/mission/insight/spacecraft/"
+      },
+      {
+        "title": "InSight News & Features",
+        "url": "https://science.nasa.gov/mission/insight/stories"
+      }
+    ],
+    "related_missions": [
+      {
+        "title": "Mars Cube One (MarCO)",
+        "url": "https://science.nasa.gov/mission/marco/"
+      },
+      {
+        "title": "Mars Phoenix (lander design heritage)",
+        "url": "https://science.nasa.gov/mission/phoenix/"
+      },
+      {
+        "title": "Mars Perseverance Rover",
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/"
+      },
+      {
+        "title": "Mars Curiosity Rover",
+        "url": "https://science.nasa.gov/mission/msl-curiosity/"
+      },
+      {
+        "title": "Mars Reconnaissance Orbiter",
+        "url": "https://science.nasa.gov/mission/mars-reconnaissance-orbiter/"
+      },
+      {
+        "title": "Mars Odyssey",
+        "url": "https://science.nasa.gov/mission/odyssey/"
+      }
+    ],
+    "multimedia_galleries": [
+      {
+        "title": "InSight Raw Images",
+        "url": "https://mars.nasa.gov/insight/multimedia/raw-images/"
+      },
+      {
+        "title": "Mars Images (galeria zasobów)",
+        "url": "https://science.nasa.gov/mars/resources/"
+      },
+      {
+        "title": "Mars Videos (galeria zasobów)",
+        "url": "https://science.nasa.gov/mars/resources/?types=videos"
+      },
+      {
+        "title": "Mars Audio (galeria zasobów)",
+        "url": "https://science.nasa.gov/mars/resources/?types=audio"
+      }
+    ]
+  },
+  "notes": [
+    "InSight ma najbogatszą stronę z całej szóstki: model 3D (viewer + glb + usdz), dźwięk wiatru z Marsa (YouTube), film m4v z ramieniem roboczym, interaktywną symulację Eyes on the Solar System.",
+    "Dane techniczne (specifications) pochodzą z podstrony /mission/insight/spacecraft/ (tabele Lander Tech Specs / Robotic Arm Tech Specs / Cameras Tech Specs).",
+    "Strona główna misji nie podaje daty 'rozpoczęcia operacji' oddzielnie od lądowania — przyjęto lądowanie 2018-11-26 jako start operacji naziemnych.",
+    "Link 'Explore' przy sekcji Science przekierowuje przez go.nasa.gov/3X2YxNh (skrót) — zachowano oryginalny URL ze strony.",
+    "Treść article.sections zachowana w języku angielskim (źródłowym); układ i kolejność sekcji = kolejność na stronie.",
+    "Wszystkie URL-e w polach media.* zweryfikowane HTTP 200 (2026-11-14, skrypt scripts/verify_urls.py)."
+  ]
+}

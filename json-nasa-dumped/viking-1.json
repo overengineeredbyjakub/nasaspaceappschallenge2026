@@ -1,0 +1,283 @@
+{
+  "_format": {
+    "format_version": "nasa-mission-scraper/1.0",
+    "description": "Ujednolicony format eksportu danych ze stron NASA (science.nasa.gov i pokrewnych). Ten sam schemat stosuj do każdej kolejnej strony misji/pojazdu, aby wszystkie wpisy były spójne i mogły być łączone w jedną bazę.",
+    "conventions": [
+      "Klucze zawsze obecne; brak danych = null (nigdy nie usuwaj klucza), brak pozycji = pusta lista [].",
+      "Daty: 'date' zawsze w ISO 8601 (YYYY-MM-DD), 'date_raw' zachowuje oryginalny zapis ze strony.",
+      "Wszystkie URL-e bezwzględne (https://...), bez parametrów śledzących gdzie to możliwe.",
+      "Każdy zasób medialny jest obiektem z minimalnym zestawem pól: url + typ + context (skąd pochodzi na stronie).",
+      "Treść artykułu w polach 'markdown': nagłówki '##'/'###', listy '-', listy numerowane '1.', pogrubienia '**'. Układ = kolejność sekcji ze strony źródłowej.",
+      "Treść zachowywana w języku źródła (pole source.language); nie tłumaczyć przy ekstrakcji.",
+      "Pola 'id' zewnętrznych systemów (np. PIA##### z Photojournal, identyfikatory YouTube, numery modeli 3D) zapisuj w dedykowanych polach *_id, jeśli są znane.",
+      "Weryfikuj dostępność URL-i (HTTP 200) przed zapisem; martwy link oznaczaj w polu 'status'."
+    ],
+    "top_level_keys": [
+      "_format",
+      "source",
+      "vehicle",
+      "specifications",
+      "key_facts",
+      "timeline",
+      "article",
+      "media",
+      "related",
+      "notes"
+    ]
+  },
+  "source": {
+    "url": "https://science.nasa.gov/mission/viking-1/",
+    "canonical_url": "https://science.nasa.gov/mission/viking-1/",
+    "page_title": "Viking 1 - NASA Science",
+    "page_type": "mission_page",
+    "site": "science.nasa.gov",
+    "language": "en",
+    "scraped_at": "2026-11-14",
+    "page_last_updated": "2026-07-20",
+    "page_editor": null,
+    "responsible_nasa_official": null,
+    "meta_description": "Viking 1 made the first truly successful landing on Mars. The Soviet Mars 3 lander claimed a technical first, but contact was lost almost immediately.",
+    "og_image": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/07/Viking_1_First_Image_From_Mars_1280.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
+  },
+  "vehicle": {
+    "name": "Viking 1",
+    "full_name": "Viking 1 (Orbiter & Lander)",
+    "agency": "NASA / Langley Research Center (LaRC) / Jet Propulsion Laboratory (JPL)",
+    "mission": {
+      "name": "Viking program (mission pair with Viking 2)",
+      "url": "https://science.nasa.gov/mission/viking/",
+      "relationship": "first of two orbiter+lander spacecraft of the Viking program"
+    },
+    "type": {
+      "category": "orbiter+lander",
+      "name": "Orbiter, Lander",
+      "page_label": "Orbiter, Lander"
+    },
+    "objective": "Mars Landing and Orbit — collect evidence on the possibility of life on Mars",
+    "destination": "Mars (Chryse Planitia landing site)",
+    "status": "mission_completed",
+    "nation": "United States of America (USA)",
+    "spacecraft_designation": "Viking-B",
+    "dates": {
+      "launch": {
+        "date": "1975-08-20",
+        "date_raw": "Aug. 20, 1975 / 21:22:00 UT",
+        "location": "Cape Canaveral, Fla. / Launch Complex 41",
+        "vehicle": "Titan IIIE-Centaur (TC-4 / Titan no. E-4 / Centaur D-1T)"
+      },
+      "arrival": {
+        "date": "1976-06-19",
+        "date_raw": "June 19, 1976",
+        "event": "Spacecraft entered orbit around Mars"
+      },
+      "landing": {
+        "date": "1976-07-20",
+        "date_raw": "July 20, 1976 / 11:53:06 UT",
+        "location": "Chryse Planitia (22.483°N, 47.94°W), Mars",
+        "note": "first truly successful landing on Mars; ~17 miles (28 km) from planned target"
+      },
+      "end_of_operations": {
+        "date": "1980-08-07",
+        "date_raw": "Aug. 7, 1980",
+        "event": "Orbiter shut down after running out of attitude-control propellant on its 1,489th orbit"
+      },
+      "mission_end": {
+        "date": "1982-11-11",
+        "date_raw": "Nov. 11, 1982",
+        "event": "Lander stopped operating after a faulty command interrupted communications; contact never regained"
+      }
+    }
+  },
+  "specifications": [
+    {
+      "parameter": "Spacecraft Mass",
+      "value": "7,776 pounds (3,527 kilograms) total; orbiter 5,157 pounds (2,339 kg) + lander 2,156 pounds (978 kg)"
+    },
+    {
+      "parameter": "Spacecraft Power",
+      "value": "Each lander carried two SNAP-19 Radioisotope Thermoelectric Generators (RTGs); orbiters were solar-powered"
+    },
+    {
+      "parameter": "Launch Vehicle",
+      "value": "Titan IIIE-Centaur (TC-4 / Titan no. E-4 / Centaur D-1T)"
+    },
+    {
+      "parameter": "Mission Design and Management",
+      "value": "NASA / Langley Research Center (LaRC) / Jet Propulsion Laboratory (JPL)"
+    },
+    {
+      "parameter": "Initial orbit around Mars",
+      "value": "932 × 31,255 miles (1,500 × 50,300 kilometers); operational orbit 932 × 20,381 miles (1,500 × 32,800 km)"
+    },
+    {
+      "parameter": "Scientific Instruments — orbiters",
+      "value": "Imaging System (2 Vidicon Cameras) (VIS); Infrared Spectrometer for Water Vapor Mapping (MAWD); Infrared Radiometer for Thermal Mapping (IRTM)"
+    },
+    {
+      "parameter": "Scientific Instruments — landers",
+      "value": "Imaging System (2 facsimile cameras); Gas Chromatograph Mass Spectrometer (GCMS); Seismometer; X-Ray Fluorescence Spectrometer; Biological Laboratory; Weather Instrument Package (Temperature, Pressure, Wind Velocity); Remote Sampler Arm"
+    },
+    {
+      "parameter": "Scientific Instruments — aeroshells",
+      "value": "Retarding Potential Analyzer; Upper-Atmosphere Mass Spectrometer; Pressure, Temperature, and Density Sensors"
+    }
+  ],
+  "key_facts": {
+    "what_was": "NASA's Viking 1 made the first truly successful landing on Mars. The Soviet Mars 3 lander claimed a technical first with a survivable landing in 1971, but contact was lost seconds after it touched down.",
+    "bullets": [
+      "Both NASA Viking missions used a combination of orbiter and lander to explore Mars in unprecedented detail.",
+      "In total, the two Viking orbiters returned 52,663 images of Mars and mapped about 97 percent of the surface at a resolution of 984 feet (300 meters). The landers returned 4,500 photos of the two landing sites."
+    ],
+    "anniversary_campaign": {
+      "title": "Viking: 50 Years on Mars",
+      "url": "https://science.nasa.gov/mission/viking/viking-50-years-on-mars/"
+    }
+  },
+  "timeline": [
+    {
+      "date": "1975-08-20",
+      "date_raw": "Aug. 20, 1975",
+      "title": "Launch"
+    },
+    {
+      "date": "1976-06-19",
+      "date_raw": "June 19, 1976",
+      "title": "Spacecraft entered orbit around Mars"
+    },
+    {
+      "date": "1976-07-20",
+      "date_raw": "July 20, 1976",
+      "title": "Lander touched down"
+    },
+    {
+      "date": "1980-08-07",
+      "date_raw": "Aug. 7, 1980",
+      "title": "Orbiter was shut down after running out of attitude-control propellant"
+    },
+    {
+      "date": "1982-11-11",
+      "date_raw": "Nov. 11, 1982",
+      "title": "Lander stopped operating after getting a faulty command"
+    }
+  ],
+  "article": {
+    "title": "Viking 1",
+    "lead": "Viking 1 made the first truly successful landing on Mars.",
+    "content_language": "en",
+    "sections": [
+      {
+        "heading": "Viking: 50 Years on Mars",
+        "markdown": "Throughout history, Mars had been in sight, but never within reach — until July 20, 1976, when NASA’s Viking 1 lander touched down safely and began transmitting the first images from the surface of the Red Planet. Viking 1 broke ground on Mars surface exploration, beginning an effort that continues through today. Mars missions ever since, and those yet to come, seek to uncover whether the planet’s once warm and wet climate was ever habitable to some form of life, as our discoveries help inform sustainability for human exploration in the future. These missions continue building on what the Vikings began.\n\n[Join the Celebration: Stories, Images, Videos, Posters, and More about Viking: 50 Years on Mars](https://science.nasa.gov/mission/viking/viking-50-years-on-mars/)"
+      },
+      {
+        "heading": "What was Viking 1?",
+        "markdown": "NASA's Viking 1 made the first truly successful landing on Mars. The Soviet Mars 3 lander claimed a technical first with a survivable landing in 1971, but contact was lost seconds after it touched down.\n\n- Both NASA Viking missions used a combination of orbiter and lander to explore Mars in unprecedented detail.\n- In total, the two Viking orbiters returned 52,663 images of Mars and mapped about 97 percent of the surface at a resolution of 984 feet (300 meters) resolution. The landers returned 4,500 photos of the two landing sites."
+      },
+      {
+        "heading": "Key Dates",
+        "markdown": "- **Aug. 20, 1975:** Launch\n- **June 19, 1976:** Spacecraft entered orbit around Mars\n- **July 20, 1976:** Lander touched down\n- **Aug. 7, 1980:** Orbiter was shut down after running out of attitude-control propellant\n- **Nov. 11, 1982:** Lander stopped operating after getting a faulty command"
+      },
+      {
+        "heading": "Results",
+        "markdown": "Viking 1 was the first of a pair of complex deep-space probes that were designed to reach Mars and collect evidence on the possibility on life on Mars.\n\nEach spacecraft was composed of two primary elements, an orbiter (5,157 pounds or 2,339 kilograms) and a lander (2,156 pounds or 978 kilograms). The orbiter design borrowed heavily from the [Mariner](https://science.nasa.gov/mission/mariner-9/) spacecraft buses, or the main body and infrastructure, while the lander looked superficially like a much larger version of the [Surveyor](https://science.nasa.gov/mission/surveyor-1/) lunar lander.\n\nPrior to launch, the batteries of the first spacecraft were discharged, prompting NASA to replace the original first spacecraft with the second, which was launched as Viking 1.\n\nAfter three course corrections (Aug. 27, 1975, June 10, 1976, and June 15, 1976), the spacecraft entered orbit around Mars June 19, 1976. Initial orbital parameters were 932 × 31,255 miles (1,500 × 50,300 kilometers). The following day, the orbiter moved into an operational orbit at 932 × 20,381 miles (1,500 × 32,800 kilometers).\n\nThe same day, when the orbiter began transmitting back photos of the primary landing site in the Chryse region, scientists discovered that the area was rougher than expected. Using the new photos, scientists targeted the lander to a different site on the western slopes of Chryse Planitia (Golden Plain).\n\nThe lander separated from the orbiter at 08:32 UT July 20, 1976, and after a complicated atmospheric entry sequence during which the probe took air samples, Viking Lander 1 set down safely at 22.483 degrees north latitude and 47.94 degrees west longitude at 11:53:06 UT July 20, 1976. It landed about 17 miles (28 kilometers) from its planned target.\n\nOnce down, the spacecraft began taking high-quality photographs (in three colors) of its surroundings. Besides high-resolution images, the lander also took a 300-degree panorama of its surroundings that showed not only parts of the spacecraft itself but also the gently rolling plains of the environs.\n\nInstruments recorded temperatures ranging from minus 123 degrees Fahrenheit (minus 86 degrees Celsius) before dawn to minus 27 degrees Fahrenheit (minus 33 degrees Celsius) in the afternoon. The seismometer on the lander was, however, inoperable.\n\nOn July 28, 1976, the lander’s robot arm scooped up the first soil samples and deposited them into a special biological laboratory that included a gas chromatograph mass spectrometer.\n\nThe cumulative data from the four samples collected could have been construed as indicating the presence of life (weak positive), but the major test for organic compounds using the gas chromatograph experiment (capable of detecting organic compounds that comprised more than 10-100 parts per billion in the soil) gave negative results.\n\nData showed an abundance of sulfur, certainly different from any known material found on Earth or the Moon.\n\nWhile the primary mission for both Viking 1 and Viking 2 ended in November 1976, activities continued through the Extended Mission (November 1976 to May 1978) and the Continuation Mission (May 1978 to July 1979). Viking 1’s orbiter then continued a Survey Mission from July 1979 to July 1980.\n\nThe lander continued to return daily (and then eventually weekly) weather reports as part of the Viking Monitor Mission. In January 1982, it was renamed the Thomas Mutch Memorial Station in honor of Thomas A. Mutch (1931-1980) the leader of the Viking imaging team who had died Oct. 6, 1980.\n\nThe lander operated until Nov. 11, 1982, when a faulty command sent from Earth resulted in an interruption of communications. Further attempts to regain contact proved to be unsuccessful.\n\nThe orbiter, after taking many more high-resolution images of the planet and its two moons, far superior than those from Mariner 9, was shut down Aug. 7, 1980, after it ran out of attitude control propellant on its 1,489th orbit around Mars."
+      },
+      {
+        "heading": "Mission Statistics",
+        "markdown": "- **Nation:** United States of America (USA)\n- **Objective(s):** Mars Landing and Orbit\n- **Spacecraft:** Viking-B\n- **Spacecraft Mass:** 7,776 pounds (3,527 kilograms)\n- **Spacecraft Power:** Each lander carried two [SNAP-19 Radioisotope Thermoelectric Generators (RTGs)](https://rps.nasa.gov/power-and-thermal-systems/legacy-power-systems/); Orbiters were solar-powered\n- **Mission Design and Management:** NASA / Langley Research Center (LaRC) / Jet Propulsion Laboratory (JPL)\n- **Launch Vehicle:** Titan IIIE-Centaur (TC-4 / Titan no. E-4 / Centaur D-1T)\n- **Launch Date and Time:** Aug. 20, 1975 / 21:22:00 UT\n- **Launch Site:** Cape Canaveral, Fla. / Launch Complex 41\n\n**Scientific Instruments:**\n\n*Orbiters:*\n1. Imaging System (2 Vidicon Cameras) (VIS)\n2. Infrared Spectrometer for Water Vapor Mapping (MAWD)\n3. Infrared Radiometer for Thermal Mapping (IRTM)\n\n*Landers:*\n1. Imaging System (2 facsimile cameras)\n2. Gas Chromatograph Mass Spectrometer (GCMS)\n3. Seismometer\n4. X-Ray Fluorescence Spectrometer\n5. Biological Laboratory\n6. Weather Instrument Package (Temperature, Pressure, Wind Velocity)\n7. Remote Sampler Arm\n\n*Aeroshells:*\n1. Retarding Potential Analyzer\n2. Upper-Atmosphere Mass Spectrometer\n3. Pressure, Temperature, and Density Sensors"
+      },
+      {
+        "heading": "Key Source",
+        "markdown": "Siddiqi, Asif A. [Beyond Earth: A Chronicle of Deep Space Exploration, 1958-2016](https://solarsystem.nasa.gov/resources/1060/beyond-earth-a-chronicle-of-deep-space-exploration/). NASA History Program Office, 2018."
+      }
+    ]
+  },
+  "media": {
+    "hero_image": {
+      "url": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/07/Viking_1_First_Image_From_Mars_1280.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+      "context": "og:image strony",
+      "credit": "NASA"
+    },
+    "images": [
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia00/pia00381/PIA00381.tif?w=2048",
+        "photojournal_id": "PIA00381",
+        "caption": "This is the first photograph ever taken on the surface of the planet Mars. It was obtained by NASA's Viking 1 just minutes after the spacecraft landed successfully July 20, 1976.",
+        "context": "zdjęcie główne na szczycie strony (sekcja 'Viking: 50 Years on Mars')",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/3513/Line_drawing_of_Viking_Orbiter-1.jpeg",
+        "caption": "Line drawing of Viking Orbiter",
+        "context": "sekcja 'Results' (rycina techniczna orbitera)",
+        "credit": "NASA"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/3514/Viking_Lander_Line_Drawing-1.jpeg",
+        "caption": "Viking Lander Line Drawing",
+        "context": "sekcja 'Results' (rycina techniczna lądownika)",
+        "credit": "NASA"
+      }
+    ],
+    "gifs": [],
+    "videos": [],
+    "models_3d": [],
+    "downloads": []
+  },
+  "related": {
+    "mission_pages": [
+      {
+        "title": "Viking Program Overview",
+        "url": "https://science.nasa.gov/mission/viking/"
+      },
+      {
+        "title": "Viking 2 Orbiter & Lander",
+        "url": "https://science.nasa.gov/mission/viking-2/"
+      },
+      {
+        "title": "Viking: Spacecraft and Science",
+        "url": "https://science.nasa.gov/mission/viking/spacecraft-and-science/"
+      },
+      {
+        "title": "Viking: 50 Years on Mars (celebration hub)",
+        "url": "https://science.nasa.gov/mission/viking/viking-50-years-on-mars/"
+      }
+    ],
+    "related_missions": [
+      {
+        "title": "Mariner 9 (orbiter design heritage)",
+        "url": "https://science.nasa.gov/mission/mariner-9/"
+      },
+      {
+        "title": "Surveyor 1 (lander design heritage)",
+        "url": "https://science.nasa.gov/mission/surveyor-1/"
+      }
+    ],
+    "feature_stories": [
+      {
+        "title": "Mars News & Features",
+        "url": "https://science.nasa.gov/mars/stories/"
+      },
+      {
+        "title": "Mars Resources (resource package)",
+        "url": "https://science.nasa.gov/solar-system/resources/resource-packages/mars-resources/"
+      }
+    ],
+    "other_links": [
+      {
+        "title": "SNAP-19 RTGs (Radioisotope Power Systems)",
+        "url": "https://rps.nasa.gov/power-and-thermal-systems/legacy-power-systems/"
+      },
+      {
+        "title": "Beyond Earth: A Chronicle of Deep Space Exploration (source book)",
+        "url": "https://solarsystem.nasa.gov/resources/1060/beyond-earth-a-chronicle-of-deep-space-exploration/"
+      }
+    ]
+  },
+  "notes": [
+    "Strona misji Viking 1 jest starszego typu: brak osadzonych filmów, GIF-ów, modeli 3D i plików do pobrania — pola media pozostają puste zgodnie z konwencją formatu.",
+    "Daty zakończenia: orbiter (1980-08-07) i lądownik (1982-11-11) różnią się — strona podaje obie; w vehicle.dates rozdzielono end_of_operations (orbiter) i mission_end (lander).",
+    "Model 3D nie jest dostępny na stronie misji, ale Viking Lander występuje w katalogu NASA 3D Resources: https://science.nasa.gov/3d-resources/ (link w related).",
+    "Treść article.sections zachowana w języku angielskim (źródłowym); układ i kolejność sekcji = kolejność na stronie.",
+    "Wszystkie URL-e w polach media.* zweryfikowane HTTP 200 (2026-11-14, skrypt scripts/verify_urls.py)."
+  ]
+}

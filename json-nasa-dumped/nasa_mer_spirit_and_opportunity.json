@@ -1,0 +1,350 @@
+{
+  "_format": {
+    "format_version": "nasa-mission-scraper/1.0",
+    "description": "Ujednolicony format eksportu danych ze stron NASA (science.nasa.gov i pokrewnych). Ten sam schemat stosuj do każdej kolejnej strony misji/pojazdu, aby wszystkie wpisy były spójne i mogły być łączone w jedną bazę.",
+    "conventions": [
+      "Klucze zawsze obecne; brak danych = null (nigdy nie usuwaj klucza), brak pozycji = pusta lista [].",
+      "Daty: 'date' zawsze w ISO 8601 (YYYY-MM-DD), 'date_raw' zachowuje oryginalny zapis ze strony.",
+      "Wszystkie URL-e bezwzględne (https://...), bez parametrów śledzących gdzie to możliwe.",
+      "Każdy zasób medialny jest obiektem z minimalnym zestawem pól: url + typ + context (skąd pochodzi na stronie).",
+      "Treść artykułu w polach 'markdown': nagłówki '##'/'###', listy '-', listy numerowane '1.', pogrubienia '**'. Układ = kolejność sekcji ze strony źródłowej.",
+      "Treść zachowywana w języku źródła (pole source.language); nie tłumaczyć przy ekstrakcji.",
+      "Pola 'id' zewnętrznych systemów (np. PIA##### z Photojournal, identyfikatory YouTube, numery modeli 3D) zapisuj w dedykowanych polach *_id, jeśli są znane.",
+      "Weryfikuj dostępność URL-i (HTTP 200) przed zapisem; martwy link oznaczaj w polu 'status'."
+    ],
+    "top_level_keys": [
+      "_format",
+      "source",
+      "vehicle",
+      "specifications",
+      "key_facts",
+      "timeline",
+      "article",
+      "media",
+      "related",
+      "notes"
+    ]
+  },
+  "source": {
+    "url": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/",
+    "canonical_url": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/",
+    "page_title": "Mars Exploration Rovers: Spirit and Opportunity - NASA Science",
+    "page_type": "mission_hub_page",
+    "site": "science.nasa.gov",
+    "language": "en",
+    "scraped_at": "2026-11-14",
+    "page_last_updated": null,
+    "meta_description": "NASA's Spirit and Opportunity rovers were identical twin robots who helped rewrite our understanding of the early history of Mars."
+  },
+  "vehicle": {
+    "name": "Spirit and Opportunity",
+    "full_name": "Mars Exploration Rovers (MER) A & B: Spirit and Opportunity",
+    "agency": "NASA / JPL-Caltech",
+    "mission": {
+      "name": "Mars Exploration Rover project",
+      "url": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/",
+      "relationship": "para bliźniaczych łazików wysłanych na przeciwne strony Marsa"
+    },
+    "type": {
+      "category": "rover_pair",
+      "name": "Rover pair",
+      "page_label": "Rover pair"
+    },
+    "objective": "Look for signs of past water on Mars",
+    "target": "Mars",
+    "destination": {
+      "spirit": "Gusev Crater (możliwe dawne jezioro w gigantycznym kraterze uderzeniowym)",
+      "opportunity": "Meridiani Planum (osady mineralne sugerujące historię z wodą)"
+    },
+    "status": "missions_completed",
+    "rovers": {
+      "spirit": {
+        "name": "Spirit (MER-A)",
+        "landing": {
+          "date": "2004-01-03",
+          "date_raw": "Jan. 3, 2004",
+          "site": "Gusev Crater"
+        },
+        "mission_end": {
+          "date": "2010",
+          "date_raw": "2010",
+          "event": "Spirit concluded its mission in 2010"
+        },
+        "distance_driven": "4.8 miles (7.7 kilometers)",
+        "page": "https://science.nasa.gov/mission/mer-spirit/"
+      },
+      "opportunity": {
+        "name": "Opportunity (MER-B)",
+        "landing": {
+          "date": "2004-01-24",
+          "date_raw": "Jan. 24, 2004",
+          "site": "Meridiani Planum"
+        },
+        "mission_end": {
+          "date": "2018-06",
+          "date_raw": "June 10, 2018",
+          "event": "last communicated with Earth on June 10, 2018, during a planet-wide dust storm"
+        },
+        "distance_driven": "28.06 miles (45.16 kilometers)",
+        "page": "https://science.nasa.gov/mission/mer-opportunity/"
+      }
+    },
+    "dates": {
+      "launch": {
+        "date": null,
+        "date_raw": null,
+        "note": "strona nie podaje dat startu (Spirit: 10.06.2003, Opportunity: 07.07.2003 — wg ogólnych źródeł NASA; poza tą stroną)"
+      },
+      "landings": {
+        "date": "2004-01-03",
+        "date_raw": "(Spirit) Jan. 3, 2004 and (Opportunity) Jan. 24, 2004",
+        "note": "daty wg strony (czas lokalny USA; w UTC: 4 i 25 stycznia 2004)"
+      },
+      "end_of_operations": {
+        "spirit": {
+          "date": "2010",
+          "date_raw": "2010"
+        },
+        "opportunity": {
+          "date": "2018-06-10",
+          "date_raw": "June 10, 2018"
+        }
+      }
+    }
+  },
+  "specifications": [],
+  "key_facts": {
+    "summary_numbers": {
+      "spirit_distance": "4.8 miles (7.7 kilometers)",
+      "opportunity_distance": "28.06 miles (45.16 kilometers)",
+      "record": "Opportunity trzymała pozaziemski rekord dystansu do 11 października 2026, gdy Perseverance przekroczyła 28.10 mil (45.22 km)"
+    },
+    "key_findings": [
+      "Dzięki badaniom zapisu skalnego Spirit i Opportunity potwierdziły, że woda przez długi czas zalegała na powierzchni Marsa w dawnych czasach.",
+      "Łaziki wylądowały po przeciwnych stronach planety, w miejscach wskazujących na przeszłą obecność ciekłej wody."
+    ],
+    "sub_pages": [
+      {
+        "title": "Rover Basics",
+        "url": "https://science.nasa.gov/planetary-science/programs/mars-exploration/rover-basics/"
+      },
+      {
+        "title": "Objectives",
+        "url": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-objectives/"
+      },
+      {
+        "title": "Science Highlights",
+        "url": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-highlights/"
+      },
+      {
+        "title": "Instruments",
+        "url": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-instruments/"
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "date": "2004-01-03",
+      "date_raw": "Jan. 3, 2004",
+      "title": "Spirit ląduje w Gusev Crater",
+      "url": "https://science.nasa.gov/mission/mer-spirit/"
+    },
+    {
+      "date": "2004-01-24",
+      "date_raw": "Jan. 24, 2004",
+      "title": "Opportunity ląduje na Meridiani Planum",
+      "url": "https://science.nasa.gov/mission/mer-opportunity/"
+    },
+    {
+      "date": "2010",
+      "date_raw": "2010",
+      "title": "Spirit kończy misję (4.8 mil / 7.7 km przejechane)"
+    },
+    {
+      "date": "2018-06-10",
+      "date_raw": "June 10, 2018",
+      "title": "Ostatnia komunikacja Opportunity (28.06 mil / 45.16 km) — burza pyłowa"
+    },
+    {
+      "date": "2026-10-11",
+      "date_raw": "Oct. 11, 2026",
+      "title": "Perseverance pobija rekord dystansu Opportunity (28.10 mil / 45.22 km)"
+    }
+  ],
+  "article": {
+    "title": "Mars Exploration Rovers: Spirit and Opportunity",
+    "lead": "NASA's Spirit and Opportunity rovers were identical twin robots that helped rewrite our understanding of the early history of Mars.",
+    "content_language": "en",
+    "sections": [
+      {
+        "heading": "Key Facts",
+        "markdown": "- **Mission Type:** Rover pair\n- **Objective:** Look for signs of past water on Mars\n- **Destination:** Mars\n- **Landings:** (Spirit) Jan. 3, 2004 and (Opportunity) Jan. 24, 2004"
+      },
+      {
+        "heading": "Meet Spirit and Opportunity",
+        "markdown": "Strona główna misji (hub) — [Spirit Rover](https://science.nasa.gov/mission/mer-spirit/) | [Opportunity Rover](https://science.nasa.gov/mission/mer-opportunity/)\n\nNa tej stronie osadzony jest interaktywny model 3D bliźniaczych łazików (zobacz media.models_3d)."
+      },
+      {
+        "heading": "Mars Exploration Rovers In Depth",
+        "markdown": "### Rover Basics\nEach robotic explorer sent to the Red Planet has its own unique capabilities driven by science. Many attributes of a rover take on human-like features, such as \"heads,\" and \"bodies.\"\n\n[Explore: Rover Basics](https://science.nasa.gov/planetary-science/programs/mars-exploration/rover-basics/)\n\n### Objectives\nNew knowledge from the twin rovers uniquely contributed to meeting the four overarching goals of the Mars Exploration Program, while complementing data gathered through other Mars missions.\n\n[Explore: Objectives](https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-objectives/)\n\n### Science\nBy studying the rock record, Spirit and Opportunity confirmed that water was long standing on the surface of Mars in ancient times.\n\n[Explore: Science Highlights](https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-highlights/)\n\n### Resources\nVisit the one-stop-shop for all Spirit and Opportunity multimedia.\n\n[Explore: Mars Resources](https://science.nasa.gov/solar-system/resources/resource-packages/mars-resources/)"
+      },
+      {
+        "heading": "Landing Sites",
+        "markdown": "The rovers were targeted to land at sites on opposite sides of Mars that looked as though they were affected by liquid water in the past. Spirit landed at Gusev Crater, a possible former lake in a giant impact crater. Opportunity landed at Meridiani Planum, a place where mineral deposits suggested that Mars had a wet history."
+      },
+      {
+        "heading": "Going the Distance",
+        "markdown": "By the end of its mission, Spirit journeyed 4.8 miles (7.7 kilometers) on Mars. Opportunity held the off-Earth roving distance record after accruing 28.06 miles (45.16 kilometers) of driving on Mars, when it fell silent in June 2018. That record held until Oct. 11, 2026, when its successor, NASA's Mars rover Perseverance, rolled past Opportunity's mark to reach 28.10 miles (45.22 kilometers)... and counting."
+      },
+      {
+        "heading": "Spirit and Opportunity News and Features",
+        "markdown": "- [Establishing Crew Exposure Limits of Martian Dust](https://www.nasa.gov/general/establishing-crew-exposure-limits-of-martian-dust/)\n- [Catching Up With Perseverance on Mars (podcast)](https://www.nasa.gov/podcasts/curious-universe/catching-up-with-perseverance/)\n- [Advances in NASA Imaging Changed How World Sees Mars](https://www.nasa.gov/solar-system/planets/mars/advances-in-nasa-imaging-changed-how-world-sees-mars/)\n- [Sunset on Mars](https://www.nasa.gov/image-article/sunset-on-mars/)\n- [Perseverance Rover Witnesses One Martian Dust Devil Eating Another](https://www.nasa.gov/missions/mars-2020-perseverance/perseverance-rover/perseverance-rover-witnesses-one-martian-dust-devil-eating-another/)\n\n[Explore All Stories](https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/stories/)"
+      }
+    ]
+  },
+  "media": {
+    "hero_image": {
+      "url": "https://science.nasa.gov/wp-content/uploads/2008/02/365-mer-1280-spirit.jpg",
+      "context": "og:image / topic card strony",
+      "credit": "NASA/JPL-Caltech"
+    },
+    "images": [
+      {
+        "url": "https://science.nasa.gov/wp-content/uploads/2024/03/mer-bythenumbers-infographic-feb2019.jpg",
+        "caption": "This infographic highlights NASA's twin robot geologists, the Mars Exploration Rovers (MER) Spirit and Opportunity. The rovers landed on the Red Planet in 2004, in search of answers about the history of water on Mars. Spirit concluded its mission in 2010. Opportunity last communicated with Earth on June 10, 2018, as a planet-wide dust storm blanketed the solar-powered rover's location on Mars.",
+        "context": "infografika 'By the Numbers' na stronie",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/3447/solar_panels_on_rover_seen_from_above.jpeg",
+        "caption": "This self-portrait of Opportunity shows how the wind had cleaned much of the dust off the rover's solar panels. It combines multiple frames taken by Opportunity's panoramic camera (Pancam) through three different color filters from March 22 to March 24, 2014.",
+        "context": "autoportret Opportunity (sekcja multimedialna strony)",
+        "credit": "NASA/JPL-Caltech/Cornell Univ./Arizona State Univ."
+      },
+      {
+        "url": "https://science.nasa.gov/wp-content/uploads/2024/03/sol016-lander-pan-pia05117.jpg",
+        "photojournal_id": "PIA05117",
+        "caption": "This image mosaic taken by the panoramic camera onboard the Mars Exploration Rover Spirit shows the rover's landing site, the Columbia Memorial Station, at Gusev Crater, Mars. This spectacular view may encapsulate Spirit's entire journey, from lander to its possible final destination toward the east hills. On its way, the rover will travel 250 meters (820 feet) northeast to a large crater approximately 200 meters (660 feet) across, the ridge of which can be seen to the left of this image. To the right are the east hills, about 3 kilometers (2 miles) away from the lander. The picture was taken on the 16th martian day, or sol, of the mission (Jan. 18/19, 2004). A portion of Spirit's solar panels appear in the foreground. Data from the panoramic camera's green, blue and infrared filters were combined to create this approximate true color image.",
+        "context": "miejsce lądowania Spirit (Columbia Memorial Station)",
+        "credit": "NASA/JPL-Caltech/Cornell"
+      },
+      {
+        "url": "https://science.nasa.gov/wp-content/uploads/2024/03/sol058-to-060-lion-king-pia05755.jpg",
+        "photojournal_id": "PIA05755",
+        "caption": "This image shows the middle section of an approximate true-color panorama, dubbed \"Lion King,\" showing \"Eagle Crater\" and the surrounding plains of Meridiani Planum. It was obtained by the Mars Exploration Rover Opportunity's panoramic camera on sols 58 and 60 using infrared (750-nanometer), green (530-nanometer) and blue (430-nanometer) filters. The full panorama comprises 558 images and more than 75 megabytes of data, the largest panorama captured by either of the Mars Exploration Rovers in 2004. It depicts a story of exploration including the Opportunity rover's lander, a thorough examination of the outcrop behind, a study of the soils at the near-side of the lander, a successful exit from Eagle Crater, and finally the rover's next destination, the large crater dubbed \"Endurance.\"",
+        "context": "panorama 'Lion King' Opportunity (Eagle Crater)",
+        "credit": "NASA/JPL/Cornell",
+        "full_panorama": "https://photojournal.jpl.nasa.gov/catalog/PIA05755"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/mars2020/2026/JPL_DrivingDistanceRecord_GraphicRecreation_August2026_v3.png",
+        "caption": "This infographic illustrates the distances driven by various rovers on the surface of Earth's Moon and Mars. Of the vehicles shown, the NASA Mars rovers Perseverance and Curiosity are still operational and moving across the surface; the figures shown for those two are distances driven as of Oct. 11, 2026.",
+        "context": "sekcja 'Going the Distance' — infografika rekordów dystansu",
+        "credit": "NASA/JPL-Caltech"
+      }
+    ],
+    "gifs": [],
+    "videos": [],
+    "models_3d": [
+      {
+        "name": "Mars Exploration Rovers (Spirit and Opportunity)",
+        "model_id": "2370",
+        "format": "glb",
+        "url": "https://solarsystem.nasa.gov/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0500eb06cd8cdae455e494aceee0d2cf3935b258/MER_static.glb",
+        "context": "interaktywny model 3D osadzony na stronie (model-viewer, alt='A 3D model of the twin Mars Exploration Rovers, Spirit and Opportunity.')"
+      },
+      {
+        "name": "Mars Exploration Rovers (Spirit and Opportunity)",
+        "model_id": "2370",
+        "format": "usdz",
+        "url": "https://solarsystem.nasa.gov/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a425f07c578be07cb1aa077630a79a4d65630e77/MER_static.usdz",
+        "context": "wariant AR dla iOS (Quick Look)"
+      },
+      {
+        "name": "Mars Exploration Rovers — interaktywny podgląd",
+        "model_id": "2370",
+        "format": "web_viewer",
+        "url": "https://solarsystem.nasa.gov/gltf_embed/2370/",
+        "note": "A 3D model of the twin Mars Exploration Rovers, Spirit and Opportunity. (NASA Visualization Technology Applications and Development — VTAD)",
+        "poster": "https://solarsystem.nasa.gov/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6d4b100c0009f7406114ffaeb1cf7e332e6a8b1/poster_spacecraft_mer.jpg"
+      }
+    ],
+    "downloads": []
+  },
+  "related": {
+    "mission_pages": [
+      {
+        "title": "Spirit Rover (MER-A) — osobna strona",
+        "url": "https://science.nasa.gov/mission/mer-spirit/"
+      },
+      {
+        "title": "Opportunity Rover (MER-B) — osobna strona",
+        "url": "https://science.nasa.gov/mission/mer-opportunity/"
+      },
+      {
+        "title": "MER — News and Features (Opportunity)",
+        "url": "https://science.nasa.gov/mission/mer-opportunity/stories/"
+      },
+      {
+        "title": "MER — wszystkie historie",
+        "url": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/stories/"
+      }
+    ],
+    "science_pages": [
+      {
+        "title": "MER — Objectives",
+        "url": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-objectives/"
+      },
+      {
+        "title": "MER — Instruments",
+        "url": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-instruments/"
+      },
+      {
+        "title": "MER — Highlights",
+        "url": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-highlights/"
+      },
+      {
+        "title": "Rover Basics",
+        "url": "https://science.nasa.gov/planetary-science/programs/mars-exploration/rover-basics/"
+      }
+    ],
+    "multimedia_galleries": [
+      {
+        "title": "Mars Resources (pakiet — 'one-stop-shop' dla multimedów MER)",
+        "url": "https://science.nasa.gov/solar-system/resources/resource-packages/mars-resources/"
+      }
+    ],
+    "topic_pages": [
+      {
+        "title": "Mars Home",
+        "url": "https://science.nasa.gov/mars/"
+      }
+    ],
+    "related_missions": [
+      {
+        "title": "Mars Perseverance Rover (następca — pobił rekord Opportunity 11.10.2026)",
+        "url": "https://science.nasa.gov/mission/mars-2020-perseverance/"
+      },
+      {
+        "title": "Mars Curiosity Rover",
+        "url": "https://science.nasa.gov/mission/msl-curiosity/"
+      },
+      {
+        "title": "Mars Reconnaissance Orbiter",
+        "url": "https://science.nasa.gov/mission/mars-reconnaissance-orbiter/"
+      },
+      {
+        "title": "Mars Odyssey",
+        "url": "https://science.nasa.gov/mission/odyssey/"
+      }
+    ]
+  },
+  "notes": [
+    "Strona to 'hub' misji MER — szczegółowe dane o każdym łaziku są na osobnych stronach Spirit (mer-spirit) i Opportunity (mer-opportunity); tutaj zebrano dane wspólne.",
+    "Daty lądowań podane na stronie (3 i 24 stycznia 2004) to daty w czasie lokalnym USA — w UTC lądowania nastąpiły 4 i 25 stycznia 2004 (informacja uzupełniająca, poza tą stroną).",
+    "Strona nie podaje dat startu rakiet ani specyfikacji technicznych — pole specifications zostało puste (lista pusta, klucz obecny).",
+    "Model 3D: glb + usdz + podgląd web (id 2370 w systemie solarsystem.nasa.gov; autorstwo NASA VTAD).",
+    "Ostatnia komunikacja Opportunity: 10 czerwca 2018 (burza pyłowa); rekord dystansu 28.06 mil pobity przez Perseverance 11 października 2026.",
+    "Sekcja 'Meet Spirit and Opportunity' na stronie zawiera tylko model 3D i linki do podstron — oddane w article.sections."
+  ]
+}

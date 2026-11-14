@@ -1,0 +1,495 @@
+{
+  "_format": {
+    "format_version": "nasa-mission-scraper/1.0",
+    "description": "Ujednolicony format eksportu danych ze stron NASA (science.nasa.gov i pokrewnych). Ten sam schemat stosuj do każdej kolejnej strony misji/pojazdu, aby wszystkie wpisy były spójne i mogły być łączone w jedną bazę.",
+    "conventions": [
+      "Klucze zawsze obecne; brak danych = null (nigdy nie usuwaj klucza), brak pozycji = pusta lista [].",
+      "Daty: 'date' zawsze w ISO 8601 (YYYY-MM-DD), 'date_raw' zachowuje oryginalny zapis ze strony.",
+      "Wszystkie URL-e bezwzględne (https://...), bez parametrów śledzących gdzie to możliwe.",
+      "Każdy zasób medialny jest obiektem z minimalnym zestawem pól: url + typ + context (skąd pochodzi na stronie).",
+      "Treść artykułu w polach 'markdown': nagłówki '##'/'###', listy '-', listy numerowane '1.', pogrubienia '**'. Układ = kolejność sekcji ze strony źródłowej.",
+      "Treść zachowywana w języku źródła (pole source.language); nie tłumaczyć przy ekstrakcji.",
+      "Pola 'id' zewnętrznych systemów (np. PIA##### z Photojournal, identyfikatory YouTube, numery modeli 3D) zapisuj w dedykowanych polach *_id, jeśli są znane.",
+      "Weryfikuj dostępność URL-i (HTTP 200) przed zapisem; martwy link oznaczaj w polu 'status'."
+    ],
+    "top_level_keys": [
+      "_format",
+      "source",
+      "vehicle",
+      "specifications",
+      "key_facts",
+      "timeline",
+      "article",
+      "media",
+      "related",
+      "notes"
+    ]
+  },
+  "source": {
+    "url": "https://science.nasa.gov/mission/dawn/",
+    "canonical_url": "https://science.nasa.gov/mission/dawn/",
+    "page_title": "Dawn - NASA Science",
+    "page_type": "mission_page",
+    "site": "science.nasa.gov",
+    "language": "en",
+    "scraped_at": "2026-11-14",
+    "page_last_updated": "2024-11-03",
+    "page_editor": null,
+    "responsible_nasa_official": null,
+    "meta_description": "Dwarf Planet & Asteroid Orbiter",
+    "og_image": "https://assets.science.nasa.gov/content/dam/science/psd/solar/internal_resources/2932/Dawn_Artists_Concept.jpeg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
+  },
+  "vehicle": {
+    "name": "Dawn",
+    "full_name": "Dawn",
+    "agency": "NASA / JPL-Caltech (mission management); UCLA (science team lead institution)",
+    "mission": {
+      "name": "Dawn",
+      "url": "https://science.nasa.gov/mission/dawn/",
+      "relationship": "single-spacecraft mission; NASA's first truly interplanetary spaceship"
+    },
+    "type": {
+      "category": "orbiter",
+      "name": "Orbiter",
+      "page_label": "Orbiter"
+    },
+    "objective": "Orbit and study two different extraterrestrial bodies — giant asteroid Vesta and dwarf planet Ceres",
+    "destination": "Vesta and Ceres (main asteroid belt)",
+    "status": "mission_completed",
+    "nation": "United States of America (USA)",
+    "dates": {
+      "launch": {
+        "date": "2007-09-27",
+        "date_raw": "Sept. 27, 2007 | 11:34 UTC",
+        "location": "Cape Canaveral Air Force Station, Florida"
+      },
+      "mars_flyby": {
+        "date": "2009-02-17",
+        "date_raw": "Feb. 17, 2009",
+        "event": "Mars Gravity Assist"
+      },
+      "vesta_arrival": {
+        "date": "2011-07-16",
+        "date_raw": "July 16, 2011",
+        "event": "Vesta Arrival (orbit insertion)"
+      },
+      "vesta_departure": {
+        "date": "2012-09-05",
+        "date_raw": "Sept. 5, 2017 (sic! — na stronie NASA literówka; faktyczne opuszczenie orbity Vesty: wrzesień 2012)",
+        "event": "Vesta Departure",
+        "note": "strona źródłowa podaje 'Sept. 5, 2017' — błąd na stronie NASA (misja dotarła do Ceres w marcu 2015, więc opuszczenie Vesty musiało nastąpić w 2012)"
+      },
+      "ceres_arrival": {
+        "date": "2015-03-06",
+        "date_raw": "March 5, 2015",
+        "event": "Ceres Arrival (orbit insertion)"
+      },
+      "end_of_prime_mission": {
+        "date": "2016-06-30",
+        "date_raw": "June 2016",
+        "event": "End of prime mission"
+      },
+      "first_extended_mission": {
+        "date": "2016-07-01",
+        "date_raw": "July 2016",
+        "event": "Start of first extended mission"
+      },
+      "second_extended_mission": {
+        "date": "2017-10-01",
+        "date_raw": "October 2017",
+        "event": "Start of second extended mission"
+      },
+      "end_of_operations": {
+        "date": "2018-10-31",
+        "date_raw": "Oct. 31, 2018",
+        "event": "Dawn depleted its hydrazine propellant; without hydrazine the ship cannot point solar arrays at the Sun nor its antenna to Earth"
+      },
+      "mission_end": {
+        "date": "2018-11-01",
+        "date_raw": "Nov. 1, 2018",
+        "event": "NASA announced Dawn's long and successful mission concludes (loss of radio signal at the Deep Space Network)",
+        "url": "https://science.nasa.gov/mission/dawn/mission-status/"
+      }
+    }
+  },
+  "specifications": [
+    {
+      "parameter": "Type",
+      "value": "Orbiter"
+    },
+    {
+      "parameter": "Status",
+      "value": "Mission Completed (Nov. 1, 2018)"
+    },
+    {
+      "parameter": "Launch Date",
+      "value": "Sept. 27, 2007 | 11:34 UTC"
+    },
+    {
+      "parameter": "Launch Location",
+      "value": "Cape Canaveral Air Force Station, Florida"
+    },
+    {
+      "parameter": "Target",
+      "value": "Vesta and Ceres"
+    },
+    {
+      "parameter": "Destination",
+      "value": "Vesta and Ceres"
+    },
+    {
+      "parameter": "Propulsion",
+      "value": "Ion propulsion (see Ion Propulsion page)"
+    },
+    {
+      "parameter": "Scientific Instruments — science_payload",
+      "value": "FC — Framing Camera; VIR — Visible and Infrared Spectrometer; GRaND — Gamma Ray and Neutron Detector"
+    },
+    {
+      "parameter": "Scientific Instruments — note",
+      "value": "Szczegóły instrumentów na podstronach: /technology/science-payload/, /technology/grand-instrument/, /technology/vir-instrument/, /technology/fc-instrument/."
+    }
+  ],
+  "key_facts": {
+    "lead": "Dawn was NASA’s first truly interplanetary spaceship. The mission featured extended stays at two very different extraterrestrial bodies: giant asteroid Vesta and dwarf planet Ceres. Both small worlds reside in the debris-strewn main asteroid belt between Mars and Jupiter.",
+    "objectives_intro": "The top level question the mission addressed is the role of size and water in determining the evolution of the planets. Ceres and Vesta were the right two bodies with which to address this question, as they are the most massive of the protoplanets—baby planets whose growth was interrupted by the formation of Jupiter. Ceres is very primitive and wet while Vesta is evolved and dry.",
+    "principal_scientific_drivers": [
+      "Capture the earliest moments in the origin of the solar system enabling us to understand the conditions under which these objects formed.",
+      "Determine the nature of the building blocks from which the terrestrial planets formed, improving our understanding of this formation.",
+      "Contrast the formation and evolution of two small planets that followed very different evolutionary paths so that we understand what controls that evolution."
+    ],
+    "mission_status_final": "November 1, 2018 — Dawn's Long and Successful Mission Concludes: Dawn depleted its hydrazine propellant on Oct. 31, exploring dwarf planet Ceres to the very end. Without the hydrazine, the ship cannot control its orientation in space, so it can no longer point its solar arrays at the Sun to generate electrical power nor its antenna to Earth. The indication that the mission had concluded was the loss of the spacecraft's radio signal at the Deep Space Network (DSN)."
+  },
+  "timeline": [
+    {
+      "date": "2007-09-27",
+      "date_raw": "Sept. 27, 2007",
+      "title": "Launch"
+    },
+    {
+      "date": "2009-02-17",
+      "date_raw": "Feb. 17, 2009",
+      "title": "Mars Gravity Assist"
+    },
+    {
+      "date": "2011-07-16",
+      "date_raw": "July 16, 2011",
+      "title": "Vesta Arrival"
+    },
+    {
+      "date": "2012-09-05",
+      "date_raw": "Sept. 5, 2012 (strona NASA błędnie podaje '2017')",
+      "title": "Vesta Departure"
+    },
+    {
+      "date": "2015-03-05",
+      "date_raw": "March 5, 2015",
+      "title": "Ceres Arrival"
+    },
+    {
+      "date": "2016-06-30",
+      "date_raw": "June 2016",
+      "title": "End of prime mission"
+    },
+    {
+      "date": "2016-07-01",
+      "date_raw": "July 2016",
+      "title": "Start of first extended mission"
+    },
+    {
+      "date": "2017-10-01",
+      "date_raw": "October 2017",
+      "title": "Start of second extended mission"
+    },
+    {
+      "date": "2018-11-01",
+      "date_raw": "Nov. 1, 2018",
+      "title": "End of Mission"
+    }
+  ],
+  "article": {
+    "title": "Dawn",
+    "lead": "Dawn was NASA’s first truly interplanetary spaceship. The mission featured extended stays at two very different extraterrestrial bodies: giant asteroid Vesta and dwarf planet Ceres.",
+    "content_language": "en",
+    "sections": [
+      {
+        "heading": "Mission Overview",
+        "markdown": "Dawn was NASA’s first truly interplanetary spaceship. The mission featured extended stays at two very different extraterrestrial bodies: giant asteroid Vesta and dwarf planet Ceres. Both small worlds reside in the debris-strewn main asteroid belt between Mars and Jupiter.\n\n**Quick facts:**\n\n- **Type:** Orbiter\n- **Launch Date:** Sept. 27, 2007 | 11:34 UTC\n- **Launch Location:** Cape Canaveral Air Force Station, Florida\n- **Target:** Vesta and Ceres\n- **Status:** Mission Completed (Nov. 1, 2018)\n\n**Interactive:** [Eyes on the Solar System — Dawn simulation](https://eyes.nasa.gov/apps/solar-system/#/sc_dawn)"
+      },
+      {
+        "heading": "Objectives",
+        "markdown": "The top level question the mission addressed is the role of size and water in determining the evolution of the planets.\n\nCeres and Vesta were the right two bodies with which to address this question, as they are the most massive of the protoplanets—baby planets whose growth was interrupted by the formation of Jupiter. Ceres is very primitive and wet while Vesta is evolved and dry.\n\nThe three principal scientific drivers for the mission:\n\n1. Capture the earliest moments in the origin of the solar system enabling us to understand the conditions under which these objects formed.\n2. Determine the nature of the building blocks from which the terrestrial planets formed, improving our understanding of this formation.\n3. Contrast the formation and evolution of two small planets that followed very different evolutionary paths so that we understand what controls that evolution.\n\nDawn formed a bridge between the exploration of the rocky inner solar system and the icy outer solar system. It completed the first order exploration of the inner solar system, addressed NASA's goal of understanding the origin and evolution of the solar system."
+      },
+      {
+        "heading": "Mission Events",
+        "markdown": "- **Sept. 27, 2007:** Launch\n- **Feb. 17, 2009:** Mars Gravity Assist\n- **July 16, 2011:** Vesta Arrival\n- **Sept. 5, 2012:** Vesta Departure *(strona NASA podaje tu błędnie '2017')*\n- **March 5, 2015:** Ceres Arrival\n- **June 2016:** End of prime mission\n- **July 2016:** Start of first extended mission\n- **October 2017:** Start of second extended mission\n- **Nov. 1, 2018:** End of Mission"
+      },
+      {
+        "heading": "Final Mission Status (Nov. 1, 2018)",
+        "markdown": "**Dawn's Long and Successful Mission Concludes** — from Chief Engineer / Mission Director, Marc Rayman (JPL):\n\nDawn depleted its hydrazine propellant on Oct. 31, exploring dwarf planet Ceres to the very end. Without the hydrazine, the ship cannot control its orientation in space, so it can no longer point its solar arrays at the Sun to generate electrical power nor its antenna to Earth. The indication that the mission had concluded was the loss of the spacecraft's radio signal at the Deep Space Network (DSN).\n\nDawn performed superbly to the end of its mission and lasted longer than anticipated. For at least the next couple of decades, and probably much longer, Dawn's status is that this former interplanetary ambassador from Earth is an inert celestial monument to the power of human ingenuity, creativity, and curiosity in orbit around one of the alien worlds it unveiled."
+      },
+      {
+        "heading": "Dawn Stories",
+        "markdown": "- [Fluid Flow in Ceres Due to Core Heating — 2 min read](https://science.nasa.gov/photojournal/fluid-flow-in-ceres-due-to-core-heating/)\n- [NASA: Ceres May Have Had Long-Standing Energy to Fuel Habitability — 4 min read](https://www.nasa.gov/missions/dawn/nasa-ceres-may-have-had-long-standing-energy-to-fuel-habitability/)\n- [NASA Studies Reveal Hidden Secrets About Interiors of Moon, Vesta — 6 min read](https://www.nasa.gov/solar-system/asteroids/vesta/nasa-studies-reveal-hidden-secrets-about-interiors-of-moon-vesta/)\n- [NASA’s Dawn Sees Crescent Ceres — image article](https://www.nasa.gov/image-article/nasas-dawn-sees-crescent-ceres/)\n- [Lab Work Digs Into Gullies Seen on Giant Asteroid Vesta by NASA’s Dawn — 4 min read](https://www.nasa.gov/missions/dawn/lab-work-digs-into-gullies-seen-on-giant-asteroid-vesta-by-nasas-dawn/)\n\n[Explore All Dawn Stories](https://science.nasa.gov/mission/dawn/stories/)"
+      }
+    ]
+  },
+  "media": {
+    "hero_image": {
+      "url": "https://assets.science.nasa.gov/content/dam/science/psd/solar/internal_resources/2932/Dawn_Artists_Concept.jpeg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+      "context": "og:image strony (artist's concept)",
+      "credit": "NASA"
+    },
+    "images": [
+      {
+        "url": "https://science.nasa.gov/wp-content/uploads/2023/06/dawn-logo.png",
+        "caption": "Dawn Mission patch shows the spacecraft and asteroid Vesta and dwarf planet Ceres.",
+        "context": "logo/patch misji na stronie głównej",
+        "credit": "NASA"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/Dawn_Vesta_10th_Ann_Poster_800.jpg",
+        "caption": "Dawn Mission to Vesta — 10th Anniversary poster.",
+        "context": "multimedia: resource 'dawn-mission-to-vesta-10th-anniversary'",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/dawn-launch-vehicle_1600.jpg",
+        "caption": "Dawn launch vehicle diagram.",
+        "context": "multimedia: resource 'dawn-launch-vehicle-diagram'",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/Dawn_Diagram02_1600.jpg",
+        "caption": "Dawn spacecraft diagram no. 2.",
+        "context": "multimedia: resource 'dawn-spacecraft-diagram-no-2'",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/dawn-diagram_1600.jpg",
+        "caption": "Dawn spacecraft diagram no. 1.",
+        "context": "multimedia: resource 'dawn-spacecraft-diagram-no-1'",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/dawn-launch-1600.jpg",
+        "caption": "Dawn launch press kit cover image.",
+        "context": "multimedia: resource 'dawn-launch-press-kit'",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/dawn-vesta-1600.jpg",
+        "caption": "Dawn at Vesta press kit cover image.",
+        "context": "multimedia: resource 'dawn-at-vesta-press-kit'",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/dawn-ceres-1600.jpg",
+        "caption": "Dawn at Ceres press kit cover image.",
+        "context": "multimedia: resource 'dawn-at-ceres-press-kit'",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/1/190739main_dawnlaunch-lg.jpg",
+        "caption": "Dawn spacecraft launch.",
+        "context": "multimedia: resource 'dawn-spacecraft-launch'",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/dawn_bynumbers_3a_v5_1600.jpg",
+        "caption": "Dawn by the numbers (infographic).",
+        "context": "multimedia: resource 'dawn-by-the-numbers'",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/d/detail_DawnIonPropulsionInfographic.jpg",
+        "caption": "Anatomy of an Ion Engine (infographic).",
+        "context": "multimedia: resource 'anatomy-of-an-ion-engine'",
+        "credit": "NASA/JPL-Caltech"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/p/i/a/2/PIA22765_hires.jpg",
+        "photojournal_id": "PIA22765",
+        "caption": "Occator Crater on Ceres Limb (short exposure).",
+        "context": "multimedia: resource 'occator-crater-on-ceres-limb-short-exposure'",
+        "credit": "NASA/JPL-Caltech/UCLA/MPS/DLR/IDA"
+      }
+    ],
+    "gifs": [],
+    "videos": [],
+    "models_3d": [],
+    "interactive": [
+      {
+        "name": "Eyes on the Solar System — Dawn",
+        "url": "https://eyes.nasa.gov/apps/solar-system/#/sc_dawn",
+        "context": "symulacja trasy lotu zbudowana na prawdziwych danych misji (iframe na stronie głównej)"
+      }
+    ],
+    "downloads": [
+      {
+        "title": "Dawn Launch Press Kit",
+        "url": "https://science.nasa.gov/resource/dawn-launch-press-kit/",
+        "file_type": "press_kit"
+      },
+      {
+        "title": "Dawn at Vesta Press Kit",
+        "url": "https://science.nasa.gov/resource/dawn-at-vesta-press-kit/",
+        "file_type": "press_kit"
+      },
+      {
+        "title": "Dawn at Ceres Press Kit",
+        "url": "https://science.nasa.gov/resource/dawn-at-ceres-press-kit/",
+        "file_type": "press_kit"
+      },
+      {
+        "title": "Dawn Launch Vehicle Diagram",
+        "url": "https://science.nasa.gov/resource/dawn-launch-vehicle-diagram/",
+        "file_type": "diagram"
+      },
+      {
+        "title": "Dawn Spacecraft Diagram No. 1",
+        "url": "https://science.nasa.gov/resource/dawn-spacecraft-diagram-no-1/",
+        "file_type": "diagram"
+      },
+      {
+        "title": "Dawn Spacecraft Diagram No. 2",
+        "url": "https://science.nasa.gov/resource/dawn-spacecraft-diagram-no-2/",
+        "file_type": "diagram"
+      },
+      {
+        "title": "Dawn by the Numbers (infographic)",
+        "url": "https://science.nasa.gov/resource/dawn-by-the-numbers/",
+        "file_type": "infographic"
+      },
+      {
+        "title": "Anatomy of an Ion Engine (infographic)",
+        "url": "https://science.nasa.gov/resource/anatomy-of-an-ion-engine/",
+        "file_type": "infographic"
+      },
+      {
+        "title": "Dawn Mission to Vesta — 10th Anniversary (poster)",
+        "url": "https://science.nasa.gov/resource/dawn-mission-to-vesta-10th-anniversary/",
+        "file_type": "poster"
+      },
+      {
+        "title": "Dawn Spacecraft Launch (image)",
+        "url": "https://science.nasa.gov/resource/dawn-spacecraft-launch/",
+        "file_type": "image"
+      },
+      {
+        "title": "NASA's Dawn Highlighting Bright Areas of Ceres (image)",
+        "url": "https://science.nasa.gov/resource/nasas-dawn-highlighting-bright-areas-of-ceres/",
+        "file_type": "image"
+      },
+      {
+        "title": "Occator Crater on Ceres Limb, Short Exposure (image)",
+        "url": "https://science.nasa.gov/resource/occator-crater-on-ceres-limb-short-exposure/",
+        "file_type": "image"
+      }
+    ]
+  },
+  "related": {
+    "mission_pages": [
+      {
+        "title": "Dawn Toolkit (Highlights)",
+        "url": "https://science.nasa.gov/mission/dawn/toolkit/highlights/"
+      },
+      {
+        "title": "Dawn Objectives",
+        "url": "https://science.nasa.gov/mission/dawn/objectives/"
+      },
+      {
+        "title": "Dawn Mission Status",
+        "url": "https://science.nasa.gov/mission/dawn/mission-status/"
+      },
+      {
+        "title": "Dawn Journal",
+        "url": "https://science.nasa.gov/mission/dawn/dawn-journal/"
+      },
+      {
+        "title": "Dawn — The Team",
+        "url": "https://science.nasa.gov/mission/dawn/the-team/mission-teams/"
+      },
+      {
+        "title": "Dawn FAQ",
+        "url": "https://science.nasa.gov/mission/dawn/faq/"
+      }
+    ],
+    "science_pages": [
+      {
+        "title": "Science Overview",
+        "url": "https://science.nasa.gov/mission/dawn/science/overview/"
+      },
+      {
+        "title": "Vesta",
+        "url": "https://science.nasa.gov/mission/dawn/science/vesta/"
+      },
+      {
+        "title": "Ceres",
+        "url": "https://science.nasa.gov/mission/dawn/science/ceres/"
+      }
+    ],
+    "technology_pages": [
+      {
+        "title": "Spacecraft",
+        "url": "https://science.nasa.gov/mission/dawn/technology/spacecraft/"
+      },
+      {
+        "title": "Navigation",
+        "url": "https://science.nasa.gov/mission/dawn/technology/navigating/"
+      },
+      {
+        "title": "Science Payload",
+        "url": "https://science.nasa.gov/mission/dawn/technology/science-payload/"
+      },
+      {
+        "title": "GRaND Instrument",
+        "url": "https://science.nasa.gov/mission/dawn/technology/grand-instrument/"
+      },
+      {
+        "title": "VIR Instrument",
+        "url": "https://science.nasa.gov/mission/dawn/technology/vir-instrument/"
+      },
+      {
+        "title": "FC Instrument",
+        "url": "https://science.nasa.gov/mission/dawn/technology/fc-instrument/"
+      },
+      {
+        "title": "Ion Propulsion",
+        "url": "https://science.nasa.gov/mission/dawn/technology/ion-propulsion/"
+      }
+    ],
+    "multimedia_galleries": [
+      {
+        "title": "All Dawn Multimedia",
+        "url": "https://science.nasa.gov/mission/dawn/multimedia/"
+      },
+      {
+        "title": "Dawn Images",
+        "url": "https://science.nasa.gov/mission/dawn/multimedia/?types=images"
+      },
+      {
+        "title": "Dawn Infographics",
+        "url": "https://science.nasa.gov/mission/dawn/multimedia/infographics/"
+      },
+      {
+        "title": "Dawn Videos",
+        "url": "https://science.nasa.gov/mission/dawn/multimedia/?types=videos"
+      }
+    ],
+    "feature_stories": [
+      {
+        "title": "All Dawn Stories",
+        "url": "https://science.nasa.gov/mission/dawn/stories/"
+      }
+    ]
+  },
+  "notes": [
+    "Strona główna Dawn jest uboga w treść inline (misja zakończona w 2018), ale ma rozbudowaną strukturę podstron (Toolkit, Objectives, Mission Status, Dawn Journal, Science, Technology, Multimedia) — wszystkie odnośniki zebrane w related.",
+    "UWAGA: podstrona /objectives/ zawiera literówkę 'Sept. 5, 2017: Vesta Departure' — to błąd na stronie NASA (faktycznie opuściła Vestę we wrześniu 2012, bo do Ceres dotarła w marcu 2015). Zachowano zapis ze strony z adnotacją w polach date_raw/note i skorygowaną datą ISO (2012-09-05).",
+    "Brak osadzonych filmów YouTube, GIF-ów i modeli 3D na stronie głównej; jest za to interaktywna symulacja Eyes on the Solar System.",
+    "Kafelki multimediów (press kity, diagramy, infografiki) mają pliki źródłowe bez parametrów fit/crop — URL-e wyczyszczone do wersji bazowych.",
+    "Treść article.sections zachowana w języku angielskim (źródłowym); układ i kolejność sekcji = kolejność na stronie.",
+    "Wszystkie URL-e w polach media.* zweryfikowane HTTP 200 (2026-11-14, skrypt scripts/verify_urls.py)."
+  ]
+}

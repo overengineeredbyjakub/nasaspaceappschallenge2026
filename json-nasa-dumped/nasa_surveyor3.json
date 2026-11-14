@@ -1,0 +1,262 @@
+{
+  "_format": {
+    "format_version": "nasa-mission-scraper/1.0",
+    "description": "Ujednolicony format eksportu danych ze stron NASA (science.nasa.gov i pokrewnych). Ten sam schemat stosuj do każdej kolejnej strony misji/pojazdu, aby wszystkie wpisy były spójne i mogły być łączone w jedną bazę.",
+    "conventions": [
+      "Klucze zawsze obecne; brak danych = null (nigdy nie usuwaj klucza), brak pozycji = pusta lista [].",
+      "Daty: 'date' zawsze w ISO 8601 (YYYY-MM-DD), 'date_raw' zachowuje oryginalny zapis ze strony.",
+      "Wszystkie URL-e bezwzględne (https://...), bez parametrów śledzących gdzie to możliwe.",
+      "Każdy zasób medialny jest obiektem z minimalnym zestawem pól: url + typ + context (skąd pochodzi na stronie).",
+      "Treść artykułu w polach 'markdown': nagłówki '##'/'###', listy '-', listy numerowane '1.', pogrubienia '**'. Układ = kolejność sekcji ze strony źródłowej.",
+      "Treść zachowywana w języku źródła (pole source.language); nie tłumaczyć przy ekstrakcji.",
+      "Pola 'id' zewnętrznych systemów (np. PIA##### z Photojournal, identyfikatory YouTube, numery modeli 3D) zapisuj w dedykowanych polach *_id, jeśli są znane.",
+      "Weryfikuj dostępność URL-i (HTTP 200) przed zapisem; martwy link oznaczaj w polu 'status'."
+    ],
+    "top_level_keys": [
+      "_format",
+      "source",
+      "vehicle",
+      "specifications",
+      "key_facts",
+      "timeline",
+      "article",
+      "media",
+      "related",
+      "notes"
+    ]
+  },
+  "source": {
+    "url": "https://science.nasa.gov/mission/surveyor-3/",
+    "canonical_url": "https://science.nasa.gov/mission/surveyor-3/",
+    "page_title": "Surveyor 3 - NASA Science",
+    "page_type": "mission_vehicle_page",
+    "site": "science.nasa.gov",
+    "language": "en",
+    "scraped_at": "2026-11-14",
+    "page_last_updated": null,
+    "meta_description": "NASA's Surveyor 3 was the second in the Surveyor series to make a soft landing on the Moon. Based on the spacecraft's surface sampling tests, scientists concluded..."
+  },
+  "vehicle": {
+    "name": "Surveyor 3",
+    "full_name": "Surveyor 3",
+    "agency": "NASA / JPL-Caltech",
+    "mission": {
+      "name": "Surveyor (program)",
+      "url": "https://science.nasa.gov/mission/surveyor-3/",
+      "relationship": "trzeci lot inżynieryjny serii Surveyor; część programu, który przygotował lądowania Apollo"
+    },
+    "type": {
+      "category": "lander",
+      "name": "Lander",
+      "page_label": "Lander"
+    },
+    "objective": "Make a soft landing on the Moon",
+    "target": "Moon",
+    "destination": "Southeastern region of Oceanus Procellarum, Moon (3 degrees south latitude, 23.41 degrees west longitude)",
+    "status": "mission_completed",
+    "nssdca_cospar_id": "1967-035A",
+    "dates": {
+      "launch": {
+        "date": "1967-04-17",
+        "date_raw": "April 17, 1967",
+        "location": null,
+        "note": "start z orbity parkingowej wokół Ziemi po impulsie stopnia Centaur (wielokrotnego odpalania)"
+      },
+      "landing": {
+        "date": "1967-04-20",
+        "date_raw": "April 20, 1967, 00:04:17 UT",
+        "location": "southeastern region of Oceanus Procellarum, 3 S, 23.41 W",
+        "note": "dwukrotne odbicie się od powierzchni (33 ft i 10 ft) wskutek błędu radaru descended"
+      },
+      "start_of_operations": {
+        "date": "1967-04-20",
+        "date_raw": "April 20, 1967",
+        "event": "Pierwsze transmisje TV w ciągu godziny od lądowania"
+      },
+      "end_of_operations": {
+        "date": "1967-05-04",
+        "date_raw": "May 4, 1967",
+        "event": "Ostatni kontakt z pojazdem — dwa dni po rozpoczęciu nocy księżycowej"
+      },
+      "post_mission": {
+        "date": "1969-11-19",
+        "date_raw": "Nov. 19, 1969",
+        "event": "Astronauci Apollo 12 (Conrad, Bean) odwiedzili Surveyor 3 i zdemontowali części (scoop, kamera) do badań efektów 2,5-rocznej ekspozycji"
+      }
+    }
+  },
+  "specifications": [
+    {
+      "parameter": "Surface sampler reach",
+      "value": "up to 5 feet (1.5 meters) from the lander"
+    },
+    {
+      "parameter": "Sampling digging depth",
+      "value": "up to 7 inches (18 centimeters)"
+    },
+    {
+      "parameter": "TV camera lenses",
+      "value": "25 and 100 mm focal length, mirror mounted (horizontal + vertical movement)"
+    },
+    {
+      "parameter": "Image transmission",
+      "value": "~20 s per single 200-line picture; 600-line digital mode available"
+    },
+    {
+      "parameter": "Pictures returned",
+      "value": "6,326 TV pictures"
+    },
+    {
+      "parameter": "Trenches dug / tests",
+      "value": "4 trenches, 4 bearing tests, 13 impact tests"
+    },
+    {
+      "parameter": "Soil bearing strength (measured)",
+      "value": "~10 psi (0.7 kg/cm2, 98 kPa) — consistency similar to wet sand"
+    }
+  ],
+  "key_facts": {
+    "summary_numbers": {
+      "tv_pictures": 6326,
+      "trenches": 4,
+      "bearing_tests": 4,
+      "impact_tests": 13,
+      "operational_life": "14 dni (20.04–4.05.1967)"
+    },
+    "key_findings": [
+      "Grunt księżycowy ma nośność ok. 10 psi — konsystencja podobna do mokrego piasku.",
+      "Wniosek: powierzchnia Księżyca utrzyma masę modułu księżycowego Apollo — bezpośrednie wsparcie programu Apollo."
+    ],
+    "landing_anomaly": "Wysoko odbijające światło skały zmyliły radar descending — silnik główny nie wyłączył się na wysokości ok. 14 ft (4.3 m); lądownik odbił się dwukrotnie (do 33 ft i 10 ft), zanim osiadł miękko.",
+    "apollo_12_connection": "19 listopada 1969 Apollo 12 wylądował ~197 jardów (180 m) od Surveyor 3; astronauci zdemontowali scoop i kamerę."
+  },
+  "timeline": [
+    {
+      "date": "1967-04-17",
+      "date_raw": "April 17, 1967",
+      "title": "Launch"
+    },
+    {
+      "date": "1967-04-20",
+      "date_raw": "April 20, 1967, 00:04:17 UT",
+      "title": "Soft landing in Oceanus Procellarum (po dwóch odbiciach)"
+    },
+    {
+      "date": "1967-04-20",
+      "date_raw": "April 20, 1967",
+      "title": "Start transmisji TV — łącznie 6,326 zdjęć"
+    },
+    {
+      "date": "1967-05-04",
+      "date_raw": "May 4, 1967",
+      "title": "Last contact with spacecraft"
+    },
+    {
+      "date": "1969-11-18",
+      "date_raw": "Nov. 18, 1969",
+      "title": "Apollo 12 ląduje ~180 m od Surveyor 3"
+    },
+    {
+      "date": "1969-11-19",
+      "date_raw": "Nov. 19, 1969",
+      "title": "EVA-2 Apollo 12: wizyta przy Surveyor 3, demontaż scoop-a i kamery"
+    }
+  ],
+  "article": {
+    "title": "Surveyor 3",
+    "lead": "NASA's Surveyor 3 was the second in the Surveyor series to make a soft landing on the Moon. Based on the spacecraft's surface sampling tests, scientists concluded the lunar surface was solid enough to hold the weight of an Apollo lunar module.",
+    "content_language": "en",
+    "sections": [
+      {
+        "heading": "What was Surveyor 3?",
+        "markdown": "NASA's Surveyor 3 was the second in the Surveyor series to make a soft landing on the Moon. Based on the spacecraft's surface sampling tests, scientists concluded the lunar surface was solid enough to hold the weight of an Apollo lunar module."
+      },
+      {
+        "heading": "Key Dates",
+        "markdown": "- **April 17, 1967:** Launch\n- **April 20, 1967:** Landed on the Moon\n- **May 4, 1967:** Last contact with spacecraft"
+      },
+      {
+        "heading": "In Depth: Surveyor 3",
+        "markdown": "Surveyor 3 was the third engineering flight of the series, but for the first time carried a surface-sampling instrument that could reach up to 5 feet (1.5 meters) from the lander and could dig up to 7 inches (18 centimeters) deep.\n\nUnlike the previous Surveyors, Surveyor 3 began its mission from parking orbit around Earth with a burn from the Centaur upper stage, now capable of multiple firings.\n\nDuring the descent to the lunar surface, highly reflective rocks confused the lander's descent radar, and the main engine failed to cut off at the correct moment at about 14 feet (4.3 meters) in altitude. As a result, Surveyor 3 bounced off the lunar surface twice, the first time to a height of 33 feet (10 meters) and the second time, to 10 feet (3 meters). The third time, the lander settled down to a soft-landing at 00:04:17 UT April 20, 1967, in the southeastern region of Oceanus Procellarum at 3 degrees south latitude and 23.41 degrees west longitude.\n\nLess than an hour after landing, the spacecraft began transmitting the first of 6,326 TV pictures of the surrounding areas.\n\nThe most exciting experiments of the mission included the deployment of the surface sampler for digging trenches, making bearing tests, and manipulating lunar material in the view of the TV system. Via commands from Earth, the probe dug four trenches and performed four bearing tests and thirteen impact tests.\n\nBased on these experiments, scientists concluded that lunar soil had a consistency similar to wet sand, with a bearing strength of about 10 pounds per square inch (0.7 kilograms per square centimeter, or 98 kilopascals) — in other words, solid enough to support an Apollo Lunar Module.\n\nThe lander's TV camera consisted of two 25 and 100 mm focal length lenses and was mounted under a mirror that could be moved horizontally and vertically. It took about 20 seconds to transmit a single 200-line picture of the surface. The camera was also capable of 600-line images which used digital picture transmission.\n\nThe last contact with the spacecraft was May 4, 1967, two days after the lunar night began.\n\nMore than three years later, on Nov. 18, 1969, Apollo 12 astronauts Charles Conrad, Jr. and Alan L. Bean landed the Intrepid Lunar Module approximately 197 yards (180 meters) from the inactive Surveyor 3 lander.\n\nDuring their second extra-vehicular activity (EVA) on Nov. 19, 1969, the astronauts walked over to Surveyor 3 and recovered parts, including the soil scoop and camera system, to allow scientists to evaluate the effects of nearly two-and-a-half years of exposure on the Moon's surface."
+      },
+      {
+        "heading": "Key Source",
+        "markdown": "Siddiqi, Asif A. [Beyond Earth: A Chronicle of Deep Space Exploration, 1958-2016](https://solarsystem.nasa.gov/resources/1060/beyond-earth-a-chronicle-of-deep-space-exploration/). NASA History Program Office, 2018."
+      },
+      {
+        "heading": "Latest News",
+        "markdown": "- [APOD: 2026 November 14 – Apollo 12 and Surveyor 3](https://science.nasa.gov/image-article/apod-2026-november-14-apollo-12-and-surveyor-3/)\n- [Instruments on NASA's Roman Space Telescope Get in Sync for Science](https://science.nasa.gov/blogs/roman/2026/11/13/instruments-on-nasas-roman-space-telescope-get-in-sync-for-science/)\n- [Botany, Biomedicine, and Cargo Ops Wrap Up Week Aboard Station](https://www.nasa.gov/blogs/spacestation/2026/11/13/botany-biomedicine-and-cargo-ops-wrap-up-week-aboard-station/)\n- [Outbursts from a Massive Star](https://www.nasa.gov/image-article/outbursts-from-a-massive-star/)\n- [Gemini Astronaut Photos Inspired Early Earth Observation Program](https://www.nasa.gov/image-article/gemini-astronaut-photos-inspired-early-earth-observation-program/)"
+      }
+    ]
+  },
+  "media": {
+    "hero_image": {
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/as12-48-7134_1280.jpg",
+      "context": "og:image / zdjęcie główne na szczycie strony (featured)",
+      "caption": "This unusual photograph, taken during the second Apollo 12 extravehicular activity (EVA), shows two U.S. spacecraft on the surface of the Moon. The Apollo 12 Lunar Module (LM) is in the background. The unmanned Surveyor 3 spacecraft is in the foreground.",
+      "credit": "NASA"
+    },
+    "images": [
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/as12-48-7134_1280.jpg",
+        "caption": "This unusual photograph, taken during the second Apollo 12 extravehicular activity (EVA), shows two U.S. spacecraft on the surface of the Moon. The Apollo 12 Lunar Module (LM) is in the background. The unmanned Surveyor 3 spacecraft is in the foreground.",
+        "context": "zdjęcie główne strony (hero)",
+        "credit": "NASA"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/november/KF-ApAn48-7133-4.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+        "caption": "APOD: 2026 November 14 – Apollo 12 and Surveyor 3 (obraz z aktualności)",
+        "context": "sekcja 'Latest News' — miniatura artykułu APOD",
+        "credit": "NASA"
+      }
+    ],
+    "gifs": [],
+    "videos": [],
+    "models_3d": [],
+    "downloads": []
+  },
+  "related": {
+    "mission_pages": [
+      {
+        "title": "Explore All Surveyor 3 Stories",
+        "url": "https://science.nasa.gov/mission/surveyor-3/stories/"
+      }
+    ],
+    "nssdc_cross_reference": {
+      "note": "Katalog NSSDCA tego pojazdu (link krzyżowy z rekordu Apollo 12 LM)",
+      "nssdca_cospar_id": "1967-035A",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraftDisplay.do?id=1967-035A"
+    },
+    "apollo_12_connection": [
+      {
+        "title": "Apollo 12 Lunar Module / ALSEP (Intrepid) — rekord NSSDCA",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-099C"
+      },
+      {
+        "title": "APOD: 2026 November 14 – Apollo 12 and Surveyor 3",
+        "url": "https://science.nasa.gov/image-article/apod-2026-november-14-apollo-12-and-surveyor-3/"
+      }
+    ],
+    "topic_pages": [
+      {
+        "title": "The Moon",
+        "url": "https://science.nasa.gov/moon/"
+      },
+      {
+        "title": "Lunar Science",
+        "url": "https://science.nasa.gov/lunar-science/"
+      }
+    ],
+    "key_source": {
+      "title": "Beyond Earth: A Chronicle of Deep Space Exploration, 1958-2016 (Siddiqi, 2018)",
+      "url": "https://solarsystem.nasa.gov/resources/1060/beyond-earth-a-chronicle-of-deep-space-exploration/"
+    }
+  },
+  "notes": [
+    "Strona typu 'mission page' starego formatu NASA — brak filmów, GIF-ów, modeli 3D i plików do pobrania; jedyne media to 1 zdjęcie główne (Apollo 12 + Surveyor 3) i miniatura APOD.",
+    "NSSDCA/COSPAR ID (1967-035A) pochodzi z krzyżowego linku na stronie NSSDCA Apollo 12 LM — science.nasa.gov nie podaje tego ID w treści.",
+    "Status pojazdu: nieaktywny od 4 maja 1967; fizycznie nadal stoi na powierzchni Księżyca w Oceanus Procellarum (odwiedzony przez Apollo 12).",
+    "'Landing anomaly' w key_facts zawiera przeformatowany opis awarii radaru z sekcji In Depth.",
+    "Sekcja 'Latest News' to ogólny feed NASA (tylko pierwszy wpis, APOD, dotyczy bezpośrednio Surveyor 3)."
+  ]
+}

@@ -1,0 +1,306 @@
+{
+  "_format": {
+    "format_version": "nasa-mission-scraper/1.0",
+    "description": "Ujednolicony format eksportu danych ze stron NASA (science.nasa.gov i pokrewnych). Ten sam schemat stosuj do każdej kolejnej strony misji/pojazdu, aby wszystkie wpisy były spójne i mogły być łączone w jedną bazę.",
+    "conventions": [
+      "Klucze zawsze obecne; brak danych = null (nigdy nie usuwaj klucza), brak pozycji = pusta lista [].",
+      "Daty: 'date' zawsze w ISO 8601 (YYYY-MM-DD), 'date_raw' zachowuje oryginalny zapis ze strony.",
+      "Wszystkie URL-e bezwzględne (https://...), bez parametrów śledzących gdzie to możliwe.",
+      "Każdy zasób medialny jest obiektem z minimalnym zestawem pól: url + typ + context (skąd pochodzi na stronie).",
+      "Treść artykułu w polach 'markdown': nagłówki '##'/'###', listy '-', listy numerowane '1.', pogrubienia '**'. Układ = kolejność sekcji ze strony źródłowej.",
+      "Treść zachowywana w języku źródła (pole source.language); nie tłumaczyć przy ekstrakcji.",
+      "Pola 'id' zewnętrznych systemów (np. PIA##### z Photojournal, identyfikatory YouTube, numery modeli 3D) zapisuj w dedykowanych polach *_id, jeśli są znane.",
+      "Weryfikuj dostępność URL-i (HTTP 200) przed zapisem; martwy link oznaczaj w polu 'status'."
+    ],
+    "top_level_keys": [
+      "_format",
+      "source",
+      "vehicle",
+      "specifications",
+      "key_facts",
+      "timeline",
+      "article",
+      "media",
+      "related",
+      "notes"
+    ]
+  },
+  "source": {
+    "url": "https://science.nasa.gov/mission/near-shoemaker/",
+    "canonical_url": "https://science.nasa.gov/mission/near-shoemaker/",
+    "page_title": "NEAR Shoemaker - NASA Science",
+    "page_type": "mission_page",
+    "site": "science.nasa.gov",
+    "language": "en",
+    "scraped_at": "2026-11-14",
+    "page_last_updated": "2024-11-02",
+    "page_editor": null,
+    "responsible_nasa_official": null,
+    "meta_description": "NASA's NEAR was the first spacecraft to orbit an asteroid and also was the first to land on one.",
+    "og_image": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/07/nearspacecraft.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
+  },
+  "vehicle": {
+    "name": "NEAR Shoemaker",
+    "full_name": "Near Earth Asteroid Rendezvous (NEAR) Shoemaker",
+    "agency": "NASA / GSFC / APL",
+    "mission": {
+      "name": "NEAR Shoemaker (first mission of NASA's Discovery program)",
+      "url": "https://science.nasa.gov/mission/near-shoemaker/",
+      "relationship": "single-spacecraft mission; first Discovery-class planetary mission"
+    },
+    "type": {
+      "category": "flyby+orbiter+lander",
+      "name": "Flyby, Orbiter, Lander",
+      "page_label": "Flyby, Orbiter, Lander"
+    },
+    "objective": "Fly by asteroid Mathilde, orbit asteroid Eros and land on Eros",
+    "destination": "Asteroid Eros (433 Eros); flyby of asteroid Mathilde (253 Mathilde)",
+    "status": "mission_completed",
+    "nation": "United States of America (USA)",
+    "spacecraft_designation": "NEAR",
+    "renaming": "NASA renamed the spacecraft NEAR Shoemaker in honor of renowned geologist Eugene M. Shoemaker (1928–1997), on March 14, 2000.",
+    "dates": {
+      "launch": {
+        "date": "1996-02-17",
+        "date_raw": "Feb. 17, 1996 / 20:43:27 UT",
+        "location": "Cape Canaveral, Fla. / Launch Complex 17B",
+        "vehicle": "Delta 7925-8 (no. D232)"
+      },
+      "mathilde_flyby": {
+        "date": "1997-06-27",
+        "date_raw": "June 27, 1997",
+        "event": "Flyby of asteroid Mathilde (closest approach ~750 miles / 1,200 km at 12:56 UT; photographed 60% of the asteroid)"
+      },
+      "earth_flyby": {
+        "date": "1998-01-23",
+        "date_raw": "Jan. 23, 1998",
+        "event": "NEAR flew by Earth for a gravity assist (closest approach ~335 miles / 540 km at 07:23 UT)"
+      },
+      "eros_first_flyby": {
+        "date": "1998-12-23",
+        "date_raw": "Dec. 23, 1998",
+        "event": "Spacecraft flew by Eros for the first time (range ~2,380 miles / 3,827 km at 18:41:23 UT)"
+      },
+      "eros_orbit_insertion": {
+        "date": "2000-02-14",
+        "date_raw": "Feb. 14, 2000",
+        "event": "NEAR entered orbit around Eros at 15:33 UT becoming the first human-made object to orbit an asteroid (parameters ~200 × 225 miles / 321 × 366 km)"
+      },
+      "landing": {
+        "date": "2001-02-12",
+        "date_raw": "Feb. 12, 2001",
+        "event": "NEAR touched down on Eros at 19:44 UT at ~4 mph (6.4 km/h), just south of the saddle-shaped feature Himeros — first landing on an asteroid; first time a U.S. spacecraft was the first to land on a celestial body"
+      },
+      "last_contact": {
+        "date": "2001-02-28",
+        "date_raw": "Feb. 28, 2001",
+        "event": "Last contact with NEAR; spacecraft succumbed to the extreme cold (minus 279°F / minus 173°C)"
+      },
+      "contact_attempt": {
+        "date": "2002-12-10",
+        "date_raw": "Dec. 10, 2002",
+        "event": "NASA's attempt to contact the probe nearly two years later was unsuccessful"
+      }
+    }
+  },
+  "specifications": [
+    {
+      "parameter": "Nation",
+      "value": "United States of America (USA)"
+    },
+    {
+      "parameter": "Objective(s)",
+      "value": "Asteroid Eros Orbit and Landing"
+    },
+    {
+      "parameter": "Spacecraft",
+      "value": "NEAR"
+    },
+    {
+      "parameter": "Spacecraft Mass",
+      "value": "1,775 pounds (805 kilograms)"
+    },
+    {
+      "parameter": "Mission Design and Management",
+      "value": "NASA / GSFC / APL"
+    },
+    {
+      "parameter": "Launch Vehicle",
+      "value": "Delta 7925-8 (no. D232)"
+    },
+    {
+      "parameter": "Launch Date and Time",
+      "value": "Feb. 17, 1996 / 20:43:27 UT"
+    },
+    {
+      "parameter": "Launch Site",
+      "value": "Cape Canaveral, Fla. / Launch Complex 17B"
+    },
+    {
+      "parameter": "Program",
+      "value": "First mission flown under NASA's Discovery program — a series of low-cost (less than about $150 million in mid-1990s dollars) planetary science projects, selected competitively and led by a principal investigator"
+    },
+    {
+      "parameter": "Scientific Instruments — scientific_instruments",
+      "value": "Multi-Spectral Imager (MSI); Magnetometer (MAG); Near Infrared Spectrometer (NIS); X-Ray/Gamma-Ray Spectrometer (XGRS); Laser Rangefinder (NLR); Radio Science and Gravimetry Experiment"
+    },
+    {
+      "parameter": "Scientific Instruments — note",
+      "value": "First spacecraft to rely on solar cells for power during operations beyond Mars orbit."
+    }
+  ],
+  "key_facts": {
+    "what_was": "NASA's NEAR was the first spacecraft to orbit an asteroid and also was the first to land on one.",
+    "bullets": [
+      "NEAR's landing on Eros marked the first time a U.S. spacecraft was the first to land on a celestial body, having been beaten by the Soviets in landing on the Moon, Mars, and Venus.",
+      "Remarkably, the spacecraft – which was not designed as a lander – survived touchdown on the asteroid and returned valuable data for about two weeks.",
+      "NASA renamed the spacecraft NEAR Shoemaker in honor of renowned geologist Eugene M. Shoemaker (1928–1997).",
+      "Last contact with NEAR was Feb. 28, 2001, the spacecraft having succumbed to the extreme cold."
+    ],
+    "firsts": [
+      "First human-made object to orbit an asteroid",
+      "First spacecraft to land on an asteroid"
+    ],
+    "data_returned": "NEAR returned about 10 times more data than originally planned, including 160,000 images; mapped more than 70 percent of Eros' surface using the near-infrared spectrometer; found that Eros had no magnetic field."
+  },
+  "timeline": [
+    {
+      "date": "1996-02-17",
+      "date_raw": "Feb. 17, 1996",
+      "title": "Launch"
+    },
+    {
+      "date": "1997-06-27",
+      "date_raw": "June 27, 1997",
+      "title": "Flyby of asteroid Mathilde"
+    },
+    {
+      "date": "1998-01-23",
+      "date_raw": "Jan. 23, 1998",
+      "title": "NEAR flew by Earth for a gravity assist"
+    },
+    {
+      "date": "1998-12-23",
+      "date_raw": "Dec. 23, 1998",
+      "title": "Spacecraft flew by Eros for the first time"
+    },
+    {
+      "date": "2000-02-14",
+      "date_raw": "Feb. 14, 2000",
+      "title": "NEAR entered orbit around Eros — first human-made object to orbit an asteroid"
+    },
+    {
+      "date": "2000-03-14",
+      "date_raw": "March 14, 2000",
+      "title": "Spacecraft renamed NEAR Shoemaker in honor of Eugene M. Shoemaker"
+    },
+    {
+      "date": "2001-02-12",
+      "date_raw": "Feb. 12, 2001",
+      "title": "NEAR touched down on Eros — first landing on an asteroid"
+    },
+    {
+      "date": "2001-02-28",
+      "date_raw": "Feb. 28, 2001",
+      "title": "Last contact with NEAR"
+    }
+  ],
+  "article": {
+    "title": "NEAR Shoemaker",
+    "lead": "NASA's NEAR was the first spacecraft to orbit an asteroid and also was the first to land on one.",
+    "content_language": "en",
+    "sections": [
+      {
+        "heading": "What was NEAR Shoemaker?",
+        "markdown": "NASA's NEAR was the first spacecraft to orbit an asteroid and also was the first to land on one.\n\n- NEAR's landing on Eros marked the first time a U.S. spacecraft was the first to land on a celestial body, having been beaten by the Soviets in landing on the Moon, Mars, and Venus.\n- Remarkably, the spacecraft – which was not designed as a lander – survived touchdown on the asteroid and returned valuable data for about two weeks.\n- NASA renamed the spacecraft NEAR Shoemaker in honor of renowned geologist Eugene M. Shoemaker (1928–1997).\n- Last contact with NEAR was Feb. 28, 2001, the spacecraft having succumbed to the extreme cold."
+      },
+      {
+        "heading": "Firsts",
+        "markdown": "- First human-made object to orbit an asteroid\n- First spacecraft to land on an asteroid"
+      },
+      {
+        "heading": "Key Dates",
+        "markdown": "- **Feb. 17, 1996:** Launch\n- **June 27, 1997:** Flyby of asteroid Mathilde\n- **Jan. 23, 1998:** NEAR flew by Earth for a gravity assist\n- **Dec. 23, 1998:** Spacecraft flew by Eros for the first time\n- **Feb. 14, 2000:** NEAR entered orbit around Eros becoming the first human-made object to orbit an asteroid\n- **Feb. 12, 2001:** NEAR touched down on Eros – the first time a U.S. spacecraft was the first to land on a celestial body"
+      },
+      {
+        "heading": "In Depth: NEAR Shoemaker",
+        "markdown": "Near Earth Asteroid Rendezvous (NEAR) was the first mission flown under NASA’s Discovery program, a series of low-cost (less than about $150 million in mid-1990s dollar amounts) planetary science projects that were selected competitively and led by a principal investigator rather than a NASA manager.\n\nNEAR’s primary goal was to rendezvous with the minor planet 433 Eros (an S-class asteroid), approximately 221 million miles (355 million kilometers) from Earth, and to gather data on its physical properties, mineral components, morphology, internal mass distribution, and magnetic field. The spacecraft was the first to rely on solar cells for power during operations beyond Mars orbit.\n\nOn the way to its primary mission, NEAR performed a 25-minute flyby of the asteroid 253 Mathilde on June 27, 1997. The closest approach was about 750 miles (1,200 kilometers) at 12:56 UT. During the encounter, the spacecraft photographed 60 percent of the minor planet from a range of 750 miles (1,200 kilometers).\n\nThe information gathered indicated that the 4.5 billion-year-old asteroid is covered with craters and is less dense than previously believed.\n\nAfter a course correction on July 3, 1997, NEAR flew by Earth on Jan. 23, 1998, at 07:23 UT for a gravity assist on its way to Eros. The closest approach was about 335 miles (540 kilometers).\n\nAfter the Earth flyby encounter, NEAR’s previously planned mission profile had to be revised because of an aborted engine burn on Dec. 20, 1998, that prevented a critical trajectory correction needed to meet up with Eros a month later.\n\nInstead, NEAR was put on a backup trajectory that afforded a different flyby than originally planned. As part of this new plan, the spacecraft first flew past Eros on Dec. 23, 1998, at 18:41:23 UT at a range of about 2,380 miles (3,827 kilometers) (distance measured from the center of mass) during which it observed about 60 percent of the asteroid, and discovered that the minor planet was smaller than expected.\n\nNEAR also found that the asteroid has two medium-sized craters, a long surface ridge, and a density similar to Earth’s crust. After several more trajectory adjustments, NEAR finally moved into orbit around Eros at 15:33 UT Feb. 14, 2000, roughly a year later than intended, becoming the first human-made object to orbit a minor planet. Orbital parameters were about 200 × 225 miles (321 × 366 kilometers).\n\nThrough 2000, NEAR’s orbit was shifted in stages to permit specific research programs. There were a few problems in the lead-up to the landing on the asteroid. For example, on May 13, 2000, controllers had to turn off the near-infrared spectrometer due to an excessive power surge.\n\nBy April 30, 2000, the spacecraft was in its operational orbit at an altitude of about 31 miles (50 kilometers) from Eros’ center.\n\nOn July 13, 2000, NEAR entered an even lower orbit at about 22 miles (35 kilometers) that brought the vehicle to about 12 miles (19 kilometers) from the surface. After about 10 days, NEAR moved back to a higher orbit.\n\nOn Oct. 26, 2000, NEAR performed another close flyby, this time to about 3 miles (5.3 kilometers) above the surface.\n\nBy the end of the year, the spacecraft had entered a circular 22-mile (35-kilometer) low orbit around the asteroid and began to make a series of very close passes – on the order of about 3 to 4 miles (5 to 6 kilometers) – above the surface.\n\nFollowing a slow, controlled descent, during which it took 69 high-resolution photos of Eros, NEAR touched down on Eros at a gentle 4 miles per hour (6.4 kilometers per hour), just south of a saddle-shaped feature named Himeros, on Feb. 12, 2001, at 19:44 UT.\n\nThis was the first time a U.S. spacecraft was the first to land on a celestial body, having been beaten by the Soviets in landing on the Moon, Mars, and Venus.\n\nRemarkably, the orbiter survived contact and returned valuable data, especially from its gamma-ray spectrometer, for about two weeks.\n\nThe last contact with NEAR was Feb. 28, 2001, the spacecraft having succumbed to the extreme cold (minus 279 degrees Fahrenheit or minus 173 degrees Celsius). NASA’s attempt to contact the probe nearly two years later on Dec. 10, 2002, was unsuccessful.\n\nNEAR data showed that Eros had no magnetic field. It mapped more than 70 percent of the surface using the near-infrared spectrometer and provided important data about the asteroid’s interior. The spacecraft returned about 10 times more data than originally planned, including 160,000 images.\n\nEarlier, on March 14, 2000, a month after entering asteroid orbit, NASA renamed the NEAR spacecraft NEAR Shoemaker in honor of Eugene M. Shoemaker (1928–1997), the renowned geologist."
+      },
+      {
+        "heading": "Mission Statistics",
+        "markdown": "- **Nation:** United States of America (USA)\n- **Objective(s):** Asteroid Eros Orbit and Landing\n- **Spacecraft:** NEAR\n- **Spacecraft Mass:** 1,775 pounds (805 kilograms)\n- **Mission Design and Management:** NASA / GSFC / APL\n- **Launch Vehicle:** Delta 7925-8 (no. D232)\n- **Launch Date and Time:** Feb. 17, 1996 / 20:43:27 UT\n- **Launch Site:** Cape Canaveral, Fla. / Launch Complex 17B\n\n**Scientific Instruments:**\n\n1. Multi-Spectral Imager (MSI)\n2. Magnetometer (MAG)\n3. Near Infrared Spectrometer (NIS)\n4. X-Ray/Gamma-Ray Spectrometer (XGRS)\n5. Laser Rangefinder (NLR)\n6. Radio Science and Gravimetry Experiment"
+      },
+      {
+        "heading": "Key Source",
+        "markdown": "Siddiqi, Asif A. [Beyond Earth: A Chronicle of Deep Space Exploration, 1958-2016](https://solarsystem.nasa.gov/resources/1060/beyond-earth-a-chronicle-of-deep-space-exploration/). NASA History Program Office, 2018."
+      }
+    ]
+  },
+  "media": {
+    "hero_image": {
+      "url": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/07/nearspacecraft.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+      "context": "og:image strony",
+      "credit": "NASA"
+    },
+    "images": [
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/nearspacecraft.jpg",
+        "caption": "An illustration of NASA's Near Earth Asteroid Rendezvous (NEAR) spacecraft at asteroid Eros.",
+        "context": "zdjęcie główne na szczycie strony",
+        "credit": "NASA"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/3964/Asteroid_Eros.jpeg",
+        "caption": "Asteroid Eros.",
+        "context": "sekcja 'In Depth' (mosaika południowej półkuli Eros)",
+        "credit": "NASA"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/3964/Asteroid_Eros.jpeg",
+        "caption": "NASA's NEAR Shoemaker spacecraft landed on the surface of the 21-mile long asteroid Eros on February 12, 2001. This image mosaic shows Eros' southern hemisphere, offering a long-distance look at the cratered terrain where the spacecraft touched down.",
+        "context": "sekcja 'Key Dates' / lądowanie (mosaika)",
+        "credit": "NASA"
+      }
+    ],
+    "gifs": [],
+    "videos": [],
+    "models_3d": [],
+    "downloads": []
+  },
+  "related": {
+    "mission_pages": [
+      {
+        "title": "All NEAR Shoemaker Stories",
+        "url": "https://science.nasa.gov/mission/near-shoemaker/stories/"
+      }
+    ],
+    "feature_stories": [
+      {
+        "title": "Pioneer 10 Crosses the Asteroid Belt (image article)",
+        "url": "https://www.nasa.gov/image-article/pioneer-10-crosses-the-asteroid-belt/"
+      },
+      {
+        "title": "10 Facts about the Pioneer Spacecraft",
+        "url": "https://www.nasa.gov/missions/pioneer/pioneer-11/10-things-about-pioneer-spacecraft/"
+      },
+      {
+        "title": "50 Years Ago: Pioneer 10 Launches to Explore Jupiter",
+        "url": "https://www.nasa.gov/history/50-years-ago-pioneer-10-launches-to-explore-jupiter/"
+      }
+    ],
+    "other_links": [
+      {
+        "title": "Beyond Earth: A Chronicle of Deep Space Exploration (source book)",
+        "url": "https://solarsystem.nasa.gov/resources/1060/beyond-earth-a-chronicle-of-deep-space-exploration/"
+      }
+    ]
+  },
+  "notes": [
+    "Strona NEAR Shoemaker to starszy typ strony misji NASA: brak filmów, GIF-ów i modeli 3D — tylko 2 unikalne obrazy (ilustracja pojazdu + Eros).",
+    "Trzeci wpis na liście images to ta sama grafika Eros (internal_resources/3964), ale z pełnym podpisem z sekcji lądowania — pozostawiono oba konteksty, URL identyczny.",
+    "Daty: start 1996-02-17; orbita Eros 2000-02-14 (początek głównych operacji); lądowanie 2001-02-12 (koniec operacji orbitalnych); ostatni kontakt 2001-02-28 — rozdzielone zgodnie z sekcją Key Dates i In Depth.",
+    "Sekcja 'NEAR Shoemaker Stories' na stronie zawiera aktualne ogólne artykuły NASA (APOD itp.) niezwiązane bezpośrednio z misją — wybrane powiązane pozycje o tematyce asteroid/pioneer przeniesiono do related.feature_stories.",
+    "Treść article.sections zachowana w języku angielskim (źródłowym); układ i kolejność sekcji = kolejność na stronie.",
+    "Wszystkie URL-e w polach media.* zweryfikowane HTTP 200 (2026-11-14, skrypt scripts/verify_urls.py)."
+  ]
+}
