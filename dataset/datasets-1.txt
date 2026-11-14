@@ -1,0 +1,3 @@
+https://azmth.space/data/mars-sites.json
+https://azmth.space/data/mars-missions.json
+https://azmth.space/data/mars-ephemeris.json
