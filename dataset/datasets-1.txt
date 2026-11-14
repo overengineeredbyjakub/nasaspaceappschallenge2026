@@ -1,3 +1,13 @@
 https://azmth.space/data/mars-sites.json
 https://azmth.space/data/mars-missions.json
 https://azmth.space/data/mars-ephemeris.json
+mission api
+https://azmth.space/data/mars-traverses/{MISSION}.json
+examples:
+https://azmth.space/data/mars-traverses/perseverance.json
+https://azmth.space/data/mars-traverses/curiosity.json
+https://azmth.space/data/mars-traverses/opportunity.json
+https://azmth.space/data/mars-traverses/spirit.json
+https://azmth.space/data/mars-traverses/sojourner.json
+https://azmth.space/data/mars-traverses/ingenuity.json
+https://azmth.space/data/mars-traverses/zhurong.json
